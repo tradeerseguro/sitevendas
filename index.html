@@ -3,117 +3,160 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trader Seguro - Página de Vendas</title>
+  <title>Trader Seguro - Proteja Sua Conta no Day Trade</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #FFFFFF;
-      color: #49495A;
+    /* Reset básico */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; font-family: 'Inter', sans-serif; color: #333; }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    /* Cores principais */
+    :root {
+      --primary: #5955EB;
+      --secondary: #F7F5FF;
+      --accent: #FF3C3C;
+      --text: #49495A;
+      --light: #FFFFFF;
     }
 
-    section {
-      padding: 60px 20px;
-      max-width: 1000px;
-      margin: auto;
+    /* Layout e container */
+    .container { width: 90%; max-width: 1200px; margin: auto; }
+    section { padding: 80px 0; }
+
+    /* Botão primário */
+    .btn-primary {
+      background-color: var(--primary);
+      color: var(--light);
+      padding: 14px 28px;
+      border: none;
+      border-radius: 6px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background-color .3s;
+    }
+    .btn-primary:hover { background-color: #463ECF; }
+
+    /* Hero */
+    #hero {
+      background: linear-gradient(135deg, var(--primary) 0%, #6C5EEA 100%);
+      color: var(--light);
+      position: relative;
       text-align: center;
     }
+    #hero h1 { font-size: 3rem; margin-bottom: 20px; line-height: 1.2; }
+    #hero p { font-size: 1.2rem; margin-bottom: 40px; }
+    #hero .video-wrapper { width: 100%; max-width: 800px; margin: auto; border: 4px solid var(--light); border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+    #hero .video-wrapper iframe { width: 100%; height: 450px; }
+    #hero #cta-hero { opacity: 0; }
 
-    h1 {
-      color: #5955EB;
-      font-size: 32px;
-    }
-
-    h2 {
-      font-size: 24px;
-      color: #49495A;
-    }
-
-    .btn {
-      background-color: #5955EB;
-      color: #fff;
-      padding: 16px 32px;
-      font-size: 18px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      margin-top: 20px;
+    /* Floating CTA */
+    .floating-cta {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 100;
       opacity: 0;
-      transition: opacity 0.5s ease;
+      transition: opacity .5s;
     }
+    .floating-cta.visible { opacity: 1; }
 
-    .btn.visible {
-      opacity: 1;
+    /* Recursos */
+    #features { background: var(--secondary); }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 32px;
+      margin-top: 40px;
     }
-
-    #conteudo-page {
-      display: none;
+    .feature-card {
+      background: var(--light);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+      text-align: center;
       opacity: 0;
-      transition: opacity 0.8s ease;
+      transform: translateY(20px);
+      transition: all .6s ease-out;
     }
+    .feature-card.visible { opacity: 1; transform: translateY(0); }
+    .feature-card img { width: 80px; margin-bottom: 16px; }
+    .feature-card h3 { font-size: 1.2rem; margin-bottom: 12px; }
+    .feature-card p { color: var(--text); font-size: .95rem; }
 
-    #conteudo-page.visible {
-      display: block;
-      opacity: 1;
-    }
+    /* Garantia */
+    #guarantee { text-align: center; }
+    #guarantee .seal { width: 120px; margin: auto 0; }
+    #guarantee p { margin-top: 16px; font-size: 1rem; }
 
-    .video-wrapper {
-      position: relative;
-      padding-bottom: 56.25%;
-      height: 0;
-      overflow: hidden;
-      margin-top: 20px;
-    }
+    /* Prova social */
+    #testimonials { background: var(--secondary); }
+    .testimonial { display: flex; gap: 24px; align-items: center; margin-top: 40px; opacity: 0; transform: translateX(-20px); transition: all .6s ease-out; }
+    .testimonial.visible { opacity: 1; transform: translateX(0); }
+    .testimonial img { width: 64px; height: 64px; border-radius: 50%; }
+    .testimonial blockquote { font-style: italic; color: var(--text); }
 
-    .video-wrapper iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
+    /* Footer */
+    footer { text-align: center; padding: 40px 0; font-size: .85rem; color: #777; }
   </style>
 </head>
 <body>
 
-  <section>
-    <h2>Descubra como proteger sua conta no Day Trade com 3 regras simples</h2>
-
-    <div class="video-wrapper">
-      <!-- Substitua o link abaixo pelo link do seu vídeo no Vimeo, Loom, etc -->
-      <iframe src="https://www.youtube.com/embed/SEU_VIDEO" frameborder="0" allowfullscreen></iframe>
+  <!-- Hero -->
+  <section id="hero">
+    <div class="container">
+      <h1>Proteja sua conta no Day Trade <br> com apenas 3 regras simples</h1>
+      <p>Descubra em 1 minuto como controlar risco, emoção e finalmente operar com segurança.</p>
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/SEU_VIDEO" frameborder="0" allowfullscreen></iframe>
+      </div>
+      <button id="cta-hero" class="btn-primary">Quero Proteger Minha Conta</button>
     </div>
-
-    <button id="cta-btn" class="btn">Quero proteger minha conta agora</button>
+    <button class="floating-cta btn-primary">Comprar Agora</button>
   </section>
 
-  <div id="conteudo-page">
-    <section style="background-color: #F7F5FF;">
-      <h1>Tudo isso por apenas R$47</h1>
-      <p>Acesso imediato ao eBook, planilha e muito mais.</p>
-      <p>📘 eBook completo de Gerenciamento de Risco</p>
-      <p>📊 Planilha automática de gerenciamento</p>
-      <p>🧠 Clareza emocional a cada operação</p>
-    </section>
-    
-    <!-- Outras seções da página (FAQ, Garantia, Prova Social...) podem vir aqui -->
-    <section>
-      <h2>Garantia total de 7 dias</h2>
-      <p>Se você não estiver satisfeito, devolvemos seu dinheiro. Simples assim.</p>
-    </section>
-  </div>
+  <!-- Recursos -->
+  <section id="features" class="container">
+    <h2>Nossos 3 recursos</h2>
+    <div class="features-grid">
+      <div class="feature-card" style="transition-delay:0.2s;"><img src="imagens/ebook.png" alt="eBook"><h3>eBook Completo</h3><p>Conheça as 3 regras de gestão de risco em detalhes.</p></div>
+      <div class="feature-card" style="transition-delay:0.4s;"><img src="imagens/planilha.png" alt="Planilha"><h3>Planilha Automática</h3><p>Ferramenta pronta para controlar suas entradas e saídas.</p></div>
+      <div class="feature-card" style="transition-delay:0.6s;"><img src="imagens/escudo.png" alt="Escudo"><h3>Clareza Emocional</h3><p>Técnicas de autocontrole para evitar decisões por impulso.</p></div>
+    </div>
+  </section>
+
+  <!-- Garantia -->
+  <section id="guarantee" class="container">
+    <img src="imagens/selo-garantia.png" alt="Garantia 7 dias" class="seal">
+    <p>Garantia incondicional de 7 dias. Se não servir pra você, devolvemos 100% do valor.</p>
+  </section>
+
+  <!-- Depoimentos -->
+  <section id="testimonials" class="container">
+    <h2>O que dizem nossos alunos</h2>
+    <div class="testimonial" style="transition-delay:0.2s;"><img src="imagens/user1.jpg" alt="Aluno"><blockquote>"Nunca me senti tão confiante no mercado. Minhas perdas caíram 80%!"</blockquote></div>
+    <div class="testimonial" style="transition-delay:0.4s;"><img src="imagens/user2.jpg" alt="Aluna"><blockquote>"O método é direto ao ponto e funcional. Recomendo a todos!"</blockquote></div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Trader Seguro. Todos os direitos reservados.</p>
+  </footer>
 
   <script>
+    // Delay Hero CTA e floating
     window.addEventListener('load', () => {
-      setTimeout(() => {
-        document.getElementById('cta-btn').classList.add('visible');
-      }, 5000); // botão aparece após 5 segundos
-
-      setTimeout(() => {
-        document.getElementById('conteudo-page').classList.add('visible');
-      }, 7000); // conteúdo aparece após mais 2 segundos (total 7s)
+      setTimeout(() => document.getElementById('cta-hero').classList.add('visible'), 5000);
+      setTimeout(() => document.querySelector('.floating-cta').classList.add('visible'), 6000);
     });
+
+    // Scroll animation para cards e depoimentos
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.2 });
+    document.querySelectorAll('.feature-card, .testimonial').forEach(el => observer.observe(el));
   </script>
 </body>
 </html>
