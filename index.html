@@ -4,252 +4,225 @@
   <meta charset="UTF-8">
   <title>Trader Seguro – Proteja Sua Conta</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
-
   <style>
-    /* ===== Reset rápido ===== */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: Arial, sans-serif; line-height: 1.5; color: #333; }
+    /* reset e tipografia básica */
+    * { margin:0; padding:0; box-sizing:border-box }
+    body { font-family:Arial,sans-serif; color:#333 }
+    section { opacity:1; transition:opacity .5s ease }
 
-    /* ===== HERO (Passo 1) ===== */
+    /* ===== HERO ===== */
     .hero {
-      background-color: #fbfcfd; /* branco acidentado */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: #fbfcfd;
+      min-height: 100vh;
       padding: 2rem 1rem;
       text-align: center;
       position: relative;
-      overflow: hidden;
     }
-    .hero h1 { font-size: 2rem; margin-bottom: .5rem; }
-    .hero p.sub { font-size: 1.125rem; margin-bottom: 1.5rem; color: #555; }
+    .hero h1 { font-size:2.25rem; margin-bottom:.5rem; }
+    .hero p.sub { font-size:1.125rem; margin-bottom:1.5rem; color:#555; }
     .hero .video-container {
-      max-width: 640px; margin: 0 auto 1rem;
+      width:100%; max-width:640px; margin-bottom:1.5rem;
     }
     .hero iframe {
-      width: 100%; height: 360px; border: none;
+      width:100%; height:360px; border:none;
     }
 
-    /* botão CTA abaixo do vídeo */
+    /* CTA abaixo do vídeo (invisível até 5s) */
     #cta-btn {
       opacity: 0;
-      padding: .75rem 1.5rem;
-      font-size: 1rem;
-      background: #007bff;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      position: relative;
-      z-index: 1;
+      padding:.8rem 1.6rem;
+      font-size:1rem;
+      background:#007bff;
+      color:#fff;
+      border:none;
+      border-radius:4px;
+      cursor:pointer;
+      position:relative;
+      z-index:1;
       animation:
-        pulse-btn 2s infinite ease-in-out,
-        neon-glow-btn 1.5s infinite alternate ease-in-out;
-      transition: opacity .3s ease-in-out;
+        pulse 2s infinite ease-in-out,
+        neon 1.5s infinite alternate ease-in-out;
+      transition:opacity .3s ease;
     }
-    @keyframes pulse-btn {
-      0%,100% { transform: scale(1); }
-      50%      { transform: scale(1.05); }
+    @keyframes pulse {
+      0%,100%{ transform:scale(1) }
+      50%{ transform:scale(1.05) }
     }
-    @keyframes neon-glow-btn {
-      0% {
-        box-shadow: 0 0 5px rgba(0,123,255,0.6), 0 0 15px rgba(0,123,255,0.4);
-      }
-      100% {
-        box-shadow: 0 0 20px rgba(0,123,255,1), 0 0 30px rgba(0,123,255,0.7);
-      }
+    @keyframes neon {
+      from { box-shadow:0 0 5px rgba(0,123,255,0.6) }
+      to   { box-shadow:0 0 20px rgba(0,123,255,1) }
     }
     #cta-btn::after {
-      content: '';
-      position: absolute;
-      top: 100%; left: 50%;
-      transform: translateX(-50%);
-      width: 120%; height: 8px;
-      background: rgba(0,123,255,0.4);
-      filter: blur(8px);
-      border-radius: 50%;
-      animation: neon-glow-btn 1.5s infinite alternate ease-in-out;
-      pointer-events: none;
-      z-index: -1;
+      content:'';
+      position:absolute;
+      top:100%; left:50%;
+      width:120%; height:8px;
+      transform:translateX(-50%);
+      background:rgba(0,123,255,0.4);
+      filter:blur(8px);
+      border-radius:50%;
+      animation:neon 1.5s infinite alternate ease-in-out;
+      z-index:-1;
     }
 
-    /* ===== LEAD (Passo 2) ===== */
-    #lead {
-      padding: 2rem 1rem;
-      background: #fff;
-      text-align: center;
-    }
-    #lead h2 { font-size: 1.75rem; margin-bottom: .75rem; }
-    #lead p { max-width: 600px; margin: 0 auto; color: #555; }
+    /* Esconde todas as outras seções até o CTA aparecer */
+    .hidden { opacity: 0; }
 
-    /* ===== HISTÓRIA (Passo 3) ===== */
-    #history {
-      padding: 2rem 1rem;
-      background: #f9f9f9;
-    }
-    #history h3 { font-size: 1.5rem; margin-bottom: .5rem; text-align: center; }
-    #history .story { max-width: 700px; margin: 1rem auto; }
-
-    /* ===== PITCH (Passo 4) ===== */
-    #pitch {
-      padding: 2rem 1rem;
-      background: #fff;
-      text-align: center;
-    }
-    #pitch h3 { font-size: 1.5rem; margin-bottom: .5rem; }
-    #pitch .features { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
-    #pitch .feature { flex: 1 1 200px; background: #eef6ff; padding: 1rem; border-radius: 6px; }
-
-    /* ===== EVIDÊNCIA (Passo 5+6) ===== */
-    #evidence {
-      padding: 2rem 1rem; background: #f9f9f9;
-    }
-    #evidence h3 { text-align: center; margin-bottom: 1rem; }
-    #evidence .testimonials { display: grid; gap: 1rem; max-width: 800px; margin: 0 auto; }
-    #evidence .test { background: #fff; padding: 1rem; border-radius: 4px; }
-
-    /* ===== OFERTA (Passo 7) ===== */
-    #offer {
-      padding: 2rem 1rem; background: #fff; text-align: center;
-    }
-    #offer h3 { font-size: 1.5rem; margin-bottom: .5rem; }
-    #offer .price {
-      font-size: 2rem; margin: 1rem 0;
-    }
-    #offer .price .old { text-decoration: line-through; color: #999; margin-right: .5rem; }
-    #offer .price .new { color: #007bff; }
-
-    /* ===== ACORDO (Passo 8) ===== */
-    #agreement {
-      padding: 2rem 1rem; background: #eaf8ea; text-align: center;
-    }
-    #agreement h3 { font-size: 1.5rem; margin-bottom: .5rem; }
-    #agreement p { max-width: 600px; margin: 0 auto; }
-
-    /* ===== FAQ (Passo 9) ===== */
+    /* ===== DEMÁS SEÇÕES (vai tirar a classe .hidden via JS após 7s) ===== */
+    #lead,
+    #history,
+    #pitch,
+    #evidence,
+    #offer,
+    #agreement,
     #faq {
-      padding: 2rem 1rem; background: #fff;
+      padding:2rem 1rem;
     }
-    #faq h3 { text-align: center; margin-bottom: 1rem; }
-    #faq .q { max-width: 800px; margin: .5rem auto; }
-    #faq .q p.question { font-weight: bold; }
-    #faq .q p.answer { margin-left: 1rem; }
+    #lead { background:#fff; text-align:center }
+    #lead h2 { font-size:1.75rem; margin-bottom:.75rem }
+    #lead p { max-width:600px; margin:0 auto; color:#555 }
 
-    /* ===== Botões Flutuantes ===== */
+    #history { background:#f9f9f9 }
+    #history h3 { font-size:1.5rem; text-align:center; margin-bottom:1rem }
+    #history .story { max-width:700px; margin:0 auto; color:#444 }
+
+    #pitch { background:#fff; text-align:center }
+    .features { display:flex; flex-wrap:wrap; gap:1rem; justify-content:center }
+    .feature { flex:1 1 200px; background:#eef6ff; padding:1rem; border-radius:6px }
+
+    #evidence { background:#f9f9f9 }
+    #evidence h3 { text-align:center; margin-bottom:1rem }
+    .testimonials { display:grid; gap:1rem; max-width:800px; margin:0 auto }
+    .test { background:#fff; padding:1rem; border-radius:4px }
+
+    #offer { background:#fff; text-align:center }
+    #offer h3 { font-size:1.5rem; margin-bottom:1rem }
+    .price { font-size:2rem; margin-bottom:1rem }
+    .old { text-decoration:line-through; color:#999; margin-right:.5rem }
+    .new { color:#007bff }
+
+    #agreement { background:#eaf8ea; text-align:center }
+    #agreement h3 { font-size:1.5rem; margin-bottom:.75rem }
+    #agreement p { max-width:600px; margin:0 auto; color:#333 }
+
+    #faq { background:#fff }
+    #faq h3 { text-align:center; margin-bottom:1rem }
+    .q { max-width:800px; margin:0.5rem auto }
+    .question { font-weight:bold }
+    .answer { margin-left:1rem; color:#555 }
+
+    /* ===== BOTÃO FLUTUANTE ===== */
     .floating-btn {
-      position: fixed;
-      bottom: 1rem; right: 1rem;
-      background: #007bff; color: #fff;
-      padding: .75rem 1rem; border-radius: 4px;
-      box-shadow: 0 0 10px rgba(0,0,0,.2);
-      text-decoration: none; font-weight: bold;
+      position:fixed; bottom:1rem; right:1rem;
+      background:#007bff; color:#fff;
+      padding:.75rem 1rem; border-radius:4px;
+      box-shadow:0 0 10px rgba(0,0,0,.2);
+      text-decoration:none; font-weight:bold;
     }
   </style>
 </head>
-
 <body>
 
-  <!-- ===== 1. HEADLINE + VSL (HERO) ===== -->
+  <!-- 1. HERO -->
   <section class="hero">
-    <h1>Proteja sua conta de trading agora mesmo</h1>
-    <p class="sub">Descubra como o Rafael transformou seu operacional em 3 regras e nunca mais perdeu dinheiro</p>
+    <h1>Proteja sua conta e opere sem medo</h1>
+    <p class="sub">O método que mudou o jogo do Rafael em 1 minuto</p>
     <div class="video-container">
       <iframe src="https://www.youtube.com/embed/SEU_VIDEO_ID" allowfullscreen></iframe>
     </div>
     <button id="cta-btn">Quero proteger minha conta</button>
   </section>
 
-  <!-- ===== 2. LEAD ===== -->
-  <section id="lead">
+  <!-- 2. LEAD -->
+  <section id="lead" class="hidden">
     <h2>Você está pronto para operar com segurança?</h2>
-    <p>Imagine entrar em cada trade com total clareza e disciplina emocional, sabendo exatamente quanto arriscar, sem nunca tentar “recuperar” prejuízos.</p>
+    <p>Chega de entrar no prejuízo e tentar recuperar tudo no impulso emocional. Este método traz clareza total.</p>
   </section>
 
-  <!-- ===== 3. HISTÓRIA ===== -->
-  <section id="history">
+  <!-- 3. HISTÓRIA -->
+  <section id="history" class="hidden">
     <h3>A história do Rafael</h3>
     <div class="story">
-      <p>O Rafael era um trader talentoso… até que quebrou conta após conta porque deixava o emocional comandar. Com medo, começou a operar noites a fio para recuperar cada centavo perdido.</p>
-      <p>Foi só quando descobriu as 3 regras simples e passou a usar uma planilha automática de gestão de risco que ele enxergou onde estava o verdadeiro erro — e voltou a lucrar mês após mês.</p>
+      <p>Ele era um trader promissor, mas se deixava levar pelas emoções e perdia grandes montantes — até descobrir 3 regras simples.</p>
     </div>
   </section>
 
-  <!-- ===== 4. PITCH ===== -->
-  <section id="pitch">
-    <h3>O método que você recebe</h3>
+  <!-- 4. PITCH -->
+  <section id="pitch" class="hidden">
+    <h3>O que você recebe</h3>
     <div class="features">
       <div class="feature">
-        <strong>1. eBook Prático</strong>
-        <p>Aprenda as 3 regras e o passo‑a‑passo para gerenciar seu risco.</p>
+        <strong>eBook Prático</strong>
+        <p>Aprenda as 3 regras passo a passo.</p>
       </div>
       <div class="feature">
-        <strong>2. Planilha Automática</strong>
-        <p>Insira seus dados e saiba imediatamente quanto arriscar em cada operação.</p>
+        <strong>Planilha Automática</strong>
+        <p>Calcule o risco de cada trade em segundos.</p>
       </div>
       <div class="feature">
-        <strong>3. Clareza Emocional</strong>
-        <p>Técnicas simples para manter o controle psicológico em cada trade.</p>
+        <strong>Clareza Emocional</strong>
+        <p>Controle psicológico para seguir o plano.</p>
       </div>
     </div>
   </section>
 
-  <!-- ===== 5/6. EVIDÊNCIA ===== -->
-  <section id="evidence">
+  <!-- 5/6. EVIDÊNCIA -->
+  <section id="evidence" class="hidden">
     <h3>O que dizem nossos alunos</h3>
     <div class="testimonials">
-      <div class="test">
-        <p><strong>Ana P.</strong> “Em uma semana de uso perdi apenas 2% do meu capital — o resto foi só lucro!”</p>
-      </div>
-      <div class="test">
-        <p><strong>Carlos M.</strong> “Nunca mais me peguei tentando recuperar prejuízos. Agora entro em cada trade com confiança.”</p>
-      </div>
+      <div class="test"><p><strong>Ana P.</strong> “Nunca mais entrei no vermelho!”</p></div>
+      <div class="test"><p><strong>Carlos M.</strong> “Minha conta disparou em 30 dias!”</p></div>
     </div>
   </section>
 
-  <!-- ===== 7. OFERTA ===== -->
-  <section id="offer">
-    <h3>Tudo isso por apenas:</h3>
+  <!-- 7. OFERTA -->
+  <section id="offer" class="hidden">
+    <h3>Tudo isso por apenas</h3>
     <div class="price">
       <span class="old">R$164</span>
       <span class="new">R$47</span>
     </div>
-    <p>+ Bônus: Grupo VIP no Telegram</p>
+    <p>+ Bônus: acesso ao grupo VIP</p>
   </section>
 
-  <!-- ===== 8. ACORDO ===== -->
-  <section id="agreement">
-    <h3>Garantia incondicional de 7 dias</h3>
-    <p>Se não sentir que isso elevou sua performance, peça 100% do seu dinheiro de volta. Sem perguntas.</p>
+  <!-- 8. ACORDO -->
+  <section id="agreement" class="hidden">
+    <h3>Garantia de 7 dias</h3>
+    <p>Não gostou? Peça reembolso integral sem perguntas.</p>
   </section>
 
-  <!-- ===== 9. FAQ ===== -->
-  <section id="faq">
+  <!-- 9. FAQ -->
+  <section id="faq" class="hidden">
     <h3>Perguntas Frequentes</h3>
     <div class="q">
-      <p class="question">É seguro para iniciantes?</p>
-      <p class="answer">Sim: o eBook explica tudo do zero e a planilha faz as contas por você.</p>
+      <p class="question">Funciona para iniciantes?</p>
+      <p class="answer">Sim — explicamos tudo do zero.</p>
     </div>
     <div class="q">
-      <p class="question">Posso operar em qualquer corretora?</p>
-      <p class="answer">Sim: basta inserir os valores de entrada e stop na planilha.</p>
+      <p class="question">Preciso de software especial?</p>
+      <p class="answer">Não — só Excel ou Google Sheets.</p>
     </div>
   </section>
 
-  <!-- ===== Botão flutuante ===== -->
+  <!-- Botão Flutuante -->
   <a href="#cta-btn" class="floating-btn">Proteger minha conta</a>
 
-  <!-- ===== Delay + JS de exibição ===== -->
+  <!-- JS de Delay e exibição -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // delay de 5s para mostrar o botão
+      // 1) delay botão 5s
       setTimeout(() => {
         document.getElementById('cta-btn').style.opacity = 1;
+        // 2) delay 2s para revelar tudo o resto
+        setTimeout(() => {
+          document.querySelectorAll('section.hidden')
+            .forEach(s => s.classList.remove('hidden'));
+        }, 2000);
       }, 5000);
-
-      // delay extra de 2s para mostrar o restante (podemos simplesmente remover um classe .hidden se existisse)
-      // aqui assumimos que todo o resto da página já está no DOM — se você quisesse
-      // escondê-lo inicialmente, poderia dar às seções a class .hidden { opacity: 0; }
-      // e depois fazer:
-      // setTimeout(() => {
-      //   document.querySelectorAll('section:not(.hero)').forEach(s => s.style.opacity = 1);
-      // }, 7000);
     });
   </script>
 </body>
