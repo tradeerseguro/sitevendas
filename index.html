@@ -1,41 +1,119 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Minha Página de Vendas</title>
-   <style>
-      body {
-         font-family: Arial, sans-serif;
-         text-align: center;
-         margin-top: 50px;
-      }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trader Seguro - Página de Vendas</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #FFFFFF;
+      color: #49495A;
+    }
 
-      .cta-button {
-         background-color: #FF5733;
-         color: white;
-         padding: 15px 25px;
-         text-decoration: none;
-         font-size: 18px;
-         border-radius: 5px;
-      }
+    section {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: auto;
+      text-align: center;
+    }
 
-      .cta-button:hover {
-         background-color: #FF4500;
-      }
-   </style>
+    h1 {
+      color: #5955EB;
+      font-size: 32px;
+    }
+
+    h2 {
+      font-size: 24px;
+      color: #49495A;
+    }
+
+    .btn {
+      background-color: #5955EB;
+      color: #fff;
+      padding: 16px 32px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 20px;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .btn.visible {
+      opacity: 1;
+    }
+
+    #conteudo-page {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+    }
+
+    #conteudo-page.visible {
+      display: block;
+      opacity: 1;
+    }
+
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      margin-top: 20px;
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
 </head>
 <body>
-   <h1>Bem-vindo à minha página de vendas!</h1>
-   <p>Aqui você pode assistir ao vídeo e garantir o seu produto.</p>
 
-   <video width="80%" controls>
-      <source src="seu-video.mp4" type="video/mp4">
-      Seu navegador não suporta a tag de vídeo.
-   </video>
+  <section>
+    <h2>Descubra como proteger sua conta no Day Trade com 3 regras simples</h2>
 
-   <br><br>
+    <div class="video-wrapper">
+      <!-- Substitua o link abaixo pelo link do seu vídeo no Vimeo, Loom, etc -->
+      <iframe src="https://www.youtube.com/embed/SEU_VIDEO" frameborder="0" allowfullscreen></iframe>
+    </div>
 
-   <a href= https://pay.hotmart.com/T98738975H?checkoutMode=10 class="cta-button">Quero Garantir Agora</a>
+    <button id="cta-btn" class="btn">Quero proteger minha conta agora</button>
+  </section>
+
+  <div id="conteudo-page">
+    <section style="background-color: #F7F5FF;">
+      <h1>Tudo isso por apenas R$47</h1>
+      <p>Acesso imediato ao eBook, planilha e muito mais.</p>
+      <p>📘 eBook completo de Gerenciamento de Risco</p>
+      <p>📊 Planilha automática de gerenciamento</p>
+      <p>🧠 Clareza emocional a cada operação</p>
+    </section>
+    
+    <!-- Outras seções da página (FAQ, Garantia, Prova Social...) podem vir aqui -->
+    <section>
+      <h2>Garantia total de 7 dias</h2>
+      <p>Se você não estiver satisfeito, devolvemos seu dinheiro. Simples assim.</p>
+    </section>
+  </div>
+
+  <script>
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('cta-btn').classList.add('visible');
+      }, 5000); // botão aparece após 5 segundos
+
+      setTimeout(() => {
+        document.getElementById('conteudo-page').classList.add('visible');
+      }, 7000); // conteúdo aparece após mais 2 segundos (total 7s)
+    });
+  </script>
 </body>
 </html>
