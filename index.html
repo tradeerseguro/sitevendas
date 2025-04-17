@@ -5,158 +5,190 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Trader Seguro - Proteja Sua Conta no Day Trade</title>
   <style>
-    /* Reset básico */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body { height: 100%; font-family: 'Inter', sans-serif; color: #333; }
-    a { text-decoration: none; color: inherit; }
-    img { max-width: 100%; display: block; }
-
-    /* Cores principais */
-    :root {
-      --primary: #5955EB;
-      --secondary: #F7F5FF;
-      --accent: #FF3C3C;
-      --text: #49495A;
-      --light: #FFFFFF;
+    *{margin:0;padding:0;box-sizing:border-box;}
+    html,body{height:100%;font-family:'Inter',sans-serif;color:#333;background:#fff;}
+    a{color:inherit;text-decoration:none;}
+    img{max-width:100%;display:block;}
+    :root{
+      --primary:#5955EB;
+      --secondary:#F7F5FF;
+      --accent:#FF3C3C;
+      --text:#49495A;
+      --light:#FFF;
     }
-
-    /* Layout e container */
-    .container { width: 90%; max-width: 1200px; margin: auto; }
-    section { padding: 80px 0; }
-
-    /* Botão primário */
-    .btn-primary {
-      background-color: var(--primary);
-      color: var(--light);
-      padding: 14px 28px;
-      border: none;
-      border-radius: 6px;
-      font-size: 18px;
-      cursor: pointer;
-      transition: background-color .3s;
-    }
-    .btn-primary:hover { background-color: #463ECF; }
-
+    .container{width:90%;max-width:1200px;margin:auto;}
+    section{padding:80px 0;position:relative;}
+    h2,h3,h4{color:var(--text);}
     /* Hero */
-    #hero {
-      background: linear-gradient(135deg, var(--primary) 0%, #6C5EEA 100%);
-      color: var(--light);
-      position: relative;
-      text-align: center;
-    }
-    #hero h1 { font-size: 3rem; margin-bottom: 20px; line-height: 1.2; }
-    #hero p { font-size: 1.2rem; margin-bottom: 40px; }
-    #hero .video-wrapper { width: 100%; max-width: 800px; margin: auto; border: 4px solid var(--light); border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
-    #hero .video-wrapper iframe { width: 100%; height: 450px; }
-    #hero #cta-hero { opacity: 0; }
-
+    #hero{background:linear-gradient(135deg,var(--primary) 0%,#6C5EEA 100%);color:var(--light);text-align:center;position:relative;overflow:hidden;}
+    #hero .container{padding-top:60px;padding-bottom:60px;}
+    #hero h1{font-size:3rem;line-height:1.2;margin-bottom:20px;}
+    #hero p{subheadline:;font-size:1.2rem;margin-bottom:40px;}
+    #hero .video-wrapper{width:100%;max-width:800px;margin:auto;border:4px solid var(--light);border-radius:12px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,0.2);}
+    #hero .video-wrapper iframe{width:100%;height:450px;}
+    #hero #cta-hero{margin-top:40px;opacity:0;transition:opacity .5s;}
+    /* Lead */
+    #lead{background:var(--light);}
+    #lead .lead-text{font-size:1.1rem;margin:20px 0;color:var(--text);}
+    /* Story */
+    #story{background:var(--secondary);}
+    #story .story-content{display:flex;flex-direction:column;align-items:center;text-align:center;gap:24px;}
+    #story .story-text{max-width:800px;font-size:1.05rem;line-height:1.6;color:var(--text);}
+    /* Features (Pitch) */
+    #features{background:var(--light);}
+    .features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:32px;margin-top:40px;}
+    .feature-card{background:#FFF;border-radius:12px;padding:24px;box-shadow:0 4px 16px rgba(0,0,0,0.1);text-align:center;transform:translateY(20px);opacity:0;transition:all .6s ease-out;}
+    .feature-card.visible{transform:translateY(0);opacity:1;}
+    .feature-card img{width:80px;margin-bottom:16px;}
+    .feature-card h3{font-size:1.2rem;margin-bottom:12px;}
+    .feature-card p{color:var(--text);font-size:.95rem;}
+    /* Evidence */
+    #testimonials{background:var(--secondary);}
+    .testimonial{display:flex;flex-direction:column;align-items:center;gap:16px;margin-top:40px;transform:translateY(20px);opacity:0;transition:all .6s ease-out;}
+    .testimonial.visible{transform:translateY(0);opacity:1;}
+    .testimonial img{width:64px;height:64px;border-radius:50%;}
+    .testimonial blockquote{font-style:italic;color:var(--text);font-size:1rem;}
+    /* Offer */
+    #offer{background:var(--light);text-align:center;}
+    #offer .stack{display:flex;flex-wrap:wrap;justify-content:center;gap:24px;margin:40px 0;}
+    .stack-item{background:#FFF;border-radius:8px;padding:16px;box-shadow:0 4px 12px rgba(0,0,0,0.1);width:180px;}
+    .stack-item h4{margin-bottom:8px;font-size:1rem;color:var(--text);}
+    .stack-item p{font-size:.9rem;color:var(--text);}
+    #offer .price{font-size:2rem;color:var(--accent);margin:16px 0;position:relative;display:inline-block;}
+    #offer .price del{position:absolute;top:-12px;left:50%;transform:translateX(-50%);color:#999;font-size:1rem;}
+    /* Deal */
+    #deal{background:var(--secondary);text-align:center;}
+    #deal .seal{width:120px;margin:auto;}
+    #deal p{margin-top:16px;font-size:1rem;color:var(--text);}
+    /* FAQ */
+    #faq{background:var(--light);}
+    .faq-item{margin-top:24px;max-width:800px;margin-left:auto;margin-right:auto;}
+    .faq-item h4{cursor:pointer;font-size:1.05rem;color:var(--primary);}
+    .faq-item p{display:none;margin-top:8px;color:var(--text);line-height:1.5;}
     /* Floating CTA */
-    .floating-cta {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      z-index: 100;
-      opacity: 0;
-      transition: opacity .5s;
-    }
-    .floating-cta.visible { opacity: 1; }
-
-    /* Recursos */
-    #features { background: var(--secondary); }
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
-      gap: 32px;
-      margin-top: 40px;
-    }
-    .feature-card {
-      background: var(--light);
-      border-radius: 12px;
-      padding: 24px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-      text-align: center;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all .6s ease-out;
-    }
-    .feature-card.visible { opacity: 1; transform: translateY(0); }
-    .feature-card img { width: 80px; margin-bottom: 16px; }
-    .feature-card h3 { font-size: 1.2rem; margin-bottom: 12px; }
-    .feature-card p { color: var(--text); font-size: .95rem; }
-
-    /* Garantia */
-    #guarantee { text-align: center; }
-    #guarantee .seal { width: 120px; margin: auto 0; }
-    #guarantee p { margin-top: 16px; font-size: 1rem; }
-
-    /* Prova social */
-    #testimonials { background: var(--secondary); }
-    .testimonial { display: flex; gap: 24px; align-items: center; margin-top: 40px; opacity: 0; transform: translateX(-20px); transition: all .6s ease-out; }
-    .testimonial.visible { opacity: 1; transform: translateX(0); }
-    .testimonial img { width: 64px; height: 64px; border-radius: 50%; }
-    .testimonial blockquote { font-style: italic; color: var(--text); }
-
+    .floating-cta{position:fixed;bottom:24px;right:24px;z-index:100;background:var(--primary);color:#FFF;padding:14px 20px;border:none;border-radius:6px;cursor:pointer;opacity:0;transition:opacity .5s;}
+    .floating-cta.visible{opacity:1;}
     /* Footer */
-    footer { text-align: center; padding: 40px 0; font-size: .85rem; color: #777; }
+    footer{text-align:center;padding:40px 0;font-size:.85rem;color:#777;}
   </style>
 </head>
 <body>
-
-  <!-- Hero -->
+  <!-- 1. Headline -->
   <section id="hero">
     <div class="container">
-      <h1>Proteja sua conta no Day Trade <br> com apenas 3 regras simples</h1>
-      <p>Descubra em 1 minuto como controlar risco, emoção e finalmente operar com segurança.</p>
+      <h1>Proteja sua conta no Day Trade com apenas 3 regras simples</h1>
+      <p>Descubra em 1 minuto como controlar risco e operar com segurança.</p>
       <div class="video-wrapper">
         <iframe src="https://www.youtube.com/embed/SEU_VIDEO" frameborder="0" allowfullscreen></iframe>
       </div>
       <button id="cta-hero" class="btn-primary">Quero Proteger Minha Conta</button>
     </div>
-    <button class="floating-cta btn-primary">Comprar Agora</button>
+    <button class="floating-cta">Comprar Agora</button>
   </section>
 
-  <!-- Recursos -->
-  <section id="features" class="container">
-    <h2>Nossos 3 recursos</h2>
-    <div class="features-grid">
-      <div class="feature-card" style="transition-delay:0.2s;"><img src="imagens/ebook.png" alt="eBook"><h3>eBook Completo</h3><p>Conheça as 3 regras de gestão de risco em detalhes.</p></div>
-      <div class="feature-card" style="transition-delay:0.4s;"><img src="imagens/planilha.png" alt="Planilha"><h3>Planilha Automática</h3><p>Ferramenta pronta para controlar suas entradas e saídas.</p></div>
-      <div class="feature-card" style="transition-delay:0.6s;"><img src="imagens/escudo.png" alt="Escudo"><h3>Clareza Emocional</h3><p>Técnicas de autocontrole para evitar decisões por impulso.</p></div>
+  <!-- 2. Lead -->
+  <section id="lead">
+    <div class="container">
+      <div class="lead-text">
+        Você já perdeu dinheiro por falta de controle? Já se perguntou se o problema é seu emocional?
+      </div>
     </div>
   </section>
 
-  <!-- Garantia -->
-  <section id="guarantee" class="container">
-    <img src="imagens/selo-garantia.png" alt="Garantia 7 dias" class="seal">
-    <p>Garantia incondicional de 7 dias. Se não servir pra você, devolvemos 100% do valor.</p>
+  <!-- 3. Story -->
+  <section id="story">
+    <div class="container story-content">
+      <img src="imagens/rafael-story.png" alt="Rafael antes e depois">
+      <div class="story-text">
+        O Rafael era bom no operacional, mas seu emocional lhe custava caro. Cansado de ver prejuízos, ele pesquisou e desenvolveu um método de gestão de risco e autocontrole que mudou tudo.
+      </div>
+    </div>
   </section>
 
-  <!-- Depoimentos -->
-  <section id="testimonials" class="container">
-    <h2>O que dizem nossos alunos</h2>
-    <div class="testimonial" style="transition-delay:0.2s;"><img src="imagens/user1.jpg" alt="Aluno"><blockquote>"Nunca me senti tão confiante no mercado. Minhas perdas caíram 80%!"</blockquote></div>
-    <div class="testimonial" style="transition-delay:0.4s;"><img src="imagens/user2.jpg" alt="Aluna"><blockquote>"O método é direto ao ponto e funcional. Recomendo a todos!"</blockquote></div>
+  <!-- 4. Pitch (Features) -->
+  <section id="features">  
+    <div class="container">
+      <h2>O que você recebe</h2>
+      <div class="features-grid">
+        <div class="feature-card"><img src="imagens/ebook-v2.png" alt="eBook"><h3>eBook Completo</h3><p>As 3 regras de gestão de risco detalhadas.</p></div>
+        <div class="feature-card"><img src="imagens/planilha-v2.png" alt="Planilha"><h3>Planilha Automática</h3><p>Ferramenta pronta para controlar suas operações.</p></div>
+        <div class="feature-card"><img src="imagens/escudo-v2.png" alt="Escudo"><h3>Clareza Emocional</h3><p>Exercícios para manter a calma e evitar decisões impulsivas.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Evidence (Testimonials) -->
+  <section id="testimonials">
+    <div class="container">
+      <h2>O que dizem nossos alunos</h2>
+      <div class="testimonial"><img src="imagens/user1.jpg" alt="Aluno"><blockquote>"Minhas perdas caíram 80% e finalmente vejo resultados reais!"</blockquote></div>
+      <div class="testimonial"><img src="imagens/user2.jpg" alt="Aluna"><blockquote>"Fácil de aplicar, claro e objetivo. Mudou minha forma de operar!"</blockquote></div>
+    </div>
+  </section>
+
+  <!-- 6. Offer (Stack + Price) -->
+  <section id="offer">
+    <div class="container">
+      <h2>Oferta Especial</h2>
+      <div class="stack">
+        <div class="stack-item"><h4>eBook Digital</h4><p>Versão PDF para leitura imediata.</p></div>
+        <div class="stack-item"><h4>Planilha Excel</h4><p>Cálculos automáticos e gráficos.</p></div>
+        <div class="stack-item"><h4>Bônus de Controle Emocional</h4><p>Vídeos e áudios para prática diária.</p></div>
+      </div>
+      <div class="price"><del>R$164</del>R$47</div>
+      <button class="btn-primary">Sim, eu quero!</button>
+    </div>
+  </section>
+
+  <!-- 7. Deal (Guarantee + Urgency) -->
+  <section id="deal">
+    <div class="container">
+      <img src="imagens/selo-garantia.png" alt="Garantia" class="seal">
+      <p>Garantia incondicional de 7 dias. Sem perguntas, sem risco. Acesse agora e experimente!</p>
+      <p><em>Vagas limitadas. Promoção por tempo curto.</em></p>
+    </div>
+  </section>
+
+  <!-- 8. Q&A (FAQ) -->
+  <section id="faq">
+    <div class="container">
+      <h2>Perguntas Frequentes</h2>
+      <div class="faq-item">
+        <h4>1. Como acesso o material?</h4>
+        <p>Após confirmar o pagamento, você recebe um link direto e permanente.</p>
+      </div>
+      <div class="faq-item">
+        <h4>2. Posso pedir reembolso?</h4>
+        <p>Sim, basta solicitar em até 7 dias que devolvemos 100% do valor.</p>
+      </div>
+      <div class="faq-item">
+        <h4>3. Funciona para iniciantes?</h4>
+        <p>Sim, o método é passo-a-passo e testado tanto por novatos quanto por experientes.</p>
+      </div>
+    </div>
   </section>
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2025 Trader Seguro. Todos os direitos reservados.</p>
+    <div class="container">
+      <p>&copy; 2025 Trader Seguro. Todos os direitos reservados.</p>
+    </div>
   </footer>
 
   <script>
-    // Delay Hero CTA e floating
+    // Delay CTA no Hero
     window.addEventListener('load', () => {
-      setTimeout(() => document.getElementById('cta-hero').classList.add('visible'), 5000);
-      setTimeout(() => document.querySelector('.floating-cta').classList.add('visible'), 6000);
+      setTimeout(()=> document.getElementById('cta-hero').style.opacity = 1, 5000);
+      setTimeout(()=> document.querySelector('.floating-cta').classList.add('visible'), 6000);
     });
-
-    // Scroll animation para cards e depoimentos
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-      });
-    }, { threshold: 0.2 });
-    document.querySelectorAll('.feature-card, .testimonial').forEach(el => observer.observe(el));
+    // Grid & testimonial animation on scroll
+    const obs = new IntersectionObserver(e => e.forEach(x=>{ if(x.isIntersecting) x.target.classList.add('visible'); }),{threshold:0.2});
+    document.querySelectorAll('.feature-card, .testimonial').forEach(el=>obs.observe(el));
+    // FAQ toggle
+    document.querySelectorAll('.faq-item h4').forEach(q=>q.addEventListener('click',()=>{
+      const a = q.nextElementSibling;
+      a.style.display = a.style.display==='block'?'none':'block';
+    }));
   </script>
 </body>
 </html>
