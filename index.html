@@ -197,14 +197,84 @@
   </section>
 
   <!-- 7. OFERTA -->
-  <section id="offer" class="hidden">
-    <h3>Tudo isso por apenas</h3>
+ <style>
+  /* ==== ESTILOS DA OFERTA ==== */
+  #offer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem 1rem;
+    background: #fff;
+  }
+  .offer-card {
+    background: #f9faff;
+    border-radius: 16px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+    padding: 2.5rem 2rem;
+    max-width: 400px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .offer-card::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 120px; height: 120px;
+    background: rgba(0, 123, 255, 0.1);
+    border-radius: 50%;
+  }
+  .offer-card h3 {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+    color: #0d47a1;
+  }
+  .price {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin: 1.5rem 0;
+  }
+  .price .old {
+    font-size: 1.25rem;
+    color: #999;
+    text-decoration: line-through;
+  }
+  .price .new {
+    font-size: 2.5rem;
+    color: #007bff;
+    font-weight: bold;
+  }
+  .offer-card button {
+    margin-top: 1.5rem;
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 6px 12px rgba(0, 123, 255, 0.4);
+    transition: transform .2s, box-shadow .2s;
+  }
+  .offer-card button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0, 123, 255, 0.5);
+  }
+</style>
+
+<section id="offer" class="hidden">
+  <div class="offer-card">
+    <h3>Garanta agora por apenas</h3>
     <div class="price">
       <span class="old">R$164</span>
       <span class="new">R$47</span>
     </div>
-    <p>+ Bônus: acesso ao grupo VIP</p>
-  </section>
+    <button id="buy-now">Eu quero proteger minha conta</button>
+  </div>
+</section>
+
 
   <!-- 8. ACORDO -->
   <section id="agreement" class="hidden">
