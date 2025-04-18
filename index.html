@@ -8,248 +8,122 @@
     /* reset e tipografia básica */
     * { margin:0; padding:0; box-sizing:border-box }
     body { font-family:Arial,sans-serif; color:#333 }
-    section { opacity:1; transition:opacity .5s ease }
+    section { transition:opacity .5s ease }
+    .hidden { opacity:0 }
 
     /* ===== HERO ===== */
     .hero {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      background: #fbfcfd;
-      min-height: 100vh;
-      padding: 2rem 1rem;
-      text-align: center;
-      position: relative;
+      display:flex; flex-direction:column;
+      justify-content:center; align-items:center;
+      background:#fbfcfd; min-height:100vh;
+      padding:2rem 1rem; text-align:center;
     }
-    .hero h1 { font-size:2.25rem; margin-bottom:.5rem; }
-    .hero p.sub { font-size:1.125rem; margin-bottom:1.5rem; color:#555; }
+    .hero h1 { font-size:2.25rem; margin-bottom:.5rem }
+    .hero p.sub { font-size:1.125rem; margin-bottom:1.5rem; color:#555 }
     .hero .video-container {
       width:100%; max-width:640px; margin-bottom:1.5rem;
     }
-    .hero iframe {
-      width:100%; height:360px; border:none;
-    }
+    .hero iframe { width:100%; height:360px; border:none }
 
     /* CTA abaixo do vídeo (invisível até 5s) */
     #cta-btn {
-      opacity: 0;
-      padding:.8rem 1.6rem;
-      font-size:1rem;
-      background:#007bff;
-      color:#fff;
-      border:none;
-      border-radius:4px;
-      cursor:pointer;
-      position:relative;
+      opacity:0; pointer-events:none;
+      padding:.8rem 1.6rem; font-size:1rem;
+      background:#007bff; color:#fff; border:none;
+      border-radius:4px; cursor:pointer; position:relative;
       z-index:1;
       animation:
         pulse 2s infinite ease-in-out,
         neon 1.5s infinite alternate ease-in-out;
-      transition:opacity .3s ease;
+      transition:opacity .3s ease, pointer-events .3s;
     }
     @keyframes pulse {
       0%,100%{ transform:scale(1) }
-      50%{ transform:scale(1.05) }
+      50%   { transform:scale(1.05) }
     }
     @keyframes neon {
       from { box-shadow:0 0 5px rgba(0,123,255,0.6) }
       to   { box-shadow:0 0 20px rgba(0,123,255,1) }
     }
     #cta-btn::after {
-      content:'';
-      position:absolute;
+      content:''; position:absolute;
       top:100%; left:50%;
       width:120%; height:8px;
       transform:translateX(-50%);
       background:rgba(0,123,255,0.4);
-      filter:blur(8px);
-      border-radius:50%;
+      filter:blur(8px); border-radius:50%;
       animation:neon 1.5s infinite alternate ease-in-out;
       z-index:-1;
     }
 
-    /* Esconde todas as outras seções até o CTA aparecer */
-    .hidden { opacity: 0; }
+    /* ===== SEÇÕES ESCONDIDAS ===== */
+    section.hidden { opacity:0 }
 
-    /* ===== DEMÁS SEÇÕES (vai tirar a classe .hidden via JS após 7s) ===== */
-    #lead,
-    #history,
-    #pitch,
-    #evidence,
-    #offer,
-    #agreement,
-    #faq {
-      padding:2rem 1rem;
+    /* ===== FEATURES ===== */
+    .features-section { padding:60px 20px; background:#fafafa; text-align:center }
+    .features-section h2 { font-size:2.5rem; margin-bottom:40px; color:#222 }
+    .cards {
+      display:flex; flex-wrap:wrap;
+      justify-content:center; gap:24px;
     }
-    #lead { background:#fff; text-align:center }
-    #lead h2 { font-size:1.75rem; margin-bottom:.75rem }
-    #lead p { max-width:600px; margin:0 auto; color:#555 }
+    .card {
+      background:#fff; border-radius:12px;
+      box-shadow:0 4px 8px rgba(0,0,0,0.1);
+      overflow:hidden; width:280px;
+      transition:transform .3s,box-shadow .3s;
+    }
+    .card:hover {
+      transform:translateY(-10px);
+      box-shadow:0 12px 20px rgba(0,0,0,0.15);
+    }
+    .card img { display:block; width:100%; height:auto }
+    .card h3 { font-size:1.25rem; margin:16px; color:#0d47a1 }
+    .card p { font-size:1rem; margin:0 16px 24px; color:#555; line-height:1.4 }
 
-    #history { background:#f9f9f9 }
-    #history h3 { font-size:1.5rem; text-align:center; margin-bottom:1rem }
-    #history .story { max-width:700px; margin:0 auto; color:#444 }
+    @media (max-width:768px) {
+      .card { width:calc(50% - 16px) }
+      .cards { gap:16px }
+    }
+    @media (max-width:480px) {
+      .card { width:100% }
+    }
 
-    #pitch { background:#fff; text-align:center }
-    .features { display:flex; flex-wrap:wrap; gap:1rem; justify-content:center }
-    .feature { flex:1 1 200px; background:#eef6ff; padding:1rem; border-radius:6px }
-    /* === Features Section === */
-.features-section {
-  padding: 60px 20px;
-  background: #fafafa;
-}
-.features-section .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  text-align: center;
-}
-.features-section h2 {
-  font-size: 2.5rem;
-  margin-bottom: 40px;
-  color: #222;
-}
+    /* ===== TESTIMONIALS ===== */
+    .testimonials-section { padding:80px 20px; background:#f9f9f9; text-align:center }
+    .testimonials-section h2 { font-size:2.5rem; margin-bottom:40px; color:#222 }
+    .testimonial-carousel { overflow:hidden; margin:0 auto; max-width:100% }
+    .carousel-track {
+      display:flex; transition:transform .5s ease;
+    }
+    .testimonial-card {
+      flex:0 0 300px; margin:0 15px;
+      background:#fff; border-radius:12px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.08);
+      padding:24px; text-align:left;
+    }
+    .testimonial-card .text { font-size:1rem; line-height:1.5; color:#555; margin-bottom:16px }
+    .testimonial-card .testimonial-name { font-weight:bold; color:#0d47a1 }
 
-/* === Cards Wrapper === */
-.cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 24px;
-}
+    @media (max-width:768px) {
+      .testimonial-card { flex:0 0 80% }
+    }
+    @media (max-width:480px) {
+      .testimonial-card { flex:0 0 100%; margin:0 8px }
+    }
+    @media (max-width:768px) {
+      .testimonial-card { flex:0 0 100% !important; max-width:100% !important; }
+    }
 
-/* === Single Card === */
-.card {
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  overflow: hidden;
-  width: 280px;              /* largura fixa para retângulo em pé */
-  transition: transform .3s ease, box-shadow .3s ease;
-  cursor: default;
-}
-.card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 12px 20px rgba(0,0,0,0.15);
-}
-
-/* === Card Image === */
-.card img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-/* === Card Title === */
-.card h3 {
-  font-size: 1.25rem;
-  margin: 16px;
-  color: #0d47a1;            /* azul confiante */
-}
-
-/* === Card Text === */
-.card p {
-  font-size: 1rem;
-  margin: 0 16px 24px;
-  color: #555;
-  line-height: 1.4;
-}
-
-/* === Responsividade === */
-@media (max-width: 768px) {
-  .cards {
-    gap: 16px;
-  }
-  .card {
-    width: calc(50% - 16px);
-  }
-}
-@media (max-width: 480px) {
-  .card {
-    width: 100%;
-  }
-}
-
-
-    #evidence { background:#f9f9f9 }
-    #evidence h3 { text-align:center; margin-bottom:1rem }
-    .testimonials { display:grid; gap:1rem; max-width:800px; margin:0 auto }
-    .test { background:#fff; padding:1rem; border-radius:4px }
-.testimonials-section {
-  padding: 80px 20px;
-  background: #f9f9f9;
-  text-align: center;
-}
-.testimonials-section h2 {
-  font-size: 2.5rem;
-  margin-bottom: 40px;
-  color: #222;
-}
-.testimonial-carousel {
-  position: relative;
-  overflow: hidden;
-  max-width: 100%;
-  margin: 0 auto;
-}
-.carousel-track {
-  display: flex;
-  transition: transform 0.5s ease;
-}
-.testimonial-card {
-  flex: 0 0 300px;
-  margin: 0 15px;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  padding: 24px;
-  text-align: left;
-}
-.testimonial-card .text {
-  font-size: 1rem;
-  line-height: 1.5;
-  color: #555;
-  margin-bottom: 16px;
-}
-.testimonial-card .testimonial-name {
-  font-weight: bold;
-  color: #0d47a1;
-}
-
-/* responsividade */
-@media (max-width: 768px) {
-  .testimonial-card { flex: 0 0 80%; }
-}
-@media (max-width: 480px) {
-  .testimonial-card { flex: 0 0 100%; margin: 0 8px; }
-}
-/* FORÇA 1 CARD POR VEZ EM TELAS MENORES */
-@media (max-width: 768px) {
-  .testimonial-carousel {
-    overflow: hidden;
-  }
-  .carousel-track {
-    /* mantém o flex, nada a alterar aqui */
-  }
-  .testimonial-card {
-    flex: 0 0 100% !important;
-    max-width: 100% !important;
-    margin: 0 8px !important;    /* ajuste o espaçamento lateral se quiser */
-    box-sizing: border-box;
-  }
-}
-
-    #offer { background:#fff; text-align:center }
-    #offer h3 { font-size:1.5rem; margin-bottom:1rem }
-    .price { font-size:2rem; margin-bottom:1rem }
-    .old { text-decoration:line-through; color:#999; margin-right:.5rem }
-    .new { color:#007bff }
-
-    #agreement { background:#eaf8ea; text-align:center }
-    #agreement h3 { font-size:1.5rem; margin-bottom:.75rem }
+    /* ===== OFFER / AGREEMENT / FAQ ===== */
+    #offer, #agreement, #faq { padding:2rem 1rem; text-align:center }
+    #offer .price { font-size:2rem; margin:1rem 0 }
+    #offer .old { text-decoration:line-through; color:#999; margin-right:.5rem }
+    #offer .new { color:#007bff }
+    #agreement { background:#eaf8ea }
+    #agreement h3 { margin-bottom:.75rem }
     #agreement p { max-width:600px; margin:0 auto; color:#333 }
-
-    #faq { background:#fff }
-    #faq h3 { text-align:center; margin-bottom:1rem }
-    .q { max-width:800px; margin:0.5rem auto }
+    #faq h3 { margin-bottom:1rem }
+    .q { max-width:800px; margin:.5rem auto }
     .question { font-weight:bold }
     .answer { margin-left:1rem; color:#555 }
   </style>
@@ -281,8 +155,7 @@
   </section>
 
   <!-- 4. PITCH -->
- <section id="features" class="features-section">
-  <div class="container">
+  <section class="features-section hidden">
     <h2>O que você vai receber</h2>
     <div class="cards">
       <div class="card">
@@ -301,15 +174,10 @@
         <p>Técnicas para controlar o emocional e operar com confiança.</p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-  <!-- 5/6. EVIDÊNCIA -->
- <!-- ============================= -->
-<!-- Seção de Prova Social (Depoimentos) -->
-<!-- ============================= -->
-<section class="testimonials-section">
-  <div class="container">
+  <!-- 5/6. TESTIMONIALS -->
+  <section class="testimonials-section hidden">
     <h2>O que dizem nossos alunos</h2>
     <div class="testimonial-carousel">
       <div class="carousel-track">
@@ -335,9 +203,7 @@
         </div>
       </div>
     </div>
-  </div>
-</section>
-
+  </section>
 
   <!-- 7. OFERTA -->
   <section id="offer" class="hidden">
@@ -368,41 +234,38 @@
     </div>
   </section>
 
-
-  <!-- JS de Delay e Carrossel Infinito -->
+  <!-- JS de Delay + Carrossel Infinito -->
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // delay do CTA
-      setTimeout(() => {
-        document.getElementById('cta-btn').style.opacity = 1;
-        setTimeout(() => {
+    document.addEventListener('DOMContentLoaded', function(){
+      // 1) Delay do CTA
+      setTimeout(function(){
+        var cta = document.getElementById('cta-btn');
+        cta.style.opacity = 1;
+        cta.style.pointerEvents = 'auto';
+        // 2) Revele todas as demais seções 2s depois
+        setTimeout(function(){
           document.querySelectorAll('section.hidden')
-            .forEach(s => s.classList.remove('hidden'));
+            .forEach(function(sec){ sec.classList.remove('hidden'); });
         }, 2000);
       }, 5000);
+
+      // 3) Carrossel infinito
+      (function(){
+        var track = document.querySelector('.carousel-track');
+        var cards = Array.from(track.children);
+        setInterval(function(){
+          var first = cards[0];
+          var style = window.getComputedStyle(first);
+          var margin = parseFloat(style.marginLeft) + parseFloat(style.marginRight);
+          var w = first.getBoundingClientRect().width + margin;
+          var transform = track.style.transform || 'translateX(0px)';
+          var offset = Math.abs(parseFloat(transform.match(/-?[\d\.]+/)[0])) || 0;
+          var idx = Math.round(offset / w);
+          idx = (idx + 1) % cards.length;
+          track.style.transform = 'translateX(-' + (idx * w) + 'px)';
+        }, 4000);
+      })();
     });
-
-    // carrossel infinito
-   <script>
-  (function(){
-    const track = document.querySelector('.carousel-track');
-    const cards = Array.from(track.children);
-
-    setInterval(() => {
-      // recalcula largura + margens dinamicamente
-      const cardEl = cards[0];
-      const style = window.getComputedStyle(cardEl);
-      const marginLR = parseFloat(style.marginLeft) + parseFloat(style.marginRight);
-      const cardWidth = cardEl.getBoundingClientRect().width + marginLR;
-
-      // avança índice
-      let index = Math.round(Math.abs(parseFloat(track.style.transform.replace(/[^0-9\-\.]/g,'')))/cardWidth) || 0;
-      index = (index + 1) % cards.length;
-
-      track.style.transform = `translateX(-${index * cardWidth}px)`;
-    }, 4000);
-  })();
-</script>
-  <script>
+  </script>
 </body>
 </html>
