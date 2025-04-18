@@ -356,13 +356,12 @@
   <!-- Botão Flutuante -->
   <a href="#cta-btn" class="floating-btn">Proteger minha conta</a>
 
-  <!-- JS de Delay e Carrossel -->
+  <!-- JS de Delay e Carrossel Infinito -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // 1) After 5s, mostra o botão
+      // delay do CTA
       setTimeout(() => {
         document.getElementById('cta-btn').style.opacity = 1;
-        // 2) +2s: revela o resto das seções
         setTimeout(() => {
           document.querySelectorAll('section.hidden')
             .forEach(s => s.classList.remove('hidden'));
@@ -370,16 +369,33 @@
       }, 5000);
     });
 
-    // carrossel automático de depoimentos
+    // carrossel infinito
     (function(){
       const track = document.querySelector('.carousel-track');
+      const origCards = Array.from(track.children);
+      const total = origCards.length;
+      // 1) clona todos os cards para criar “loop”
+      track.innerHTML += track.innerHTML;
       const cards = Array.from(track.children);
+
       let idx = 0;
-      const slideW = cards[0].getBoundingClientRect().width + 30; // largura + gap
+      const gap = 30; // ajuste se seu gap for diferente
+      const slideWidth = cards[0].getBoundingClientRect().width + gap;
 
       setInterval(() => {
-        idx = (idx + 1) % cards.length;
-        track.style.transform = `translateX(-${idx * slideW}px)`;
+        idx++;
+        // anima para o próximo slide
+        track.style.transition = 'transform 0.5s ease';
+        track.style.transform = `translateX(-${idx * slideWidth}px)`;
+
+        // quando passamos do último original, reset sem transição
+        if (idx === total) {
+          setTimeout(() => {
+            track.style.transition = 'none';
+            track.style.transform = 'translateX(0)';
+            idx = 0;
+          }, 500); // espera 500ms = duração da transition para resetar invisível
+        }
       }, 4000);
     })();
   </script>
