@@ -248,7 +248,7 @@
     </div>
   </section>
   
-  <!-- JS de Delay e Carrossel Infinito -->
+    <!-- JS de Delay e Carrossel Infinito -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       // 1) Delay do CTA + revelação das sections
@@ -260,28 +260,38 @@
         }, 2000);
       }, 5000);
 
-      // 2) Carrossel infinito
+      // 2) Carrossel infinito suave
       const track = document.querySelector('.carousel-track');
       const cards = Array.from(track.children);
-      let currentIndex = 0;
+      const slideCount = cards.length;
 
-      // Garante que comece com translateX(0px)
-      track.style.transform = 'translateX(0px)';
+      // largura + margem de um card
+      const style = window.getComputedStyle(cards[0]);
+      const marginLR = parseFloat(style.marginLeft) + parseFloat(style.marginRight);
+      const cardW = cards[0].getBoundingClientRect().width + marginLR;
 
-      setInterval(() => {
-        // Pega LARGURA + MARGENS de um card
-        const style = window.getComputedStyle(cards[0]);
-        const marginLR = parseFloat(style.marginLeft) + parseFloat(style.marginRight);
-        const cardW = cards[0].getBoundingClientRect().width + marginLR;
+      // clona o primeiro card no fim
+      const firstClone = cards[0].cloneNode(true);
+      track.appendChild(firstClone);
 
-        // Incrementa índice (loop infinito)
-        currentIndex = (currentIndex + 1) % cards.length;
+      let index = 0;
 
-        // Aplica o translateX
-        track.style.transform = `translateX(-${currentIndex * cardW}px)`;
-      }, 4000);
+      function goNext() {
+        index++;
+        track.style.transition = 'transform .5s ease';
+        track.style.transform = `translateX(-${index * cardW}px)`;
+      }
+
+      track.addEventListener('transitionend', () => {
+        if (index === slideCount) {
+          track.style.transition = 'none';
+          index = 0;
+          track.style.transform = 'translateX(0)';
+        }
+      });
+
+      setInterval(goNext, 4000);
     });
   </script>
-
 </body>
 </html>
