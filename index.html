@@ -32,9 +32,7 @@
       background:#007bff; color:#fff; border:none;
       border-radius:4px; cursor:pointer; position:relative;
       z-index:1;
-      animation:
-        pulse 2s infinite ease-in-out,
-        neon 1.5s infinite alternate ease-in-out;
+      animation: pulse 2s infinite ease-in-out, neon 1.5s infinite alternate ease-in-out;
       transition:opacity .3s ease, pointer-events .3s;
     }
     @keyframes pulse {
@@ -107,9 +105,6 @@
     @media (max-width:480px) {
       .testimonial-card { flex:0 0 100%; margin:0 8px }
     }
-    @media (max-width:768px) {
-      .testimonial-card { flex:0 0 100% !important; max-width:100% !important; }
-    }
 
     /* ===== OFFER / AGREEMENT / FAQ ===== */
     #offer, #agreement, #faq { padding:2rem 1rem; text-align:center }
@@ -140,15 +135,14 @@
   <!-- 2. LEAD -->
   <section id="lead" class="hidden">
     <h2>Você está pronto para operar com segurança?</h2>
-    <p>Chega de entrar no prejuízo e tentar recuperar tudo no impulso emocional. Este método traz clareza total.</p>
+    <p>Chega de entrar no prejuízo e tentar recuperar tudo no impulso emocional.<br>
+       Este método traz clareza total.</p>
   </section>
 
   <!-- 3. HISTÓRIA -->
   <section id="history" class="hidden">
     <h3>A história do Rafael</h3>
-    <div class="story">
-      <p>Ele era um trader promissor, mas se deixava levar pelas emoções e perdia grandes montantes — até descobrir 3 regras simples.</p>
-    </div>
+    <p>Ele era um trader promissor, mas se deixava levar pelas emoções e perdia grandes montantes — até descobrir 3 regras simples.</p>
   </section>
 
   <!-- 4. PITCH -->
@@ -158,7 +152,7 @@
       <div class="card">
         <img src="images/ebook-cover.png" alt="eBook Gerenciamento de Risco">
         <h3>eBook completo</h3>
-        <p>Todo o passo-a-passo de gerenciamento de risco em Day Trade.</p>
+        <p>Todo o passo‑a‑passo de gerenciamento de risco em Day Trade.</p>
       </div>
       <div class="card">
         <img src="images/planilha.png" alt="Planilha Automática">
@@ -173,7 +167,7 @@
     </div>
   </section>
 
-  <!-- 5/6. TESTIMONIALS -->
+  <!-- 5 & 6. TESTIMONIALS -->
   <section class="testimonials-section hidden">
     <h2>O que dizem nossos alunos</h2>
     <div class="testimonial-carousel">
@@ -197,18 +191,6 @@
         <div class="testimonial-card">
           <p class="text">“Garantia real de 7 dias me deu confiança para testar – e valeu cada centavo!”</p>
           <p class="testimonial-name">Fernanda G. – RS</p>
-        </div>
-        <div class="testimonial-card">
-          <p class="text">“Nunca pensei que fosse tão fácil controlar minhas emoções no trade. Foi revolucionário!”</p>
-          <p class="testimonial-name">Pedro S. – PR</p>
-        </div>
-        <div class="testimonial-card">
-          <p class="text">“A planilha me salvou horas de cálculos e me fez operar com muito mais disciplina.”</p>
-          <p class="testimonial-name">Juliana L. – CE</p>
-        </div>
-        <div class="testimonial-card">
-          <p class="text">“Testei tantos operacionais e no final o que me faltava era gerenciamento de risco.”</p>
-          <p class="testimonial-name">Julia L. – MG</p>
         </div>
       </div>
     </div>
@@ -243,7 +225,7 @@
     </div>
   </section>
 
-  <!-- JS -->
+  <!-- JS único: Delay, Revelação e Carrossel -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       // 1) Delay do CTA + revelação das sections
@@ -251,14 +233,10 @@
         const cta = document.getElementById('cta-btn');
         cta.style.opacity = '1';
         cta.style.pointerEvents = 'auto';
-        console.log('CTA revelado');
 
         setTimeout(() => {
           document.querySelectorAll('section.hidden')
-            .forEach(s => {
-              s.classList.remove('hidden');
-            });
-          console.log('Sections reveladas');
+            .forEach(s => s.classList.remove('hidden'));
         }, 2000);
       }, 5000);
 
@@ -266,14 +244,9 @@
       const track = document.querySelector('.carousel-track');
       const cards = Array.from(track.children);
       const slideCount = cards.length;
-      console.log(`Há ${slideCount} cards originais`);
-
-      // calcula largura + margem de um card
       const style = window.getComputedStyle(cards[0]);
       const marginLR = parseFloat(style.marginLeft) + parseFloat(style.marginRight);
       const cardW = cards[0].getBoundingClientRect().width + marginLR;
-
-      // clona o primeiro para dar loop
       const firstClone = cards[0].cloneNode(true);
       track.appendChild(firstClone);
 
@@ -282,18 +255,14 @@
         index++;
         track.style.transition = 'transform .5s ease';
         track.style.transform = `translateX(-${index * cardW}px)`;
-        console.log(`Slide para índice ${index}`);
       }
-
       track.addEventListener('transitionend', () => {
         if (index === slideCount) {
-          console.log('Chegou ao clone, resetando');
           track.style.transition = 'none';
           index = 0;
           track.style.transform = 'translateX(0)';
         }
       });
-
       setInterval(goNext, 4000);
     });
   </script>
