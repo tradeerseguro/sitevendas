@@ -56,9 +56,6 @@
       z-index:-1;
     }
 
-    /* ===== SEÇÕES ESCONDIDAS ===== */
-    section.hidden { opacity:0 }
-
     /* ===== FEATURES ===== */
     .features-section { padding:60px 20px; background:#fafafa; text-align:center }
     .features-section h2 { font-size:2.5rem; margin-bottom:40px; color:#222 }
@@ -201,23 +198,22 @@
           <p class="text">“Garantia real de 7 dias me deu confiança para testar – e valeu cada centavo!”</p>
           <p class="testimonial-name">Fernanda G. – RS</p>
         </div>
-    <!-- → NOVOS depoimentos abaixo: -->
-      <div class="testimonial-card">
-        <p class="text">“Nunca pensei que fosse tão fácil controlar minhas emoções no trade. Foi revolucionário!”</p>
-        <p class="testimonial-name">Pedro S. – PR</p>
-      </div>
-      <div class="testimonial-card">
-        <p class="text">“A planilha me salvou horas de cálculos e me fez operar com muito mais disciplina.”</p>
-        <p class="testimonial-name">Juliana L. – CE</p>
-      </div>
-      <div class="testimonial-card">
-        <p class="text">“Testei tantos operacionais e no final o que me faltava era gerenciamento de risco.”</p>
-        <p class="testimonial-name">Julia L. – MG</p>
-      </div>
-      <!-- fim dos novos depoimentos -->
-    </div>
-  </div>
-</section>
+        <!-- Novos depoimentos -->
+        <div class="testimonial-card">
+          <p class="text">“Nunca pensei que fosse tão fácil controlar minhas emoções no trade. Foi revolucionário!”</p>
+          <p class="testimonial-name">Pedro S. – PR</p>
+        </div>
+        <div class="testimonial-card">
+          <p class="text">“A planilha me salvou horas de cálculos e me fez operar com muito mais disciplina.”</p>
+          <p class="testimonial-name">Juliana L. – CE</p>
+        </div>
+        <div class="testimonial-card">
+          <p class="text">“Testei tantos operacionais e no final o que me faltava era gerenciamento de risco.”</p>
+          <p class="testimonial-name">Julia L. – MG</p>
+        </div>
+      </div><!-- fecha .carousel-track -->
+    </div><!-- fecha .testimonial-carousel -->
+  </section>
 
   <!-- 7. OFERTA -->
   <section id="offer" class="hidden">
@@ -254,10 +250,8 @@
       // 1) Delay do CTA + revelação das sections
       setTimeout(() => {
         const cta = document.getElementById('cta-btn');
-        cta.style.opacity = 1;
+        cta.style.opacity = '1';
         cta.style.pointerEvents = 'auto';
-
-        // 2 segundos depois revelamos o resto da página
         setTimeout(() => {
           document.querySelectorAll('section.hidden')
             .forEach(s => s.classList.remove('hidden'));
@@ -269,24 +263,20 @@
       const cards = Array.from(track.children);
       const slideCount = cards.length;
 
-      // calcula largura + margem de um card
       const style = window.getComputedStyle(cards[0]);
       const marginLR = parseFloat(style.marginLeft) + parseFloat(style.marginRight);
       const cardW = cards[0].getBoundingClientRect().width + marginLR;
 
-      // clona o primeiro card e joga lá no fim
       const firstClone = cards[0].cloneNode(true);
       track.appendChild(firstClone);
 
       let index = 0;
-
       function goNext() {
         index++;
         track.style.transition = 'transform .5s ease';
         track.style.transform = `translateX(-${index * cardW}px)`;
       }
 
-      // quando chegar no clone, reseta pra posição 0 sem animação
       track.addEventListener('transitionend', () => {
         if (index === slideCount) {
           track.style.transition = 'none';
@@ -295,7 +285,6 @@
         }
       });
 
-      // dispara o próximo slide a cada 4s
       setInterval(goNext, 4000);
     });
   </script>
