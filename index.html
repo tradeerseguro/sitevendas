@@ -174,6 +174,53 @@
     #evidence h3 { text-align:center; margin-bottom:1rem }
     .testimonials { display:grid; gap:1rem; max-width:800px; margin:0 auto }
     .test { background:#fff; padding:1rem; border-radius:4px }
+.testimonials-section {
+  padding: 80px 20px;
+  background: #f9f9f9;
+  text-align: center;
+}
+.testimonials-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: #222;
+}
+.testimonial-carousel {
+  position: relative;
+  overflow: hidden;
+  max-width: 100%;
+  margin: 0 auto;
+}
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+.testimonial-card {
+  flex: 0 0 300px;
+  margin: 0 15px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  padding: 24px;
+  text-align: left;
+}
+.testimonial-card .text {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #555;
+  margin-bottom: 16px;
+}
+.testimonial-card .testimonial-name {
+  font-weight: bold;
+  color: #0d47a1;
+}
+
+/* responsividade */
+@media (max-width: 768px) {
+  .testimonial-card { flex: 0 0 80%; }
+}
+@media (max-width: 480px) {
+  .testimonial-card { flex: 0 0 100%; margin: 0 8px; }
+}
 
     #offer { background:#fff; text-align:center }
     #offer h3 { font-size:1.5rem; margin-bottom:1rem }
@@ -243,13 +290,39 @@
 </section>
 
   <!-- 5/6. EVIDÊNCIA -->
-  <section id="evidence" class="hidden">
-    <h3>O que dizem nossos alunos</h3>
-    <div class="testimonials">
-      <div class="test"><p><strong>Ana P.</strong> “Nunca mais entrei no vermelho!”</p></div>
-      <div class="test"><p><strong>Carlos M.</strong> “Minha conta disparou em 30 dias!”</p></div>
+ <!-- ============================= -->
+<!-- Seção de Prova Social (Depoimentos) -->
+<!-- ============================= -->
+<section class="testimonials-section">
+  <div class="container">
+    <h2>O que dizem nossos alunos</h2>
+    <div class="testimonial-carousel">
+      <div class="carousel-track">
+        <div class="testimonial-card">
+          <p class="text">“Eu nunca mais perdi dinheiro após aplicar o método. Simples, direto e funcional!”</p>
+          <p class="testimonial-name">Mariana R. – RJ</p>
+        </div>
+        <div class="testimonial-card">
+          <p class="text">“Recuperei mais de 80% dos meus prejuízos em apenas uma semana com a planilha.”</p>
+          <p class="testimonial-name">Carlos M. – SP</p>
+        </div>
+        <div class="testimonial-card">
+          <p class="text">“O eBook abriu minha cabeça: agora opero com disciplina e paz de espírito.”</p>
+          <p class="testimonial-name">Ana P. – MG</p>
+        </div>
+        <div class="testimonial-card">
+          <p class="text">“A clareza emocional mudou tudo. Hoje faço trades conscientes e mais lucrativos.”</p>
+          <p class="testimonial-name">Lucas F. – BA</p>
+        </div>
+        <div class="testimonial-card">
+          <p class="text">“Garantia real de 7 dias me deu confiança para testar – e valeu cada centavo!”</p>
+          <p class="testimonial-name">Fernanda G. – RS</p>
+        </div>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
+
 
   <!-- 7. OFERTA -->
   <section id="offer" class="hidden">
@@ -296,6 +369,21 @@
         }, 2000);
       }, 5000);
     });
+    <script>
+  (function(){
+    const track = document.querySelector('.carousel-track');
+    const cards = Array.from(track.children);
+    let index = 0;
+    const cardWidth = cards[0].getBoundingClientRect().width + 30; // largura + margin
+
+    setInterval(() => {
+      index++;
+      if (index >= cards.length) index = 0;
+      track.style.transform = `translateX(-${index * cardWidth}px)`;
+    }, 4000); // troca de card a cada 4s
+  })();
+</script>
+
   </script>
 </body>
 </html>
