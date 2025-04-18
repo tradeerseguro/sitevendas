@@ -221,20 +221,19 @@
 @media (max-width: 480px) {
   .testimonial-card { flex: 0 0 100%; margin: 0 8px; }
 }
-/* FORÇA 1 CARD POR VEZ EM TELAS MAIS ESTREITAS */
+/* FORÇA 1 CARD POR VEZ EM TELAS MENORES */
 @media (max-width: 768px) {
   .testimonial-carousel {
-    /* garante que o “viewport” do carrossel seja sempre a largura total */
     overflow: hidden;
   }
   .carousel-track {
-    /* o track continua em flex e translateX, nada muda aqui */
+    /* mantém o flex, nada a alterar aqui */
   }
   .testimonial-card {
-    /* cada card ocupa 100% da largura visível */
     flex: 0 0 100% !important;
-    margin: 0 8px; /* um espacinho nas laterais, opcional */
-    max-width: calc(100% - 16px); /* para não estourar fora do container */
+    max-width: 100% !important;
+    margin: 0 8px !important;    /* ajuste o espaçamento lateral se quiser */
+    box-sizing: border-box;
   }
 }
 
@@ -386,34 +385,26 @@
     });
 
     // carrossel infinito
-    (function(){
-      const track = document.querySelector('.carousel-track');
-      const origCards = Array.from(track.children);
-      const total = origCards.length;
-      // 1) clona todos os cards para criar “loop”
-      track.innerHTML += track.innerHTML;
-      const cards = Array.from(track.children);
+   <script>
+  (function(){
+    const track = document.querySelector('.carousel-track');
+    const cards = Array.from(track.children);
 
-      let idx = 0;
-      const gap = 30; // ajuste se seu gap for diferente
-      const slideWidth = cards[0].getBoundingClientRect().width + gap;
+    setInterval(() => {
+      // recalcula largura + margens dinamicamente
+      const cardEl = cards[0];
+      const style = window.getComputedStyle(cardEl);
+      const marginLR = parseFloat(style.marginLeft) + parseFloat(style.marginRight);
+      const cardWidth = cardEl.getBoundingClientRect().width + marginLR;
 
-      setInterval(() => {
-        idx++;
-        // anima para o próximo slide
-        track.style.transition = 'transform 0.5s ease';
-        track.style.transform = `translateX(-${idx * slideWidth}px)`;
+      // avança índice
+      let index = Math.round(Math.abs(parseFloat(track.style.transform.replace(/[^0-9\-\.]/g,'')))/cardWidth) || 0;
+      index = (index + 1) % cards.length;
 
-        // quando passamos do último original, reset sem transição
-        if (idx === total) {
-          setTimeout(() => {
-            track.style.transition = 'none';
-            track.style.transform = 'translateX(0)';
-            idx = 0;
-          }, 500); // espera 500ms = duração da transition para resetar invisível
-        }
-      }, 4000);
-    })();
-  </script>
+      track.style.transform = `translateX(-${index * cardWidth}px)`;
+    }, 4000);
+  })();
+</script>
+
 </body>
 </html>
