@@ -356,34 +356,32 @@
   <!-- Botão Flutuante -->
   <a href="#cta-btn" class="floating-btn">Proteger minha conta</a>
 
-  <!-- JS de Delay e exibição -->
+  <!-- JS de Delay e Carrossel -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // 1) delay botão 5s
+      // 1) After 5s, mostra o botão
       setTimeout(() => {
         document.getElementById('cta-btn').style.opacity = 1;
-        // 2) delay 2s para revelar tudo o resto
+        // 2) +2s: revela o resto das seções
         setTimeout(() => {
           document.querySelectorAll('section.hidden')
             .forEach(s => s.classList.remove('hidden'));
         }, 2000);
       }, 5000);
     });
-    <script>
-  (function(){
-    const track = document.querySelector('.carousel-track');
-    const cards = Array.from(track.children);
-    let index = 0;
-    const cardWidth = cards[0].getBoundingClientRect().width + 30; // largura + margin
 
-    setInterval(() => {
-      index++;
-      if (index >= cards.length) index = 0;
-      track.style.transform = `translateX(-${index * cardWidth}px)`;
-    }, 4000); // troca de card a cada 4s
-  })();
-</script>
+    // carrossel automático de depoimentos
+    (function(){
+      const track = document.querySelector('.carousel-track');
+      const cards = Array.from(track.children);
+      let idx = 0;
+      const slideW = cards[0].getBoundingClientRect().width + 30; // largura + gap
 
+      setInterval(() => {
+        idx = (idx + 1) % cards.length;
+        track.style.transform = `translateX(-${idx * slideW}px)`;
+      }, 4000);
+    })();
   </script>
 </body>
 </html>
