@@ -93,6 +93,82 @@
     #pitch { background:#fff; text-align:center }
     .features { display:flex; flex-wrap:wrap; gap:1rem; justify-content:center }
     .feature { flex:1 1 200px; background:#eef6ff; padding:1rem; border-radius:6px }
+    /* === Features Section === */
+.features-section {
+  padding: 60px 20px;
+  background: #fafafa;
+}
+.features-section .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+.features-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: #222;
+}
+
+/* === Cards Wrapper === */
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+}
+
+/* === Single Card === */
+.card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  overflow: hidden;
+  width: 280px;              /* largura fixa para retângulo em pé */
+  transition: transform .3s ease, box-shadow .3s ease;
+  cursor: default;
+}
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+}
+
+/* === Card Image === */
+.card img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* === Card Title === */
+.card h3 {
+  font-size: 1.25rem;
+  margin: 16px;
+  color: #0d47a1;            /* azul confiante */
+}
+
+/* === Card Text === */
+.card p {
+  font-size: 1rem;
+  margin: 0 16px 24px;
+  color: #555;
+  line-height: 1.4;
+}
+
+/* === Responsividade === */
+@media (max-width: 768px) {
+  .cards {
+    gap: 16px;
+  }
+  .card {
+    width: calc(50% - 16px);
+  }
+}
+@media (max-width: 480px) {
+  .card {
+    width: 100%;
+  }
+}
+
 
     #evidence { background:#f9f9f9 }
     #evidence h3 { text-align:center; margin-bottom:1rem }
@@ -114,15 +190,6 @@
     .q { max-width:800px; margin:0.5rem auto }
     .question { font-weight:bold }
     .answer { margin-left:1rem; color:#555 }
-
-    /* ===== BOTÃO FLUTUANTE ===== */
-    .floating-btn {
-      position:fixed; bottom:1rem; right:1rem;
-      background:#007bff; color:#fff;
-      padding:.75rem 1rem; border-radius:4px;
-      box-shadow:0 0 10px rgba(0,0,0,.2);
-      text-decoration:none; font-weight:bold;
-    }
   </style>
 </head>
 <body>
@@ -152,23 +219,28 @@
   </section>
 
   <!-- 4. PITCH -->
-  <section id="pitch" class="hidden">
-    <h3>O que você recebe</h3>
-    <div class="features">
-      <div class="feature">
-        <strong>eBook Prático</strong>
-        <p>Aprenda as 3 regras passo a passo.</p>
+ <section id="features" class="features-section">
+  <div class="container">
+    <h2>O que você vai receber</h2>
+    <div class="cards">
+      <div class="card">
+        <img src="images/ebook-cover.png" alt="eBook Gerenciamento de Risco">
+        <h3>eBook completo</h3>
+        <p>Todo o passo-a-passo de gerenciamento de risco em Day Trade.</p>
       </div>
-      <div class="feature">
-        <strong>Planilha Automática</strong>
-        <p>Calcule o risco de cada trade em segundos.</p>
+      <div class="card">
+        <img src="images/planilha.png" alt="Planilha Automática">
+        <h3>Planilha automática</h3>
+        <p>Registre e calcule o risco de cada operação sem esforço.</p>
       </div>
-      <div class="feature">
-        <strong>Clareza Emocional</strong>
-        <p>Controle psicológico para seguir o plano.</p>
+      <div class="card">
+        <img src="images/clareza-emocional.png" alt="Clareza Emocional">
+        <h3>Clareza emocional</h3>
+        <p>Técnicas para controlar o emocional e operar com confiança.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- 5/6. EVIDÊNCIA -->
   <section id="evidence" class="hidden">
