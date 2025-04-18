@@ -280,65 +280,68 @@
  <style>
   /* ==== ESTILOS DA SEÇÃO ACORDO ==== */
   #agreement {
-    display: flex;
-    justify-content: center;
-    padding: 3rem 1rem;
-    background: #eaf8ea;
-  }
-  .agreement-card {
-    background: #fff;
-    border-radius: 16px;
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
-    padding: 2rem;
-    max-width: 500px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .agreement-card::before {
-    content: '✓';
-    position: absolute;
-    top: -10px; left: 50%;
-    transform: translateX(-50%);
-    font-size: 4rem;
-    color: #28a745;
-    background: #eaf8ea;
-    width: 80px; height: 80px;
-    line-height: 80px;
-    border-radius: 50%;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  }
-  .agreement-card h3 {
-    margin-top: 1.5rem;
-    font-size: 1.75rem;
-    color: #28a745;
-  }
-  .agreement-card p {
-    margin: 1rem 0;
-    color: #555;
-    line-height: 1.6;
-  }
-  .agreement-triggers {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-    margin-top: 1.5rem;
-  }
-  .trigger {
-    background: #f0fff4;
-    border: 1px solid #c3f0d8;
-    border-radius: 8px;
-    padding: 0.75rem 1rem;
-    font-size: 0.95rem;
-    color: #236e3f;
-    flex: 1 1 140px;
-  }
-  .trigger.urgency {
-    background: #fff4e5;
-    border-color: #ffd8a8;
-    color: #a85c00;
-  }
+  display: flex;
+  justify-content: center;
+  padding: 3rem 1rem;
+  background: #eaf8ea;
+}
+.agreement-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+  /* aumentamos padding-top pra abrir espaço para o ícone */
+  padding: 3.5rem 2rem 2rem;
+  max-width: 500px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.agreement-card::before {
+  content: '✓';
+  position: absolute;
+  /* reduzimos a distância negativa pra encaixar o ícone no padding-top maior */
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 4rem;
+  color: #28a745;
+  background: #eaf8ea;
+  width: 80px; height: 80px;
+  line-height: 80px;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.agreement-card h3 {
+  margin-top: .5rem;  /* já veio após o ícone */
+  font-size: 1.75rem;
+  color: #28a745;
+}
+.agreement-card p {
+  margin: 1rem 0;
+  color: #555;
+  line-height: 1.6;
+}
+.agreement-triggers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.trigger {
+  background: #f0fff4;
+  border: 1px solid #c3f0d8;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  color: #236e3f;
+  flex: 1 1 140px;
+}
+.trigger.urgency {
+  background: #fff4e5;
+  border-color: #ffd8a8;
+  color: #a85c00;
+}
 </style>
 
 <section id="agreement" class="hidden">
@@ -355,6 +358,7 @@
     </div>
   </div>
 </section>
+
 
   <!-- 9. FAQ -->
   <section id="faq" class="hidden">
