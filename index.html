@@ -243,39 +243,40 @@
       <p class="answer">Não — só Excel ou Google Sheets.</p>
     </div>
   </section>
-
-  <!-- JS de Delay + Carrossel Infinito -->
+  <!-- JS de Delay e Carrossel Infinito -->
   <script>
-    document.addEventListener('DOMContentLoaded', function(){
-      // 1) Delay do CTA
-      setTimeout(function(){
-        var cta = document.getElementById('cta-btn');
-        cta.style.opacity = 1;
-        cta.style.pointerEvents = 'auto';
-        // 2) Revele todas as demais seções 2s depois
-        setTimeout(function(){
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1) Delay do CTA + revelação das sections
+      setTimeout(() => {
+        document.getElementById('cta-btn').style.opacity = 1;
+        setTimeout(() => {
           document.querySelectorAll('section.hidden')
-            .forEach(function(sec){ sec.classList.remove('hidden'); });
+            .forEach(s => s.classList.remove('hidden'));
         }, 2000);
       }, 5000);
 
-      // 3) Carrossel infinito
-      (function(){
-        var track = document.querySelector('.carousel-track');
-        var cards = Array.from(track.children);
-        setInterval(function(){
-          var first = cards[0];
-          var style = window.getComputedStyle(first);
-          var margin = parseFloat(style.marginLeft) + parseFloat(style.marginRight);
-          var w = first.getBoundingClientRect().width + margin;
-          var transform = track.style.transform || 'translateX(0px)';
-          var offset = Math.abs(parseFloat(transform.match(/-?[\d\.]+/)[0])) || 0;
-          var idx = Math.round(offset / w);
-          idx = (idx + 1) % cards.length;
-          track.style.transform = 'translateX(-' + (idx * w) + 'px)';
-        }, 4000);
-      })();
+      // 2) Carrossel infinito
+      const track = document.querySelector('.carousel-track');
+      const cards = Array.from(track.children);
+      let currentIndex = 0;
+
+      // Garante que comece com translateX(0px)
+      track.style.transform = 'translateX(0px)';
+
+      setInterval(() => {
+        // Pega LARGURA + MARGENS de um card
+        const style = window.getComputedStyle(cards[0]);
+        const marginLR = parseFloat(style.marginLeft) + parseFloat(style.marginRight);
+        const cardW = cards[0].getBoundingClientRect().width + marginLR;
+
+        // Incrementa índice (loop infinito)
+        currentIndex = (currentIndex + 1) % cards.length;
+
+        // Aplica o translateX
+        track.style.transform = `translateX(-${currentIndex * cardW}px)`;
+      }, 4000);
     });
   </script>
+
 </body>
 </html>
