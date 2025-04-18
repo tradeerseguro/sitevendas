@@ -198,7 +198,6 @@
           <p class="text">“Garantia real de 7 dias me deu confiança para testar – e valeu cada centavo!”</p>
           <p class="testimonial-name">Fernanda G. – RS</p>
         </div>
-        <!-- Novos depoimentos -->
         <div class="testimonial-card">
           <p class="text">“Nunca pensei que fosse tão fácil controlar minhas emoções no trade. Foi revolucionário!”</p>
           <p class="testimonial-name">Pedro S. – PR</p>
@@ -211,8 +210,8 @@
           <p class="text">“Testei tantos operacionais e no final o que me faltava era gerenciamento de risco.”</p>
           <p class="testimonial-name">Julia L. – MG</p>
         </div>
-      </div><!-- fecha .carousel-track -->
-    </div><!-- fecha .testimonial-carousel -->
+      </div>
+    </div>
   </section>
 
   <!-- 7. OFERTA -->
@@ -243,8 +242,8 @@
       <p class="answer">Não — só Excel ou Google Sheets.</p>
     </div>
   </section>
-  
-  <!-- JS de Delay e Carrossel Infinito -->
+
+  <!-- JS -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       // 1) Delay do CTA + revelação das sections
@@ -252,9 +251,14 @@
         const cta = document.getElementById('cta-btn');
         cta.style.opacity = '1';
         cta.style.pointerEvents = 'auto';
+        console.log('CTA revelado');
+
         setTimeout(() => {
           document.querySelectorAll('section.hidden')
-            .forEach(s => s.classList.remove('hidden'));
+            .forEach(s => {
+              s.classList.remove('hidden');
+            });
+          console.log('Sections reveladas');
         }, 2000);
       }, 5000);
 
@@ -262,11 +266,14 @@
       const track = document.querySelector('.carousel-track');
       const cards = Array.from(track.children);
       const slideCount = cards.length;
+      console.log(`Há ${slideCount} cards originais`);
 
+      // calcula largura + margem de um card
       const style = window.getComputedStyle(cards[0]);
       const marginLR = parseFloat(style.marginLeft) + parseFloat(style.marginRight);
       const cardW = cards[0].getBoundingClientRect().width + marginLR;
 
+      // clona o primeiro para dar loop
       const firstClone = cards[0].cloneNode(true);
       track.appendChild(firstClone);
 
@@ -275,10 +282,12 @@
         index++;
         track.style.transition = 'transform .5s ease';
         track.style.transform = `translateX(-${index * cardW}px)`;
+        console.log(`Slide para índice ${index}`);
       }
 
       track.addEventListener('transitionend', () => {
         if (index === slideCount) {
+          console.log('Chegou ao clone, resetando');
           track.style.transition = 'none';
           index = 0;
           track.style.transform = 'translateX(0)';
