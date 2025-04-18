@@ -221,6 +221,22 @@
 @media (max-width: 480px) {
   .testimonial-card { flex: 0 0 100%; margin: 0 8px; }
 }
+/* FORÇA 1 CARD POR VEZ EM TELAS MAIS ESTREITAS */
+@media (max-width: 768px) {
+  .testimonial-carousel {
+    /* garante que o “viewport” do carrossel seja sempre a largura total */
+    overflow: hidden;
+  }
+  .carousel-track {
+    /* o track continua em flex e translateX, nada muda aqui */
+  }
+  .testimonial-card {
+    /* cada card ocupa 100% da largura visível */
+    flex: 0 0 100% !important;
+    margin: 0 8px; /* um espacinho nas laterais, opcional */
+    max-width: calc(100% - 16px); /* para não estourar fora do container */
+  }
+}
 
     #offer { background:#fff; text-align:center }
     #offer h3 { font-size:1.5rem; margin-bottom:1rem }
