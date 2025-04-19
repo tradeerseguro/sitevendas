@@ -53,7 +53,57 @@
       animation:neon 1.5s infinite alternate ease-in-out;
       z-index:-1;
     }
+<style>
+  /* ======== SEÇÃO LEAD ======== */
+  #lead {
+    text-align: center;
+    padding: 3rem 1rem;
+    background: #f9f9f9;
+  }
+  #lead h2 {
+    font-size: 1.75rem;
+    color: #222;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+  #lead p {
+    font-size: 1rem;
+    color: #555;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
 
+  /* ======== SEÇÃO HISTÓRIA ======== */
+  #story {
+    text-align: center;
+    padding: 3rem 1rem;
+  }
+  #story h2 {
+    font-size: 1.75rem;
+    color: #222;
+    margin-bottom: 1.5rem;
+    line-height: 1.3;
+  }
+  #story p {
+    font-size: 1rem;
+    color: #555;
+    max-width: 700px;
+    margin: 0.75rem auto;
+    text-align: left;
+    line-height: 1.6;
+  }
+
+  /* RESPONSIVO: texto justificado em mobile para leitura */
+  @media (max-width: 600px) {
+    #lead p,
+    #story p {
+      text-align: justify;
+      padding: 0 1rem;
+    }
+  }
+</style>
+  
     /* ===== FEATURES ===== */
     .features-section { padding:60px 20px; background:#fafafa; text-align:center }
     .features-section h2 { font-size:2.5rem; margin-bottom:40px; color:#222 }
@@ -325,18 +375,43 @@
     <button id="cta-btn">Quero proteger minha conta</button>
   </section>
 
-  <!-- 2. LEAD -->
-  <section id="lead" class="hidden">
-    <h2>Você está pronto para operar com segurança?</h2>
-    <p>Chega de entrar no prejuízo e tentar recuperar tudo no impulso emocional.<br>
-       Este método traz clareza total.</p>
-  </section>
+<!-- ========== 4. LEAD ========== -->
+<section id="lead">
+  <h2>Você está cansado de ver seu sucesso escapar pelas mãos?</h2>
+  <p>
+    Se já sentiu aquela angústia toda vez que entra no gráfico e seu medo fala mais alto, 
+    continue aqui: eu vou lhe mostrar exatamente como sair desse ciclo e operar com confiança.
+  </p>
+</section>
 
-  <!-- 3. HISTÓRIA -->
-  <section id="history" class="hidden">
-    <h3>A história do Rafael</h3>
-    <p>Ele era um trader promissor, mas se deixava levar pelas emoções e perdia grandes montantes — até descobrir 3 regras simples.</p>
-  </section>
+<!-- ========== 5. HISTÓRIA ========== -->
+<section id="story">
+  <h2>Como eu passei da incerteza ao controle total das minhas operações</h2>
+  <p>
+    Há alguns anos, eu acordava com o coração acelerado só de pensar em abrir uma ordem. 
+    Meus primeiros resultados eram tão ruins que eu chegava a duvidar de mim mesmo — 
+    e o pior: perdia noites de sono remoendo cada centavo.  
+  </p>
+  <p>
+    Eu sabia que não estava sozinho. Vi colegas brilhantes virarem estatísticas de falhas 
+    porque faltava um plano claro. Foi aí que comecei a buscar fórmulas consagradas de 
+    gestão de risco e mindset de traders de elite. Testei dezenas de planilhas e técnicas, 
+    mas nenhuma “encaixava” de verdade no meu dia a dia — até eu juntar aquilo que 
+    realmente importava.
+  </p>
+  <p>
+    Em um fim de semana decisivo, peguei tudo que havia aprendido (e perdido) e 
+    criei meu próprio método: **Clareza Emocional + Gestão de Risco + Disciplina**. 
+    Ao colocar em prática, minhas perdas despencaram 70% em apenas duas semanas. 
+    A ansiedade deu lugar à confiança e, pela primeira vez, eu operava com a mente de um 
+    vencedor — não de um amador.
+  </p>
+  <p>
+    Hoje, compartilho essa mesma jornada com você. Se você se reconheceu em cada linha 
+    desse relato, saiba que o próximo passo é só adotar um processo testado — e é isso 
+    que vem a seguir.
+  </p>
+</section>
 
   <!-- 4. PITCH -->
   <section class="features-section hidden">
