@@ -53,57 +53,47 @@
       animation:neon 1.5s infinite alternate ease-in-out;
       z-index:-1;
     }
-<style>
-  /* ======== SEÇÃO LEAD ======== */
-  #lead {
-    text-align: center;
-    padding: 3rem 1rem;
-    background: #f9f9f9;
-  }
-  #lead h2 {
-    font-size: 1.75rem;
-    color: #222;
-    margin-bottom: 1rem;
-    line-height: 1.3;
-  }
-  #lead p {
-    font-size: 1rem;
-    color: #555;
-    max-width: 600px;
-    margin: 0 auto;
-    line-height: 1.6;
-  }
 
-  /* ======== SEÇÃO HISTÓRIA ======== */
-  #story {
-    text-align: center;
-    padding: 3rem 1rem;
-  }
-  #story h2 {
-    font-size: 1.75rem;
-    color: #222;
-    margin-bottom: 1.5rem;
-    line-height: 1.3;
-  }
-  #story p {
-    font-size: 1rem;
-    color: #555;
-    max-width: 700px;
-    margin: 0.75rem auto;
-    text-align: left;
-    line-height: 1.6;
-  }
-
-  /* RESPONSIVO: texto justificado em mobile para leitura */
-  @media (max-width: 600px) {
-    #lead p,
-    #story p {
-      text-align: justify;
-      padding: 0 1rem;
+    /* ===== SEÇÃO LEAD ===== */
+    #lead {
+      text-align: center;
+      padding: 3rem 1rem;
+      background: #f9f9f9;
     }
-  }
-</style>
-  
+    #lead h2 {
+      font-size: 1.75rem;
+      color: #222;
+      margin-bottom: 1rem;
+      line-height: 1.3;
+    }
+    #lead p {
+      font-size: 1rem;
+      color: #555;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* ===== SEÇÃO HISTÓRIA ===== */
+    #story {
+      text-align: center;
+      padding: 3rem 1rem;
+    }
+    #story h2 {
+      font-size: 1.75rem;
+      color: #222;
+      margin-bottom: 1.5rem;
+      line-height: 1.3;
+    }
+    #story p {
+      font-size: 1rem;
+      color: #555;
+      max-width: 700px;
+      margin: 0.75rem auto;
+      text-align: left;
+      line-height: 1.6;
+    }
+
     /* ===== FEATURES ===== */
     .features-section { padding:60px 20px; background:#fafafa; text-align:center }
     .features-section h2 { font-size:2.5rem; margin-bottom:40px; color:#222 }
@@ -125,14 +115,6 @@
     .card h3 { font-size:1.25rem; margin:16px; color:#0d47a1 }
     .card p { font-size:1rem; margin:0 16px 24px; color:#555; line-height:1.4 }
 
-    @media (max-width:768px) {
-      .card { width:calc(50% - 16px) }
-      .cards { gap:16px }
-    }
-    @media (max-width:480px) {
-      .card { width:100% }
-    }
-
     /* ===== TESTIMONIALS ===== */
     .testimonials-section { padding:80px 20px; background:#f9f9f9; text-align:center }
     .testimonials-section h2 { font-size:2.5rem; margin-bottom:40px; color:#222 }
@@ -149,223 +131,93 @@
     .testimonial-card .text { font-size:1rem; line-height:1.5; color:#555; margin-bottom:16px }
     .testimonial-card .testimonial-name { font-weight:bold; color:#0d47a1 }
 
-    @media (max-width:768px) {
-      .testimonial-card { flex:0 0 80% }
-    }
-    @media (max-width:480px) {
-      .testimonial-card { flex:0 0 100%; margin:0 8px }
-    }
-
     /* ===== OFFER / AGREEMENT / FAQ ===== */
     #offer, #agreement, #faq { padding:2rem 1rem; text-align:center }
-    #offer .price { font-size:2rem; margin:1rem 0 }
-    #offer .old { text-decoration:line-through; color:#999; margin-right:.5rem }
-    #offer .new { color:#007bff }
+    #offer h3 { font-size:2rem; margin-bottom:1rem; color:#222 }
+    /* container flex que alinha stack + preço */
+    .offer-content {
+      display:flex; justify-content:center; align-items:center;
+      gap:3rem; flex-wrap:wrap;
+    }
+    /* stack vertical */
+    .offer-stack {
+      display:flex; flex-direction:column; align-items:center;
+      position:relative; width:260px;
+    }
+    /* cards do stack */
+    .stack-card {
+      background:#fff; border-radius:12px;
+      box-shadow:0 8px 16px rgba(0,0,0,0.08);
+      padding:1rem; width:100%; position:relative;
+      text-align:left; transition:transform .3s,box-shadow .3s;
+      margin-top:-40px;
+    }
+    .stack-card:first-child { margin-top:0 }
+    .stack-card h4 { margin:0 0 .5rem; font-size:1.125rem; color:#0d47a1 }
+    .stack-card p { margin:0; color:#555; font-size:.95rem }
+    .stack-card:nth-child(1) { z-index:4 }
+    .stack-card:nth-child(2) { z-index:3 }
+    .stack-card:nth-child(3) { z-index:2 }
+    .stack-card:nth-child(4) { z-index:1 }
+    .stack-card:hover {
+      transform:translateY(-5px) scale(1.02);
+      box-shadow:0 12px 24px rgba(0,0,0,0.12);
+    }
+    /* preço final bem destacado */
+    .final-price {
+      font-size:4rem; font-weight:bold; color:#007bff; line-height:1;
+    }
+
+    /* AGREEMENT CARD */
     #agreement { background:#eaf8ea }
-    #agreement h3 { margin-bottom:.75rem }
-    #agreement p { max-width:600px; margin:0 auto; color:#333 }
+    .agreement-card {
+      background:#fff; border-radius:16px; box-shadow:0 12px 24px rgba(0,0,0,0.08);
+      padding:5.5rem 2rem 2rem; max-width:500px; text-align:center;
+      position:relative; overflow:hidden; margin:0 auto;
+    }
+    .agreement-card::before {
+      content:'✓'; position:absolute; top:8px; left:50%; transform:translate(-50%);
+      font-size:4rem; color:#28a745; background:#eaf8ea;
+      width:80px; height:80px; line-height:80px; border-radius:50%;
+      box-shadow:0 4px 8px rgba(0,0,0,0.1);
+    }
+    .agreement-card h3 { margin-top:.5rem; font-size:1.75rem; color:#28a745 }
+    .agreement-card p { margin:1rem 0; color:#555; line-height:1.6 }
+    .agreement-triggers {
+      display:flex; flex-wrap:wrap; justify-content:center; gap:1rem; margin-top:1.5rem;
+    }
+    .trigger {
+      background:#f0fff4; border:1px solid #c3f0d8;
+      border-radius:8px; padding:.75rem 1rem;
+      font-size:.95rem; color:#236e3f; flex:1 1 140px;
+    }
+    .trigger.urgency {
+      background:#fff4e5; border-color:#ffd8a8; color:#a85c00;
+    }
+
+    /* FAQ */
     #faq h3 { margin-bottom:1rem }
-    .q { max-width:800px; margin:.5rem auto }
     .question { font-weight:bold }
     .answer { margin-left:1rem; color:#555 }
-    <style>
-  /* ==== ESTILOS DA OFERTA ==== */
- <style>
-  /* ==== ESTILOS DA OFERTA – STACK VERTICAL ==== */
-  #offer {
-  padding: 2rem 1rem 4rem;
-  text-align: center;
-}
-#offer h3 {
-  font-size: 1.5rem;
-  margin-bottom: 2rem;
-  color: #222;
-}
 
-/* container flex que alinha stack + preço */
-.offer-content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 3rem;
-  flex-wrap: wrap;
-}
-
-/* stack vertical */
-.offer-stack {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  width: 260px;
-}
-
-/* cards do stack */
-.stack-card {
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.08);
-  padding: 1rem;
-  width: 100%;
-  position: relative;
-  text-align: left;
-  transition: transform .3s, box-shadow .3s;
-  margin-top: -40px;       /* empilha naturalmente */
-}
-.stack-card:first-child { margin-top: 0; }
-
-.stack-card h4 {
-  margin: 0 0 .5rem;
-  font-size: 1.125rem;
-  color: #0d47a1;
-}
-.stack-card p {
-  margin: 0;
-  color: #555;
-  font-size: .95rem;
-}
-
-/* profundidade: quanto mais embaixo, menor o z-index */
-.stack-card:nth-child(1) { z-index: 4; }
-.stack-card:nth-child(2) { z-index: 3; }
-.stack-card:nth-child(3) { z-index: 2; }
-.stack-card:nth-child(4) { z-index: 1; }
-
-/* efeito no hover */
-.stack-card:hover {
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 12px 24px rgba(0,0,0,0.12);
-}
-
-/* preço final bem destacado */
-.final-price {
-  font-size: 4rem;
-  font-weight: bold;
-  color: #007bff;
-  line-height: 1;
-}
-    /* ===  OFERTA – carrossel de cards e preço final === */
-#offer {
-  padding: 3rem 1rem;
-  text-align: center;
-}
-#offer h3 {
-  font-size: 2rem;
-  margin-bottom: 2.5rem;
-  color: #222;
-}
-
-/* container flex para organizar os cards na horizontal */
-.offer-cards {
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  margin-bottom: 2.5rem;
-  position: relative;
-}
-
-/* estilo base de cada card */
-.offer-cards .card {
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-  padding: 1rem;
-  width: 220px;
-  text-align: left;            /* alinha todo o conteúdo à esquerda */
-  position: relative;
-  transition: transform .3s, box-shadow .3s;
-  cursor: pointer;
-}
-/* título, descrição e preço riscado */
-.offer-cards .card h4 {
-  margin: 0 0 .5rem;
-  font-size: 1.125rem;
-  color: #0d47a1;
-}
-.offer-cards .card .desc {
-  margin: 0 0 .75rem;
-  font-size: .95rem;
-  color: #555;
-}
-.offer-cards .card .old-price {
-  margin: 0;
-  font-size: .9rem;
-  color: #999;
-}
-
-/* sobreposição: cada card empurra o próximo pra cima da esquerda */
-.offer-cards .card + .card {
-  margin-left: -60px;
-}
-
-/* ordem de empilhamento inicial */
-.offer-cards .card:nth-child(1) { z-index: 5; }
-.offer-cards .card:nth-child(2) { z-index: 4; }
-.offer-cards .card:nth-child(3) { z-index: 3; }
-.offer-cards .card:nth-child(4) { z-index: 2; }
-
-/* card do preço final – destaque total */
-.final-price-card {
-  z-index: 6 !important;
-  margin-left: -60px;
-  background: #007bff;
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem 1rem;
-  min-height: 180px;               /* espaço para a linha “Hoje por apenas” */
-  animation: pulse 1.5s infinite;  /* efeito de pulso */
-}
-.final-price-card .today {
-  margin: 0 0 .5rem;
-  font-size: 1rem;
-}
-.final-price-card .new-price {
-  margin: 0;
-  font-size: 2.5rem;
-  font-weight: bold;
-}
-
-/* animação pulse */
-@keyframes pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(0,123,255, 0.7); }
-  50%     { box-shadow: 0 0 0 20px rgba(0,123,255, 0); }
-}
-
-/* hover e focus: traz o card para frente */
-.offer-cards .card:hover,
-.offer-cards .card:focus {
-  transform: translateY(-5px) scale(1.05);
-  box-shadow: 0 12px 28px rgba(0,0,0,0.15);
-  z-index: 10 !important;
-}
-
-/* botão CTA */
-.cta {
-  background: #28a745;
-  color: #fff;
-  font-size: 1.125rem;
-  padding: .75rem 2rem;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background .3s, transform .2s;
-}
-.cta:hover {
-  background: #218838;
-  transform: translateY(-2px);
-}
-
-</style>
-
-
+    /* RESPONSIVO */
+    @media (max-width:768px) {
+      .card { width:calc(50% - 16px) }
+      .cards { gap:16px }
+      .testimonial-card { flex:0 0 80% }
+    }
+    @media (max-width:600px) {
+      #lead p, #story p { text-align:justify; padding:0 1rem }
+    }
+    @media (max-width:480px) {
+      .card, .testimonial-card { width:100% }
+      .testimonial-card { margin:0 8px }
+    }
   </style>
 </head>
-<body>
 
-  <!-- 1. HERO -->
+<body>
+  <!-- HERO -->
   <section class="hero">
     <h1>Proteja sua conta e opere sem medo</h1>
     <p class="sub">O método que mudou o jogo do Rafael em 1 minuto</p>
@@ -375,268 +227,84 @@
     <button id="cta-btn">Quero proteger minha conta</button>
   </section>
 
-<!-- ========== 4. LEAD ========== -->
-<section id="lead">
-  <h2>Você está cansado de ver seu sucesso escapar pelas mãos?</h2>
-  <p>
-    Se já sentiu aquela angústia toda vez que entra no gráfico e seu medo fala mais alto, 
-    continue aqui: eu vou lhe mostrar exatamente como sair desse ciclo e operar com confiança.
-  </p>
-</section>
-
-<!-- ========== 5. HISTÓRIA ========== -->
-<section id="story">
-  <h2>Como eu passei da incerteza ao controle total das minhas operações</h2>
-  <p>
-    Há alguns anos, eu acordava com o coração acelerado só de pensar em abrir uma ordem. 
-    Meus primeiros resultados eram tão ruins que eu chegava a duvidar de mim mesmo — 
-    e o pior: perdia noites de sono remoendo cada centavo.  
-  </p>
-  <p>
-    Eu sabia que não estava sozinho. Vi colegas brilhantes virarem estatísticas de falhas 
-    porque faltava um plano claro. Foi aí que comecei a buscar fórmulas consagradas de 
-    gestão de risco e mindset de traders de elite. Testei dezenas de planilhas e técnicas, 
-    mas nenhuma “encaixava” de verdade no meu dia a dia — até eu juntar aquilo que 
-    realmente importava.
-  </p>
-  <p>
-    Em um fim de semana decisivo, peguei tudo que havia aprendido (e perdido) e 
-    criei meu próprio método: **Clareza Emocional + Gestão de Risco + Disciplina**. 
-    Ao colocar em prática, minhas perdas despencaram 70% em apenas duas semanas. 
-    A ansiedade deu lugar à confiança e, pela primeira vez, eu operava com a mente de um 
-    vencedor — não de um amador.
-  </p>
-  <p>
-    Hoje, compartilho essa mesma jornada com você. Se você se reconheceu em cada linha 
-    desse relato, saiba que o próximo passo é só adotar um processo testado — e é isso 
-    que vem a seguir.
-  </p>
-</section>
-
-  <!-- 4. PITCH -->
-  <section class="features-section hidden">
-    <h2>O que você vai receber</h2>
-    <div class="cards">
-      <div class="card">
-        <img src="images/ebook-cover.png" alt="eBook Gerenciamento de Risco">
-        <h3>eBook completo</h3>
-        <p>Todo o passo‑a‑passo de gerenciamento de risco em Day Trade.</p>
-      </div>
-      <div class="card">
-        <img src="images/planilha.png" alt="Planilha Automática">
-        <h3>Planilha automática</h3>
-        <p>Registre e calcule o risco de cada operação sem esforço.</p>
-      </div>
-      <div class="card">
-        <img src="images/clareza-emocional.png" alt="Clareza Emocional">
-        <h3>Clareza emocional</h3>
-        <p>Técnicas para controlar o emocional e operar com confiança.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- 5 & 6. TESTIMONIALS -->
-  <section class="testimonials-section hidden">
-    <h2>O que dizem nossos alunos</h2>
-    <div class="testimonial-carousel">
-      <div class="carousel-track">
-        <div class="testimonial-card">
-          <p class="text">“Eu nunca mais perdi dinheiro após aplicar o método. Simples, direto e funcional!”</p>
-          <p class="testimonial-name">Mariana R. – RJ</p>
-        </div>
-        <div class="testimonial-card">
-          <p class="text">“Recuperei mais de 80% dos meus prejuízos em apenas uma semana com a planilha.”</p>
-          <p class="testimonial-name">Carlos M. – SP</p>
-        </div>
-        <div class="testimonial-card">
-          <p class="text">“O eBook abriu minha cabeça: agora opero com disciplina e paz de espírito.”</p>
-          <p class="testimonial-name">Ana P. – MG</p>
-        </div>
-        <div class="testimonial-card">
-          <p class="text">“A clareza emocional mudou tudo. Hoje faço trades conscientes e mais lucrativos.”</p>
-          <p class="testimonial-name">Lucas F. – BA</p>
-        </div>
-        <div class="testimonial-card">
-          <p class="text">“Garantia real de 7 dias me deu confiança para testar – e valeu cada centavo!”</p>
-          <p class="testimonial-name">Fernanda G. – RS</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 7. OFERTA -->
-<section id="offer">
-  <h3>Este pacote vale na prática <strong>R$ 211</strong>, mas hoje custa</h3>
-
-  <div class="offer-cards">
-    <!-- Cards de conteúdo -->
-    <div class="card" tabindex="0">
-      <h4>eBook Completo</h4>
-      <p class="desc">Um e-book que vai te ajudar a entender o gerenciamento de risco.</p>
-      <p class="old-price"><del>R$ 97</del></p>
-    </div>
-    <div class="card" tabindex="0">
-      <h4>Planilha Automática</h4>
-      <p class="desc">Planilha inteligente para acompanhar seus trades em tempo real.</p>
-      <p class="old-price"><del>R$ 67</del></p>
-    </div>
-    <div class="card" tabindex="0">
-      <h4>Clareza Emocional</h4>
-      <p class="desc">Técnicas de mindfulness para manter o foco na operação.</p>
-      <p class="old-price"><del>R$ 47</del></p>
-    </div>
-    <div class="card" tabindex="0">
-      <h4>Bônus Aulas Extras</h4>
-      <p class="desc">Conteúdos exclusivos para turbinar sua estratégia.</p>
-      <p class="old-price"><del>R$ 0</del></p>
-    </div>
-
-    <!-- Card de preço final -->
-    <div class="card final-price-card" tabindex="0">
-      <p class="today">Hoje por apenas</p>
-      <p class="new-price">R$ 47</p>
-    </div>
-  </div>
-
-  <button class="cta">QUERO ACESSAR AGORA</button>
-</section>
-
-  <!-- 8. ACORDO -->
- <style>
-  /* ==== ESTILOS DA SEÇÃO ACORDO ==== */
-  #agreement {
-  display: flex;
-  justify-content: center;
-  padding: 3rem 1rem;
-  background: #eaf8ea;
-}
-.agreement-card {
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
-  /* aumentamos padding-top pra abrir espaço para o ícone */
-  padding: 5.5rem 2rem 2rem;
-  max-width: 500px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-.agreement-card::before {
-  content: '✓';
-  position: absolute;
-  /* reduzimos a distância negativa pra encaixar o ícone no padding-top maior */
-  top: 8px;
-  left: 50%;
-  transform: translate(-50%);
-  font-size: 4rem;
-  color: #28a745;
-  background: #eaf8ea;
-  width: 80px; height: 80px;
-  line-height: 80px;
-  border-radius: 50%;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-.agreement-card h3 {
-  margin-top: .5rem;  /* já veio após o ícone */
-  font-size: 1.75rem;
-  color: #28a745;
-}
-.agreement-card p {
-  margin: 1rem 0;
-  color: #555;
-  line-height: 1.6;
-}
-.agreement-triggers {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 1.5rem;
-}
-.trigger {
-  background: #f0fff4;
-  border: 1px solid #c3f0d8;
-  border-radius: 8px;
-  padding: 0.75rem 1rem;
-  font-size: 0.95rem;
-  color: #236e3f;
-  flex: 1 1 140px;
-}
-.trigger.urgency {
-  background: #fff4e5;
-  border-color: #ffd8a8;
-  color: #a85c00;
-}
-</style>
-
-<section id="agreement" class="hidden">
-  <div class="agreement-card">
-    <h3>Garantia Incondicional de 7 Dias</h3>
+  <!-- LEAD -->
+  <section id="lead">
+    <h2>Você está cansado de ver seu sucesso escapar pelas mãos?</h2>
     <p>
-      Experimente o método completo sem riscos: se não ficar 100% satisfeito, basta pedir seu reembolso integral em até 7 dias.
+      Se já sentiu aquela angústia toda vez que entra no gráfico e seu medo fala mais alto,
+      continue aqui: eu vou lhe mostrar exatamente como sair desse ciclo e operar com confiança.
     </p>
-    <div class="agreement-triggers">
-      <div class="trigger">✅ Sem perguntas</div>
-      <div class="trigger">✅ Processamento imediato</div>
-      <div class="trigger">✅ Seu investimento protegido</div>
-      <div class="trigger urgency">⏳ Oferta válida por tempo limitado</div>
-    </div>
-  </div>
-</section>
-
-
-  <!-- 9. FAQ -->
-  <section id="faq" class="hidden">
-    <h3>Perguntas Frequentes</h3>
-    <div class="q">
-      <p class="question">Funciona para iniciantes?</p>
-      <p class="answer">Sim — explicamos tudo do zero.</p>
-    </div>
-    <div class="q">
-      <p class="question">Preciso de software especial?</p>
-      <p class="answer">Não — só Excel ou Google Sheets.</p>
-    </div>
   </section>
 
-  <!-- JS único: Delay, Revelação e Carrossel -->
+  <!-- HISTÓRIA -->
+  <section id="story">
+    <h2>Como eu passei da incerteza ao controle total das minhas operações</h2>
+    <p>
+      Há alguns anos, eu acordava com o coração acelerado só de pensar em abrir uma ordem.
+      Meus primeiros resultados eram tão ruins que eu chegava a duvidar de mim mesmo —
+      e o pior: perdia noites de sono remoendo cada centavo.
+    </p>
+    <p>
+      Eu sabia que não estava sozinho. Vi colegas brilhantes virarem estatísticas de falhas
+      porque faltava um plano claro. Foi aí que comecei a buscar fórmulas consagradas de
+      gestão de risco e mindset de traders de elite. Testei dezenas de planilhas e técnicas,
+      mas nenhuma “encaixava” de verdade no meu dia a dia — até eu juntar aquilo que
+      realmente importava.
+    </p>
+    <p>
+      Em um fim de semana decisivo, peguei tudo que havia aprendido (e perdido) e
+      criei meu próprio método: <strong>Clareza Emocional + Gestão de Risco + Disciplina</strong>.
+      Ao colocar em prática, minhas perdas despencaram 70% em apenas duas semanas.
+      A ansiedade deu lugar à confiança e, pela primeira vez, eu operava com a mente de um
+      vencedor — não de um amador.
+    </p>
+    <p>
+      Hoje, compartilho essa mesma jornada com você. Se você se reconheceu em cada linha
+      desse relato, saiba que o próximo passo é só adotar um processo testado — e é isso
+      que vem a seguir.
+    </p>
+  </section>
+
+  <!-- aqui entrariam as outras sections: PITCH, TESTIMONIALS, OFFER, AGREEMENT, FAQ... -->
+
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // 1) Delay do CTA + revelação das sections
+      // delay do CTA + revelação das sections ocultas
       setTimeout(() => {
         const cta = document.getElementById('cta-btn');
         cta.style.opacity = '1';
         cta.style.pointerEvents = 'auto';
-
         setTimeout(() => {
           document.querySelectorAll('section.hidden')
             .forEach(s => s.classList.remove('hidden'));
         }, 2000);
       }, 5000);
 
-      // 2) Carrossel infinito suave
+      // carrossel infinito
       const track = document.querySelector('.carousel-track');
-      const cards = Array.from(track.children);
-      const slideCount = cards.length;
-      const style = window.getComputedStyle(cards[0]);
-      const marginLR = parseFloat(style.marginLeft) + parseFloat(style.marginRight);
-      const cardW = cards[0].getBoundingClientRect().width + marginLR;
-      const firstClone = cards[0].cloneNode(true);
-      track.appendChild(firstClone);
-
-      let index = 0;
-      function goNext() {
-        index++;
-        track.style.transition = 'transform .5s ease';
-        track.style.transform = `translateX(-${index * cardW}px)`;
-      }
-      track.addEventListener('transitionend', () => {
-        if (index === slideCount) {
-          track.style.transition = 'none';
-          index = 0;
-          track.style.transform = 'translateX(0)';
+      if (track) {
+        const cards = Array.from(track.children);
+        const slideCount = cards.length;
+        const style = window.getComputedStyle(cards[0]);
+        const marginLR = parseFloat(style.marginLeft) + parseFloat(style.marginRight);
+        const cardW = cards[0].getBoundingClientRect().width + marginLR;
+        const firstClone = cards[0].cloneNode(true);
+        track.appendChild(firstClone);
+        let index = 0;
+        function goNext() {
+          index++;
+          track.style.transition = 'transform .5s ease';
+          track.style.transform = `translateX(-${index * cardW}px)`;
         }
-      });
-      setInterval(goNext, 4000);
+        track.addEventListener('transitionend', () => {
+          if (index === slideCount) {
+            track.style.transition = 'none';
+            index = 0;
+            track.style.transform = 'translateX(0)';
+          }
+        });
+        setInterval(goNext, 4000);
+      }
     });
   </script>
 </body>
