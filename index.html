@@ -439,15 +439,19 @@
       <p class="answer">Não — só Excel ou Google Sheets.</p>
     </div>
   </section>
-
   <script>
     document.addEventListener('DOMContentLoaded', () => {
++     // 0) trava o scroll da página
++     document.body.style.overflow = 'hidden';
+
       // 1) Delay do CTA + revelação das sections
       setTimeout(() => {
         document.getElementById('cta-btn').style.opacity = '1';
         document.getElementById('cta-btn').style.pointerEvents = 'auto';
         setTimeout(() => {
           document.querySelectorAll('section.hidden').forEach(s => s.classList.remove('hidden'));
++         // 3) libera o scroll após o conteúdo aparecer
++         document.body.style.overflow = '';
         }, 2000);
       }, 5000);
 
@@ -478,5 +482,7 @@
       }
     });
   </script>
+
+  
 </body>
 </html>
