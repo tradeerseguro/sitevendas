@@ -7,274 +7,119 @@
 
   <style>
     /* reset e tipografia básica */
-    * { margin:0; padding:0; box-sizing:border-box }
-    body { font-family:Arial,sans-serif; color:#333 }
-    section { transition:opacity .5s ease }
-    .hidden { opacity:0 }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:Arial,sans-serif;color:#333;overflow:hidden} /* <- scroll travado inicialmente */
+    section{transition:opacity .5s ease}
+    .hidden{opacity:0}
 
     /* ===== HERO ===== */
-    .hero {
-      display:flex; flex-direction:column;
-      justify-content:center; align-items:center;
-      background:#fbfcfd; min-height:100vh;
-      padding:2rem 1rem; text-align:center;
-    }
-    .hero h1 { font-size:2.25rem; margin-bottom:.5rem }
-    .hero p.sub { font-size:1.125rem; margin-bottom:1.5rem; color:#555 }
-    .hero .video-container {
-      width:100%; max-width:640px; margin-bottom:1.5rem;
-    }
-    .hero iframe { width:100%; height:360px; border:none }
+    .hero{display:flex;flex-direction:column;justify-content:center;align-items:center;
+          background:#fbfcfd;min-height:100vh;padding:2rem 1rem;text-align:center}
+    .hero h1{font-size:2.25rem;margin-bottom:.5rem}
+    .hero p.sub{font-size:1.125rem;margin-bottom:1.5rem;color:#555}
+    .hero .video-container{width:100%;max-width:640px;margin-bottom:1.5rem}
+    .hero iframe{width:100%;height:360px;border:none}
 
-    /* CTA abaixo do vídeo (invisível até 5s) */
-    #cta-btn {
-      opacity:0; pointer-events:none;
-      padding:.8rem 1.6rem; font-size:1rem;
-      background:#007bff; color:#fff; border:none;
-      border-radius:4px; cursor:pointer; position:relative;
-      z-index:1;
-      animation: pulse 2s infinite ease-in-out, neon 1.5s infinite alternate ease-in-out;
-      transition:opacity .3s ease, pointer-events .3s;
-    }
-    @keyframes pulse {
-      0%,100%{ transform:scale(1) }
-      50%   { transform:scale(1.05) }
-    }
-    @keyframes neon {
-      from { box-shadow:0 0 5px rgba(0,123,255,0.6) }
-      to   { box-shadow:0 0 20px rgba(0,123,255,1) }
-    }
-    #cta-btn::after {
-      content:''; position:absolute;
-      top:100%; left:50%;
-      width:120%; height:8px;
-      transform:translateX(-50%);
-      background:rgba(0,123,255,0.4);
-      filter:blur(8px); border-radius:50%;
-      animation:neon 1.5s infinite alternate ease-in-out;
-      z-index:-1;
-    }
+    /* CTA abaixo do vídeo (invisível até 5 s) */
+    #cta-btn{opacity:0;pointer-events:none;padding:.8rem 1.6rem;font-size:1rem;
+             background:#007bff;color:#fff;border:none;border-radius:4px;cursor:pointer;position:relative;z-index:1;
+             animation:pulse 2s infinite ease-in-out,neon 1.5s infinite alternate ease-in-out;
+             transition:opacity .3s ease,pointer-events .3s}
+    @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+    @keyframes neon{from{box-shadow:0 0 5px rgba(0,123,255,.6)}to{box-shadow:0 0 20px rgba(0,123,255,1)}}
+    #cta-btn::after{content:'';position:absolute;top:100%;left:50%;width:120%;height:8px;transform:translateX(-50%);
+                    background:rgba(0,123,255,.4);filter:blur(8px);border-radius:50%;
+                    animation:neon 1.5s infinite alternate ease-in-out;z-index:-1}
 
     /* ===== SEÇÃO LEAD ===== */
-    #lead {
-      text-align:center;
-      padding:3rem 1rem;
-      background:#f9f9f9;
-    }
-    #lead h2 {
-      font-size:1.75rem;
-      color:#222;
-      margin-bottom:1rem;
-      line-height:1.3;
-    }
-    #lead p {
-      font-size:1rem;
-      color:#555;
-      max-width:600px;
-      margin:0 auto;
-      line-height:1.6;
-    }
+    #lead{text-align:center;padding:3rem 1rem;background:#f9f9f9}
+    #lead h2{font-size:1.75rem;color:#222;margin-bottom:1rem;line-height:1.3}
+    #lead p{font-size:1rem;color:#555;max-width:600px;margin:0 auto;line-height:1.6}
 
     /* ===== SEÇÃO HISTÓRIA ===== */
-    #story {
-      text-align:center;
-      padding:3rem 1rem;
-    }
-    #story h2 {
-      font-size:1.75rem;
-      color:#222;
-      margin-bottom:1.5rem;
-      line-height:1.3;
-    }
-    #story p {
-      font-size:1rem;
-      color:#555;
-      max-width:700px;
-      margin:0.75rem auto;
-      text-align:left;
-      line-height:1.6;
+    #story{text-align:center;padding:3rem 1rem}
+    #story h2{font-size:1.75rem;color:#222;margin-bottom:1.5rem;line-height:1.3}
+    #story p{font-size:1rem;color:#555;max-width:700px;margin:.75rem auto;text-align:left;line-height:1.6}
+
+    @media(max-width:600px){
+      #lead p,#story p{text-align:justify;padding:0 1rem}
     }
 
-    @media (max-width: 600px) {
-      #lead p,
-      #story p {
-        text-align:justify;
-        padding:0 1rem;
-      }
-    }
-
-    /* ===== FEATURES ===== */
-    .features-section {
-      padding:60px 20px; background:#fafafa; text-align:center
-    }
-    .features-section h2 {
-      font-size:2.5rem; margin-bottom:40px; color:#222
-    }
-    .cards {
-      display:flex; flex-wrap:wrap;
-      justify-content:center; gap:24px;
-    }
-    .card {
-      background:#fff; border-radius:12px;
-      box-shadow:0 4px 8px rgba(0,0,0,0.1);
-      overflow:hidden; width:280px;
-      transition:transform .3s,box-shadow .3s;
-    }
-    .card:hover {
-      transform:translateY(-10px);
-      box-shadow:0 12px 20px rgba(0,0,0,0.15);
-    }
-    .card img { display:block; width:100%; height:auto }
-    .card h3 { font-size:1.25rem; margin:16px; color:#0d47a1 }
-    .card p { font-size:1rem; margin:0 16px 24px; color:#555; line-height:1.4 }
-
-    @media (max-width:768px) {
-      .card { width:calc(50% - 16px) }
-      .cards { gap:16px }
-    }
-    @media (max-width:480px) {
-      .card { width:100% }
-    }
+    /* ===== FEATURES (cards “o que vai receber”) ===== */
+    .features-section{padding:60px 20px;background:#fafafa;text-align:center}
+    .features-section h2{font-size:2.5rem;margin-bottom:40px;color:#222}
+    .cards{display:flex;flex-wrap:wrap;justify-content:center;gap:24px}
+    .card{background:#fff;border-radius:12px;box-shadow:0 4px 8px rgba(0,0,0,.1);overflow:hidden;width:280px;
+          transition:transform .3s,box-shadow .3s}
+    .card:hover{transform:translateY(-10px);box-shadow:0 12px 20px rgba(0,0,0,.15)}
+    .card img{display:block;width:100%;height:auto}
+    .card h3{font-size:1.25rem;margin:16px;color:#0d47a1}
+    .card p{font-size:1rem;margin:0 16px 24px;color:#555;line-height:1.4}
+    @media(max-width:768px){.card{width:calc(50% - 16px)}.cards{gap:16px}}
+    @media(max-width:480px){.card{width:100%}}
 
     /* ===== TESTIMONIALS ===== */
-    .testimonials-section {
-      padding:80px 20px; background:#f9f9f9; text-align:center
-    }
-    .testimonials-section h2 {
-      font-size:2.5rem; margin-bottom:40px; color:#222
-    }
-    .testimonial-carousel { overflow:hidden; margin:0 auto; max-width:100% }
-    .carousel-track {
-      display:flex; transition:transform .5s ease;
-    }
-    .testimonial-card {
-      flex:0 0 300px; margin:0 15px;
-      background:#fff; border-radius:12px;
-      box-shadow:0 4px 12px rgba(0,0,0,0.08);
-      padding:24px; text-align:left;
-    }
-    .testimonial-card .text {
-      font-size:1rem; line-height:1.5; color:#555; margin-bottom:16px
-    }
-    .testimonial-card .testimonial-name {
-      font-weight:bold; color:#0d47a1
-    }
-
-    @media (max-width:768px) {
-      .testimonial-card { flex:0 0 80% }
-    }
-    @media (max-width:480px) {
-      .testimonial-card { flex:0 0 100%; margin:0 8px }
-    }
+    .testimonials-section{padding:80px 20px;background:#f9f9f9;text-align:center}
+    .testimonials-section h2{font-size:2.5rem;margin-bottom:40px;color:#222}
+    .testimonial-carousel{overflow:hidden;margin:0 auto;max-width:100%}
+    .carousel-track{display:flex;transition:transform .5s ease}
+    .testimonial-card{flex:0 0 300px;margin:0 15px;background:#fff;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.08);
+                      padding:24px;text-align:left}
+    .testimonial-card .text{font-size:1rem;line-height:1.5;color:#555;margin-bottom:16px}
+    .testimonial-card .testimonial-name{font-weight:bold;color:#0d47a1}
+    @media(max-width:768px){.testimonial-card{flex:0 0 80%}}
+    @media(max-width:480px){.testimonial-card{flex:0 0 100%;margin:0 8px}}
 
     /* ===== OFFER ===== */
-    #offer {
-      padding:3rem 1rem; text-align:center
-    }
-    #offer h3 {
-      font-size:2rem; margin-bottom:2.5rem; color:#222
-    }
-    .offer-cards {
-      display:flex; justify-content:center; align-items:flex-end;
-      margin-bottom:2.5rem; position:relative;
-    }
-    .offer-cards .card {
-      background:#fff; border-radius:12px;
-      box-shadow:0 8px 20px rgba(0,0,0,0.08);
-      padding:1rem; width:220px; text-align:left;
-      position:relative; transition:transform .3s,box-shadow .3s;
-      cursor:pointer;
-    }
-    .offer-cards .card + .card { margin-left:-60px }
-    .offer-cards .card h4 {
-      margin:0 0 .5rem; font-size:1.125rem; color:#0d47a1
-    }
-    .offer-cards .card .desc {
-      margin:0 0 .75rem; font-size:.95rem; color:#555
-    }
-    .offer-cards .card .old-price {
-      margin:0; font-size:.9rem; color:#999
-    }
+    #offer{padding:3rem 1rem;text-align:center}
+    #offer h3{font-size:2rem;margin-bottom:2.5rem;color:#222}
+    .offer-cards{display:flex;justify-content:center;align-items:flex-end;margin-bottom:2.5rem;position:relative}
+    .offer-cards .card{background:#fff;border-radius:12px;box-shadow:0 8px 20px rgba(0,0,0,.08);
+                       padding:1rem;width:220px;text-align:left;position:relative;transition:transform .3s,box-shadow .3s;
+                       cursor:pointer}
+    .offer-cards .card + .card{margin-left:-60px}
+    .offer-cards .card h4{margin:0 0 .5rem;font-size:1.125rem;color:#0d47a1}
+    .offer-cards .card .desc{margin:0 0 .75rem;font-size:.95rem;color:#555}
+    .offer-cards .card .old-price{margin:0;font-size:.9rem;color:#999}
     .offer-cards .card:hover,
-    .offer-cards .card:focus {
-      transform:translateY(-5px) scale(1.05);
-      box-shadow:0 12px 28px rgba(0,0,0,0.15);
-      z-index:10 !important;
-    }
-    @keyframes pulse {
-      0%,100% { box-shadow:0 0 0 0 rgba(0,123,255,0.7) }
-      50%     { box-shadow:0 0 0 20px rgba(0,123,255,0) }
-    }
-    .final-price-card {
-      z-index:6 !important; margin-left:-60px;
-      background:#007bff; color:#fff;
-      display:flex; flex-direction:column;
-      align-items:center; justify-content:center;
-      padding:2rem 1rem; min-height:180px;
-      animation:pulse 1.5s infinite;
-    }
-    .final-price-card .today {
-      margin:0 0 .5rem; font-size:1rem;
-    }
-    .final-price-card .new-price {
-      margin:0; font-size:2.5rem; font-weight:bold;
-    }
-    .cta {
-      background:#28a745; color:#fff; font-size:1.125rem;
-      padding:.75rem 2rem; border:none; border-radius:8px;
-      cursor:pointer; transition:background .3s,transform .2s;
-    }
-    .cta:hover {
-      background:#218838; transform:translateY(-2px);
-    }
+    .offer-cards .card:focus{transform:translateY(-5px) scale(1.05);box-shadow:0 12px 28px rgba(0,0,0,.15);z-index:10!important}
+
+    @keyframes pulse2{0%,100%{box-shadow:0 0 0 0 rgba(0,123,255,.7)}50%{box-shadow:0 0 0 20px rgba(0,123,255,0)}}
+    .final-price-card{z-index:6!important;margin-left:-60px;background:#007bff;color:#fff;display:flex;flex-direction:column;
+                      align-items:center;justify-content:center;padding:2rem 1rem;min-height:180px;animation:pulse2 1.5s infinite}
+    .final-price-card .today{margin:0 0 .5rem;font-size:1rem}
+    .final-price-card .new-price{margin:0;font-size:2.5rem;font-weight:bold}
+    .cta{background:#28a745;color:#fff;font-size:1.125rem;padding:.75rem 2rem;border:none;border-radius:8px;cursor:pointer;
+         transition:background .3s,transform .2s}
+    .cta:hover{background:#218838;transform:translateY(-2px)}
 
     /* ===== AGREEMENT ===== */
-    #agreement {
-      display:flex; justify-content:center;
-      padding:3rem 1rem; background:#eaf8ea;
-    }
-    .agreement-card {
-      background:#fff; border-radius:16px;
-      box-shadow:0 12px 24px rgba(0,0,0,0.08);
-      padding:5.5rem 2rem 2rem;
-      max-width:500px; text-align:center;
-      position:relative; overflow:hidden;
-    }
-    .agreement-card::before {
-      content:'✓'; position:absolute;
-      top:8px; left:50%; transform:translate(-50%);
-      font-size:4rem; color:#28a745;
-      background:#eaf8ea; width:80px; height:80px;
-      line-height:80px; border-radius:50%;
-      box-shadow:0 4px 8px rgba(0,0,0,0.1);
-    }
-    .agreement-card h3 {
-      margin-top:.5rem; font-size:1.75rem; color:#28a745;
-    }
-    .agreement-card p {
-      margin:1rem 0; color:#555; line-height:1.6;
-    }
-    .agreement-triggers {
-      display:flex; flex-wrap:wrap;
-      justify-content:center; gap:1rem;
-      margin-top:1.5rem;
-    }
-    .trigger {
-      background:#f0fff4; border:1px solid #c3f0d8;
-      border-radius:8px; padding:.75rem 1rem;
-      font-size:.95rem; color:#236e3f;
-      flex:1 1 140px;
-    }
-    .trigger.urgency {
-      background:#fff4e5; border-color:#ffd8a8; color:#a85c00;
-    }
+    #agreement{display:flex;justify-content:center;padding:3rem 1rem;background:#eaf8ea}
+    .agreement-card{background:#fff;border-radius:16px;box-shadow:0 12px 24px rgba(0,0,0,.08);
+                    padding:5.5rem 2rem 2rem;max-width:500px;text-align:center;position:relative;overflow:hidden}
+    .agreement-card::before{content:'✓';position:absolute;top:8px;left:50%;transform:translate(-50%);
+                             font-size:4rem;color:#28a745;background:#eaf8ea;width:80px;height:80px;line-height:80px;
+                             border-radius:50%;box-shadow:0 4px 8px rgba(0,0,0,.1)}
+    .agreement-card h3{margin-top:.5rem;font-size:1.75rem;color:#28a745}
+    .agreement-card p{margin:1rem 0;color:#555;line-height:1.6}
+    .agreement-triggers{display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;margin-top:1.5rem}
+    .trigger{background:#f0fff4;border:1px solid #c3f0d8;border-radius:8px;padding:.75rem 1rem;font-size:.95rem;color:#236e3f;
+             flex:1 1 140px}
+    .trigger.urgency{background:#fff4e5;border-color:#ffd8a8;color:#a85c00}
 
     /* ===== FAQ ===== */
-    #faq { padding:2rem 1rem; text-align:center }
-    #faq h3 { margin-bottom:1rem }
-    .q { max-width:800px; margin:.5rem auto }
-    .question { font-weight:bold }
-    .answer   { margin-left:1rem; color:#555 }
+    #faq{padding:2rem 1rem;text-align:center}
+    #faq h3{margin-bottom:1.5rem;font-size:2rem;color:#222}
+    .faq-item{max-width:800px;margin:0.75rem auto;border:1px solid #ddd;border-radius:8px;overflow:hidden;text-align:left}
+    .faq-q{padding:1rem;font-weight:bold;background:#f5f5f5;cursor:pointer;position:relative}
+    .faq-q::after{content:'+';position:absolute;right:16px;top:50%;transform:translateY(-50%);font-size:1.25rem}
+    .faq-a{padding:1rem;color:#555;display:none;border-top:1px solid #ddd}
+    .faq-item.open .faq-a{display:block}
+    .faq-item.open .faq-q::after{content:'–'}
+
+    /* CTA final & disclaimer */
+    .bottom-cta-wrapper{text-align:center;padding:2rem 1rem}
+    .disclaimer{font-size:.75rem;color:#888;max-width:800px;margin:1rem auto 0;line-height:1.4}
 
   </style>
 </head>
@@ -291,41 +136,26 @@
   </section>
 
   <!-- 2. LEAD -->
-  <section id="lead">
+  <section id="lead" class="hidden">
     <h2>Você está cansado de ver seu sucesso escapar pelas mãos?</h2>
     <p>
-      Se já sentiu aquela angústia toda vez que entra no gráfico e seu medo fala mais alto, 
+      Se já sentiu aquela angústia toda vez que entra no gráfico e o medo fala mais alto,
       continue aqui: eu vou lhe mostrar exatamente como sair desse ciclo e operar com confiança.
     </p>
   </section>
 
   <!-- 3. HISTÓRIA -->
-  <section id="story">
+  <section id="story" class="hidden">
     <h2>Como eu passei da incerteza ao controle total das minhas operações</h2>
-    <p>
-      Há alguns anos, eu acordava com o coração acelerado só de pensar em abrir uma ordem. 
-      Meus primeiros resultados eram tão ruins que eu chegava a duvidar de mim mesmo — 
-      e o pior: perdia noites de sono remoendo cada centavo.
-    </p>
-    <p>
-      Eu sabia que não estava sozinho. Vi colegas brilhantes virarem estatísticas de falhas 
-      porque faltava um plano claro. Foi aí que comecei a buscar fórmulas consagradas de 
-      gestão de risco e mindset de traders de elite. Testei dezenas de planilhas e técnicas, 
-      mas nenhuma “encaixava” de verdade no meu dia a dia — até eu juntar aquilo que 
-      realmente importava.
-    </p>
-    <p>
-      Em um fim de semana decisivo, peguei tudo que havia aprendido (e perdido) e 
-      criei meu próprio método: <strong>Clareza Emocional + Gestão de Risco + Disciplina</strong>. 
-      Ao colocar em prática, minhas perdas despencaram 70% em apenas duas semanas. 
-      A ansiedade deu lugar à confiança e, pela primeira vez, eu operava com a mente de um 
-      vencedor — não de um amador.
-    </p>
-    <p>
-      Hoje, compartilho essa mesma jornada com você. Se você se reconheceu em cada linha 
-      desse relato, saiba que o próximo passo é só adotar um processo testado — e é isso 
-      que vem a seguir.
-    </p>
+    <p>Há alguns anos, eu acordava com o coração acelerado só de pensar em abrir uma ordem.
+       Meus primeiros resultados eram tão ruins que eu chegava a duvidar de mim mesmo —
+       e o pior: perdia noites de sono remoendo cada centavo.</p>
+    <p>Eu sabia que não estava sozinho. Vi colegas brilhantes virarem estatísticas de falhas
+       porque faltava um plano claro. Foi aí que comecei a buscar fórmulas consagradas de
+       gestão de risco e mindset de traders de elite...</p>
+    <p>Hoje, compartilho essa mesma jornada com você. Se você se reconheceu em cada linha
+       desse relato, saiba que o próximo passo é só adotar um processo testado — e é isso
+       que vem a seguir.</p>
   </section>
 
   <!-- 4. PITCH -->
@@ -385,7 +215,7 @@
     <div class="offer-cards">
       <div class="card" tabindex="0">
         <h4>eBook Completo</h4>
-        <p class="desc">Um e-book que vai te ajudar a entender o gerenciamento de risco.</p>
+        <p class="desc">Um e‑book que vai te ajudar a entender o gerenciamento de risco.</p>
         <p class="old-price"><del>R$ 97</del></p>
       </div>
       <div class="card" tabindex="0">
@@ -415,9 +245,8 @@
   <section id="agreement" class="hidden">
     <div class="agreement-card">
       <h3>Garantia Incondicional de 7 Dias</h3>
-      <p>
-        Experimente o método completo sem riscos: se não ficar 100% satisfeito, basta pedir seu reembolso integral em até 7 dias.
-      </p>
+      <p>Experimente o método completo sem riscos: se não ficar 100% satisfeito, basta pedir
+         seu reembolso integral em até 7 dias.</p>
       <div class="agreement-triggers">
         <div class="trigger">✅ Sem perguntas</div>
         <div class="trigger">✅ Processamento imediato</div>
@@ -430,52 +259,84 @@
   <!-- 9. FAQ -->
   <section id="faq" class="hidden">
     <h3>Perguntas Frequentes</h3>
-    <div class="q">
-      <p class="question">Funciona para iniciantes?</p>
-      <p class="answer">Sim — explicamos tudo do zero.</p>
+
+    <div class="faq-item">
+      <div class="faq-q">Funciona para iniciantes?</div>
+      <div class="faq-a">Sim — explicamos tudo do zero.</div>
     </div>
-    <div class="q">
-      <p class="question">Preciso de software especial?</p>
-      <p class="answer">Não — só Excel ou Google Sheets.</p>
+
+    <div class="faq-item">
+      <div class="faq-q">Preciso de software especial?</div>
+      <div class="faq-a">Não — basta Excel ou Google Sheets.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Tenho garantia mesmo?</div>
+      <div class="faq-a">Claro! Você tem 7 dias para testar e, se não curtir, recebe 100% do seu dinheiro.</div>
     </div>
   </section>
 
+  <!-- CTA final + disclaimer -->
+  <div class="bottom-cta-wrapper hidden">
+    <button class="cta">SIM, QUERO COMEÇAR AGORA</button>
+    <p class="disclaimer">
+      Disclaimer: resultados variam de pessoa para pessoa. Nenhuma informação apresentada constitui
+      recomendação de investimento. Operações em renda variável envolvem riscos.
+    </p>
+  </div>
+
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // 1) Delay do CTA + revelação das sections
+
+      /* ========= 1. Liberação de scroll e revelação das seções ========= */
+      const releaseScroll = () => document.body.style.overflow = 'auto';
+      const showHiddenSections = () =>
+        document.querySelectorAll('.hidden').forEach(sec => sec.classList.remove('hidden'));
+
+      /* Exibe CTA aos 5 s, libera todo o resto aos 7 s */
       setTimeout(() => {
-        document.getElementById('cta-btn').style.opacity = '1';
-        document.getElementById('cta-btn').style.pointerEvents = 'auto';
-        setTimeout(() => {
-          document.querySelectorAll('section.hidden').forEach(s => s.classList.remove('hidden'));
-        }, 2000);
+        const btn = document.getElementById('cta-btn');
+        btn.style.opacity = '1';
+        btn.style.pointerEvents = 'auto';
+
+        /* 2 s depois do botão, libera conteúdo e scroll */
+        setTimeout(() => { showHiddenSections(); releaseScroll(); }, 2000);
       }, 5000);
 
-      // 2) Carrossel infinito suave
+      /* Bloqueia wheel/touch enquanto overflow hidden */
+      const block = e => { if (document.body.style.overflow === 'hidden') e.preventDefault(); };
+      window.addEventListener('wheel', block, { passive:false });
+      window.addEventListener('touchmove', block, { passive:false });
+
+      /* ========= 2. Carrossel infinito de depoimentos ========= */
       const track = document.querySelector('.carousel-track');
       if (track) {
         const cards = Array.from(track.children);
         const style = getComputedStyle(cards[0]);
         const marginLR = parseFloat(style.marginLeft) + parseFloat(style.marginRight);
         const cardW = cards[0].getBoundingClientRect().width + marginLR;
-        const firstClone = cards[0].cloneNode(true);
-        track.appendChild(firstClone);
+        track.appendChild(cards[0].cloneNode(true)); // clone 1º p/ loop
 
-        let index = 0;
+        let idx = 0;
         function goNext() {
-          index++;
+          idx++;
           track.style.transition = 'transform .5s ease';
-          track.style.transform = `translateX(-${index * cardW}px)`;
+          track.style.transform = `translateX(-${idx * cardW}px)`;
         }
         track.addEventListener('transitionend', () => {
-          if (index === cards.length) {
+          if (idx === cards.length) {
             track.style.transition = 'none';
-            index = 0;
+            idx = 0;
             track.style.transform = 'translateX(0)';
           }
         });
         setInterval(goNext, 4000);
       }
+
+      /* ========= 3. FAQ accordion ========= */
+      document.querySelectorAll('.faq-q').forEach(q => {
+        q.addEventListener('click', () => q.parentElement.classList.toggle('open'));
+      });
     });
   </script>
 </body>
