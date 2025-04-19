@@ -1,385 +1,240 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Trader Seguro – Proteja Sua Conta</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <style>
-    /* reset */
-    * { margin:0; padding:0; box-sizing:border-box }
-    body { font-family:Arial,sans-serif; color:#333 }
-    section, footer { opacity:1; transition:opacity .5s ease }
+<meta charset="UTF-8">
+<title>Trader Seguro – Método Sem Medo</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+/* ========== RESET & BASE ========== */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial,Helvetica,sans-serif;color:#333;line-height:1.55;overflow:hidden}
+section{width:100%;padding:3rem 1rem;opacity:1;transition:opacity .6s ease}
+img{display:block;max-width:100%}
+h2{font-size:1.9rem;margin-bottom:1rem;color:#222}
 
-    /* HERO */
-    .hero {
-      display:flex; flex-direction:column;
-      justify-content:center; align-items:center;
-      background:#fbfcfd; min-height:100vh;
-      padding:2rem 1rem; text-align:center;
-    }
-    .hero h1 { font-size:2.25rem; margin-bottom:.5rem }
-    .hero p.sub { font-size:1.125rem; margin-bottom:1.5rem; color:#555 }
-    .hero .video-container {
-      width:100%; max-width:640px; margin-bottom:1.5rem;
-    }
-    .hero iframe { width:100%; height:360px; border:none }
+/* ========== HERO ========== */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:#fbfcfd;padding:2.5rem 1rem}
+.hero .sub{font-size:1.35rem;color:#0d47a1;margin-bottom:1.5rem;max-width:600px}
+.hero .video-wrap{width:100%;max-width:640px;margin:0 auto}
+.hero iframe{width:100%;height:360px;border:none}
+#cta-btn{margin-top:1.8rem;padding:.9rem 2rem;font-size:1rem;border:none;border-radius:6px;background:#007bff;color:#fff;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .4s ease}
+#cta-btn.pulse{animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
 
-    /* botão inicial: invisível até 5s */
-    #cta-btn {
-      opacity:0; pointer-events:none;
-      padding:.8rem 1.6rem; font-size:1rem;
-      background:#007bff; color:#fff; border:none;
-      border-radius:4px; cursor:pointer;
-      animation: pulse 2s infinite ease-in-out;
-      transition:opacity .3s ease, pointer-events .3s;
-    }
-    @keyframes pulse {
-      0%,100%{ transform:scale(1) }
-      50%   { transform:scale(1.05) }
-    }
+/* ========== DELAYED SECTIONS (invisíveis até 7 s) ========== */
+.delayed{opacity:0;pointer-events:none}
 
-    /* LEAD */
-    #lead {
-      text-align:center;
-      padding:3rem 1rem;
-      background:#f9f9f9;
-    }
-    #lead h2 { font-size:1.75rem; color:#222; margin-bottom:1rem; }
-    #lead p  { font-size:1rem; color:#555; max-width:600px; margin:0 auto; line-height:1.6; }
+/* ========== STORY ========== */
+#story p{max-width:700px;margin:.75rem auto;text-align:left;color:#555}
 
-    /* STORY */
-    #story {
-      text-align:center;
-      padding:3rem 1rem;
-    }
-    #story h2 { font-size:1.75rem; color:#222; margin-bottom:1.5rem; }
-    #story p  { font-size:1rem; color:#555; max-width:700px; margin:0.75rem auto; line-height:1.6; text-align:left; }
+/* ========== FEATURES / O QUE VAI RECEBER ========== */
+.features h2{text-align:center}
+.cards{display:flex;flex-wrap:wrap;justify-content:center;gap:24px;margin-top:2rem}
+.card{width:280px;background:#fff;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.08);padding:1.25rem;transition:transform .3s,box-shadow .3s;cursor:default}
+.card:hover{transform:translateY(-8px);box-shadow:0 12px 22px rgba(0,0,0,.12)}
+.card h3{font-size:1.25rem;color:#0d47a1;margin:1rem 0 .5rem}
+.card p{color:#555}
 
-    /* FEATURES */
-    .features-section {
-      padding:60px 20px; background:#fafafa; text-align:center
-    }
-    .features-section h2 { font-size:2.5rem; margin-bottom:40px; color:#222 }
-    .cards {
-      display:flex; flex-wrap:wrap; justify-content:center; gap:24px;
-    }
-    .card {
-      background:#fff; border-radius:12px;
-      box-shadow:0 4px 8px rgba(0,0,0,0.1);
-      overflow:hidden; width:280px;
-      transition:transform .3s,box-shadow .3s;
-    }
-    .card:hover {
-      transform:translateY(-10px);
-      box-shadow:0 12px 20px rgba(0,0,0,0.15);
-    }
-    .card img { width:100%; height:auto; display:block }
-    .card h3  { margin:16px; color:#0d47a1; font-size:1.25rem }
-    .card p   { margin:0 16px 24px; color:#555; font-size:1rem; line-height:1.4 }
+/* ========== TESTIMONIALS ========== */
+.testimonials{text-align:center;background:#f9f9f9}
+.carousel{overflow:hidden;max-width:960px;margin:0 auto}
+.track{display:flex;gap:24px;transition:transform .55s ease}
+.t-card{flex:0 0 280px;background:#fff;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,.08);padding:1.5rem;text-align:left}
+.t-card .txt{margin-bottom:1rem}
+.t-card .name{font-weight:bold;color:#0d47a1}
 
-    /* TESTIMONIALS */
-    .testimonials-section {
-      padding:80px 20px; background:#f9f9f9; text-align:center
-    }
-    .testimonials-section h2 { font-size:2.5rem; margin-bottom:40px; color:#222 }
-    .testimonial-carousel { overflow:hidden; margin:0 auto; }
-    .carousel-track {
-      display:flex; transition:transform .5s ease;
-    }
-    .testimonial-card {
-      flex:0 0 300px; margin:0 15px;
-      background:#fff; border-radius:12px;
-      box-shadow:0 4px 12px rgba(0,0,0,0.08);
-      padding:24px; text-align:left;
-    }
-    .testimonial-card .text { color:#555; margin-bottom:16px; line-height:1.5 }
-    .testimonial-card .testimonial-name { font-weight:bold; color:#0d47a1 }
+/* ========== STACK / OFERTA ========== */
+.offer{text-align:center}
+.stack{display:flex;justify-content:center;align-items:flex-end;margin:2.5rem 0}
+.stack .card{width:220px;background:#fff;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,.08);padding:1.2rem;text-align:left;transition:.3s}
+.stack .card+ .card{margin-left:-60px}
+.stack .card:hover{transform:translateY(-6px) scale(1.05);z-index:10}
+.final{background:#007bff;color:#fff;padding:2rem 1rem!important;z-index:5}
+.final .new{font-size:2.5rem;font-weight:700;margin:0}
 
-    /* OFFER */
-    #offer {
-      padding:3rem 1rem; text-align:center
-    }
-    #offer h3 {
-      font-size:2rem; margin-bottom:2.5rem; color:#222
-    }
-    .offer-cards { display:flex; justify-content:center; align-items:flex-end; margin-bottom:2.5rem }
-    .offer-cards .card {
-      background:#fff; border-radius:12px;
-      box-shadow:0 8px 20px rgba(0,0,0,0.08);
-      padding:1rem; width:220px; text-align:left;
-      transition:transform .3s,box-shadow .3s;
-      cursor:pointer;
-    }
-    .offer-cards .card + .card { margin-left:-60px }
-    .offer-cards .card:hover {
-      transform:translateY(-5px) scale(1.05);
-      box-shadow:0 12px 28px rgba(0,0,0,0.15);
-      z-index:10;
-    }
-    .final-price-card {
-      z-index:6; margin-left:-60px;
-      background:#007bff; color:#fff;
-      padding:2rem 1rem; min-height:180px;
-      display:flex; flex-direction:column;
-      align-items:center; justify-content:center;
-    }
-    .final-price-card .today { margin:0 0 .5rem; font-size:1rem }
-    .final-price-card .new-price { margin:0; font-size:2.5rem; font-weight:bold }
+/* ========== CTA GENÉRICO ========== */
+.btn{display:inline-block;padding:.9rem 2rem;font-size:1.05rem;border:none;border-radius:8px;background:#28a745;color:#fff;cursor:pointer;transition:background .25s}
+.btn:hover{background:#218838}
 
-    .cta {
-      background:#28a745; color:#fff; font-size:1.125rem;
-      padding:.75rem 2rem; border:none; border-radius:8px;
-      cursor:pointer; transition:background .3s,transform .2s;
-    }
-    .cta:hover { background:#218838; transform:translateY(-2px) }
+/* ========== AGREEMENT / GARANTIA ========== */
+#agreement{background:#eaf8ea;display:flex;justify-content:center}
+.ag-card{position:relative;background:#fff;border-radius:16px;box-shadow:0 10px 22px rgba(0,0,0,.1);padding:6rem 2rem 2rem;max-width:480px;text-align:center}
+.ag-card::before{content:'✓';position:absolute;top:-40px;left:50%;transform:translateX(-50%);background:#28a745;color:#fff;width:80px;height:80px;line-height:80px;font-size:2.5rem;border-radius:50%}
+.triggers{display:flex;flex-wrap:wrap;gap:.75rem;justify-content:center;margin-top:1rem}
+.trigger{flex:1 1 120px;background:#f0fff4;border:1px solid #c3f0d8;padding:.7rem;border-radius:8px;font-size:.9rem;color:#236e3f;text-align:center}
+.trigger.urg{background:#fff4e5;border-color:#ffd8a8;color:#a85c00}
 
-    /* AGREEMENT */
-    #agreement {
-      display:flex; justify-content:center;
-      padding:3rem 1rem; background:#eaf8ea;
-    }
-    .agreement-card {
-      background:#fff; border-radius:16px;
-      box-shadow:0 12px 24px rgba(0,0,0,0.08);
-      padding:5.5rem 2rem 2rem;
-      max-width:500px; text-align:center;
-      position:relative;
-    }
-    .agreement-card::before {
-      content:'✓'; position:absolute;
-      top:8px; left:50%; transform:translateX(-50%);
-      font-size:4rem; color:#28a745;
-      background:#eaf8ea; width:80px; height:80px;
-      line-height:80px; border-radius:50%;
-      box-shadow:0 4px 8px rgba(0,0,0,0.1);
-    }
-    .agreement-card h3 { margin-top:.5rem; font-size:1.75rem; color:#28a745 }
-    .agreement-card p  { margin:1rem 0; color:#555; line-height:1.6 }
-    .agreement-triggers {
-      display:flex; flex-wrap:wrap; justify-content:center; gap:1rem; margin-top:1.5rem;
-    }
-    .trigger {
-      background:#f0fff4; border:1px solid #c3f0d8;
-      border-radius:8px; padding:.75rem 1rem;
-      font-size:.95rem; color:#236e3f;
-      flex:1 1 140px;
-    }
-    .trigger.urgency {
-      background:#fff4e5; border-color:#ffd8a8; color:#a85c00;
-    }
+/* ========== FAQ ========== */
+#faq{background:#f9f9f9;text-align:center}
+#faq details{background:#fff;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.05);margin-bottom:1rem;padding:1rem 1.4rem}
+#faq summary{cursor:pointer;font-weight:700;font-size:1.1rem;color:#007bff;list-style:none;text-align:center}
+#faq summary::-webkit-details-marker{display:none}
+#faq p{margin:.7rem 0;text-align:left;color:#555}
 
-    /* FAQ */
-    #faq {
-      background:#f9f9f9; padding:3rem 1rem; text-align:center;
-    }
-    #faq h3 {
-      font-size:1.75rem; color:#222; margin-bottom:1.5rem;
-    }
-    #faq details {
-      background:#fff; border-radius:8px;
-      box-shadow:0 2px 8px rgba(0,0,0,0.05);
-      margin-bottom:1rem; padding:1rem 1.5rem;
-    }
-    #faq summary {
-      cursor:pointer; font-weight:bold;
-      font-size:1.125rem; color:#007bff;
-      list-style:none; text-align:center;
-    }
-    #faq summary::-webkit-details-marker { display:none }
-    #faq p {
-      margin:0.75rem 0; color:#555; line-height:1.6; font-size:1rem;
-    }
+/* ========== FINAL PUSH ========== */
+#final{background:#f0f8ff;text-align:center}
+#final p{margin-bottom:1.5rem;font-size:1.15rem;font-weight:600;color:#0d47a1}
+#final .btn{background:#007bff}
+#final .btn:hover{background:#0069d9}
 
-    /* FINAL PUSH */
-    #final-push {
-      padding:3rem 1rem; text-align:center;
-      background:#f0f8ff; margin-top:2rem;
-    }
-    .push-cta {
-      background:#007bff; color:#fff; font-size:1.125rem;
-      padding:.75rem 2rem; border:none; border-radius:8px;
-      cursor:pointer; transition:transform .3s;
-    }
-    .push-cta:hover {
-      transform:translateY(-2px);
-    }
-
-    /* FOOTER */
-    footer {
-      background:#f9f9f9; padding:2rem 1rem;
-      text-align:center; font-size:.875rem; color:#555;
-    }
-  </style>
+/* ========== FOOTER ========== */
+footer{font-size:.85rem;padding:1.8rem 1rem;text-align:center;background:#fafafa;color:#555}
+</style>
 </head>
 <body>
 
-  <!-- 1. HERO -->
-  <section class="hero">
-    <h1>Proteja sua conta e opere sem medo</h1>
-    <p class="sub">O método que mudou o jogo do Rafael em 1 minuto</p>
-    <div class="video-container">
-      <iframe src="https://www.youtube.com/embed/SEU_VIDEO_ID" allowfullscreen></iframe>
+<!-- HERO ================================================= -->
+<section class="hero">
+  <p class="sub">“O método que mudou o meu jogo em apenas 1 minuto por dia”</p>
+  <div class="video-wrap">
+    <iframe src="https://www.youtube.com/embed/SEU_VIDEO_ID" allowfullscreen></iframe>
+  </div>
+  <button id="cta-btn">Quero proteger minha conta</button>
+</section>
+
+<!-- RESTANTE DA PÁGINA (delayed) ========================= -->
+<section id="lead" class="delayed">
+  <h2>Por que a maioria dos traders perde dinheiro mesmo acertando análises?</h2>
+  <p style="max-width:600px;margin:0 auto;color:#555">
+    Porque ignoram gestão emocional e de risco. Aqui você descobre o processo completo
+    para operar sem medo, proteger seu capital e colher lucros consistentes.
+  </p>
+</section>
+
+<section id="story" class="delayed">
+  <h2>Minha jornada do terror no gráfico à confiança total</h2>
+  <p>Eu era o cara que fechava a plataforma quando via o candle vermelho… (conte sua história)</p>
+  <p>Depois de <strong>23 stops consecutivos</strong> eu decidi que precisava de um sistema… (continue)</p>
+</section>
+
+<section class="features delayed">
+  <h2>O que você vai receber</h2>
+  <div class="cards">
+    <div class="card">
+      <img src="img/risk.png" alt="">
+      <h3>Planilha de Gestão de Risco</h3>
+      <p>Defina lote ideal e nunca mais estoure a banca.</p>
     </div>
-    <button id="cta-btn">Quero proteger minha conta</button>
-  </section>
-
-  <!-- 2. LEAD -->
-  <section id="lead">
-    <h2>Você está cansado de ver seu sucesso escapar pelas mãos?</h2>
-    <p>
-      Se já sentiu aquela angústia toda vez que entra no gráfico e seu medo fala mais alto, 
-      continue aqui: eu vou lhe mostrar exatamente como sair desse ciclo e operar com confiança.
-    </p>
-  </section>
-
-  <!-- 3. STORY -->
-  <section id="story">
-    <h2>Como eu passei da incerteza ao controle total das minhas operações</h2>
-    <p>… [aqui vai seu texto completo da história] …</p>
-  </section>
-
-  <!-- 4. FEATURES -->
-  <section class="features-section">
-    <h2>O que você vai receber</h2>
-    <div class="cards">
-      <!-- ex.: -->
-      <div class="card">
-        <img src="img/icone1.png" alt="…">
-        <h3>Gestão de risco</h3>
-        <p>Aprenda a proteger cada operação…</p>
-      </div>
-      <!-- repita para cada card -->
+    <div class="card">
+      <img src="img/diario.png" alt="">
+      <h3>Diário de Trades Automático</h3>
+      <p>Identifique padrões de erro em 3 cliques.</p>
     </div>
-  </section>
-
-  <!-- 5. TESTIMONIALS -->
-  <section class="testimonials-section">
-    <h2>O que dizem nossos alunos</h2>
-    <div class="testimonial-carousel">
-      <div class="carousel-track">
-        <!-- ex.: -->
-        <div class="testimonial-card">
-          <p class="text">“Eu nunca mais senti medo no book…”</p>
-          <p class="testimonial-name">— Ana, SP</p>
-        </div>
-        <!-- repita -->
-      </div>
+    <div class="card">
+      <img src="img/aulas.png" alt="">
+      <h3>Aulas Rápidas (1 min)</h3>
+      <p>Vídeos diretos para aplicar antes da próxima operação.</p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- 6. OFFER -->
-  <section id="offer">
-    <h3>Este pacote vale na prática <strong>R$ 211</strong>, mas hoje custa</h3>
-    <div class="offer-cards">
-      <div class="card">
-        <h4>Bônus #1</h4>
-        <p class="desc">Planilha automática de risco</p>
-        <p class="old-price">R$ 97</p>
+<section class="testimonials delayed">
+  <h2>Histórias dos nossos alunos</h2>
+  <div class="carousel">
+    <div class="track" id="track">
+      <div class="t-card">
+        <p class="txt">“Saí do drawdown de –12 % para +7 % em 14 dias.”</p>
+        <p class="name">— Carol M.</p>
       </div>
-      <div class="card">
-        <h4>Bônus #2</h4>
-        <p class="desc">Checklist de setup</p>
-        <p class="old-price">R$ 57</p>
+      <div class="t-card">
+        <p class="txt">“Nunca mais fechei o MetaTrader chorando… agora sei o quanto posso arriscar.”</p>
+        <p class="name">— Diego S.</p>
       </div>
-      <div class="card final-price-card">
-        <p class="today">Hoje por apenas</p>
-        <p class="new-price">R$ 47</p>
+      <div class="t-card">
+        <p class="txt">“Os vídeos de 1 min salvaram minha cabeça. Bate‑meta e encerra!”</p>
+        <p class="name">— Paulo R.</p>
       </div>
     </div>
-    <button class="cta">QUERO ACESSAR AGORA</button>
-  </section>
+  </div>
+</section>
 
-  <!-- 7. AGREEMENT -->
-  <section id="agreement">
-    <div class="agreement-card">
-      <h3>Garantia Incondicional de 7 Dias</h3>
-      <p>Teste sem riscos. Se não gostar, devolvemos 100% do seu investimento.</p>
-      <div class="agreement-triggers">
-        <div class="trigger">✅ Sem perguntas</div>
-        <div class="trigger">✅ Processamento imediato</div>
-        <div class="trigger">✅ Seu investimento protegido</div>
-        <div class="trigger urgency">⏳ Oferta por tempo limitado</div>
-      </div>
+<section class="offer delayed">
+  <h2>Todo esse pacote custa R$ 211 — mas hoje sai por:</h2>
+  <div class="stack">
+    <div class="card">
+      <h4>Bônus #1</h4><p>Planilha de risco</p><p><s>R$ 97</s></p>
     </div>
-  </section>
+    <div class="card">
+      <h4>Bônus #2</h4><p>Checklist de setups</p><p><s>R$ 57</s></p>
+    </div>
+    <div class="card final">
+      <p class="today" style="margin-bottom:.4rem">HOJE por apenas</p>
+      <p class="new">R$ 47</p>
+    </div>
+  </div>
+  <button class="btn">QUERO ACESSAR AGORA</button>
+</section>
 
-  <!-- 8. FAQ -->
-  <section id="faq">
-    <h3>Perguntas Frequentes</h3>
-    <details>
-      <summary>Funciona para quem está começando?</summary>
-      <p>Sim! Nosso método foi pensado justamente para traders de todos os níveis.</p>
-    </details>
-    <details>
-      <summary>Preciso de software caro?</summary>
-      <p>Não. Todo o conteúdo roda em Excel ou Google Sheets.</p>
-    </details>
-    <details>
-      <summary>Em quanto tempo verei resultados?</summary>
-      <p>Você nota mudanças já na primeira semana.</p>
-    </details>
-    <details>
-      <summary>Posso usar em qualquer ativo?</summary>
-      <p>Sim. Gestão de risco e clareza emocional valem para qualquer mercado.</p>
-    </details>
-    <details>
-      <summary>Qual a garantia?</summary>
-      <p>7 dias incondicionais, sem perguntas.</p>
-    </details>
-    <details>
-      <summary>Tenho pouco tempo — vale a pena?</summary>
-      <p>Você aplica em apenas 10–15 minutos diários.</p>
-    </details>
-    <details>
-      <summary>Fica obsoleto?</summary>
-      <p>Não. Mindset, disciplina e risco são atemporais.</p>
-    </details>
-  </section>
+<section id="agreement" class="delayed">
+  <div class="ag-card">
+    <h3>Garantia incondicional de 7 dias</h3>
+    <p>Se não amar, devolvemos 100 % do seu investimento. Sem letras miúdas.</p>
+    <div class="triggers">
+      <div class="trigger">Devolução automática</div>
+      <div class="trigger">Sem perguntas</div>
+      <div class="trigger urg">Oferta limitada</div>
+    </div>
+  </div>
+</section>
 
-  <!-- 9. PUSH FINAL -->
-  <section id="final-push">
-    <p>Se você chegou até aqui, sabe que operar sem medo é só questão de processo.</p>
-    <button class="push-cta">Quero Começar Agora</button>
-  </section>
+<section id="faq" class="delayed">
+  <h2>Perguntas Frequentes</h2>
+  <details><summary>Funciona para iniciantes?</summary><p>Sim, começamos do zero.</p></details>
+  <details><summary>Preciso de sistemas caros?</summary><p>Não, só Excel/Sheets gratuito.</p></details>
+  <details><summary>Quanto tempo até ver resultado?</summary><p>Muitos relatam evolução em 7 dias.</p></details>
+</section>
 
-  <!-- 10. FOOTER / DISCLAIMER -->
-  <footer>
-    <p>Trader Seguro © 2025. Todos os direitos reservados.</p>
-    <p>Este site não pertence, não é afiliado e não é vinculado ao Grupo Meta.</p>
-  </footer>
+<section id="final" class="delayed">
+  <p>Se você chegou até aqui, sabe que operar sem medo é só questão de processo.</p>
+  <button class="btn">Começar agora</button>
+</section>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // delay para mostrar o botão inicial
-      setTimeout(() => {
-        const btn = document.getElementById('cta-btn');
-        btn.style.opacity = '1';
-        btn.style.pointerEvents = 'auto';
-      }, 5000);
+<footer>
+  Trader Seguro © 2025. Todos os direitos reservados.<br>
+  Este site não é afiliado ao Grupo Meta.
+</footer>
 
-      // carrossel dos depoimentos
-      const track = document.querySelector('.carousel-track');
-      if (track) {
-        const cards = Array.from(track.children);
-        const gap = 30; // ajuste se mudar a margin
-        const w = cards[0].getBoundingClientRect().width + gap;
-        track.appendChild(cards[0].cloneNode(true));
-        let idx = 0;
-        function next() {
-          idx++;
-          track.style.transition = 'transform .5s ease';
-          track.style.transform = `translateX(-${idx * w}px)`;
-        }
-        track.addEventListener('transitionend', () => {
-          if (idx === cards.length) {
-            track.style.transition = 'none';
-            idx = 0;
-            track.style.transform = 'translateX(0)';
-          }
-        });
-        setInterval(next, 4000);
-      }
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+
+  /*=============== 1. MOSTRA BOTÃO ===============*/
+  const btn = document.getElementById('cta-btn');
+  setTimeout(()=>{
+    btn.style.opacity='1';
+    btn.style.pointerEvents='auto';
+    btn.classList.add('pulse');
+  },5000);
+
+  /*=============== 2. MOSTRA RESTANTE & LIBERA SCROLL ===============*/
+  setTimeout(()=>{
+    document.querySelectorAll('.delayed').forEach(el=>{
+      el.style.opacity='1';
+      el.style.pointerEvents='auto';
     });
-  </script>
+    document.body.style.overflow='auto';
+  },7000);
+
+  /*=============== 3. CARROSSEL DEPOIMENTOS ===============*/
+  const track=document.getElementById('track');
+  const cards=[...track.children];
+  const gap=24;
+  const w=cards[0].getBoundingClientRect().width+gap;
+  track.appendChild(cards[0].cloneNode(true));
+  let i=0;
+  setInterval(()=>{
+    i++;
+    track.style.transform=`translateX(-${i*w}px)`;
+    track.style.transition='transform .55s ease';
+    if(i===cards.length){
+      setTimeout(()=>{
+        track.style.transition='none';
+        track.style.transform='translateX(0)';
+        i=0;
+      },560);
+    }
+  },4000);
+
+});
+</script>
 </body>
 </html>
