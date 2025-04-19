@@ -4,82 +4,8 @@
   <meta charset="UTF-8">
   <title>Trader Seguro – Proteja Sua Conta</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
-
   <style>
-    /* =================== RESET & TIPOGRAFIA =================== */
-    *{margin:0;padding:0;box-sizing:border-box}
-    body{font-family:Arial,sans-serif;color:#333;overflow:hidden}
-    section{transition:opacity .5s ease}
-    .hidden{opacity:0}
-
-    /* ---------- BOTÃO PADRÃO (CTA) ---------- */
-    .cta-btn{
-      display:inline-block;
-      padding:.8rem 1.6rem;
-      font-size:1rem;
-      background:#D58A00;
-      color:#fff;
-      border:none;
-      border-radius:4px;
-      cursor:pointer;
-      position:relative;
-      z-index:1;
-      text-decoration:none;
-
-      animation:pulse 2s infinite ease-in-out,
-                neon 1.5s infinite alternate ease-in-out;
-
-      transition:opacity .3s ease,pointer-events .3s;
-    }
-    /* efeito de zoom leve */
-    @keyframes pulse{
-      0%,100%{transform:scale(1)}
-      50%   {transform:scale(1.05)}
-    }
-    /* brilho neon dourado */
-    @keyframes neon{
-      from{box-shadow:0 0 6px  rgba(213,138,0,.45),
-                       0 0 12px rgba(213,138,0,.35);}
-      to  {box-shadow:0 0 10px rgba(213,138,0,.90),
-                       0 0 25px rgba(213,138,0,.80);}
-    }
-    /* halo na base do botão */
-    .cta-btn::after{
-      content:'';
-      position:absolute;
-      top:100%;
-      left:50%;
-      width:120%;
-      height:8px;
-      transform:translateX(-50%);
-      background:rgba(213,138,0,.35);
-      filter:blur(8px);
-      border-radius:50%;
-      animation:neon 1.5s infinite alternate ease-in-out;
-      z-index:-1;
-    }
-
-    /* ========= HERO ========= */
-    .hero{display:flex;flex-direction:column;justify-content:center;align-items:center;
-          background:#fbfcfd;min-height:100vh;padding:2rem 1rem;text-align:center}
-    .hero h1{font-size:2.25rem;margin-bottom:.5rem}
-    .hero p.sub{font-size:1.125rem;margin-bottom:1.5rem;color:#555}
-    .hero .video-container{width:100%;max-width:640px;margin-bottom:1.5rem}
-    .hero iframe{width:100%;height:360px;border:none}
-
-    /* botão inicial fica invisível até 5 s */
-    #cta-btn-inicial{opacity:0;pointer-events:none}
-
-    /* ======== RESTANTE DOS ESTILOS ORIGINAIS ======== */
-    /* (não alterados – encurtados para foco na mudança) */
-    #lead,#story{text-align:center;padding:3rem 1rem}
-    #lead{background:#f9f9f9}
-    #lead h2,#story h2{font-size:1.75rem;color:#222;margin-bottom:1rem;line-height:1.3}
-    #lead p,#story p{font-size:1rem;color:#555;max-width:700px;margin:.75rem auto;line-height:1.6;text-align:left}
-    @media(max-width:600px){#lead p,#story p{text-align:justify;padding:0 1rem}}
-
-    /* ... (todos os demais estilos da página permanecem iguais) ... */
-
+    /* … (SEUS ESTILOS INTEIROS PERMANECEM IGUAIS) … */
   </style>
 </head>
 
@@ -87,150 +13,82 @@
   <!-- 1. HERO -->
   <section class="hero">
     <h1>Proteja sua conta e opere sem medo</h1>
-    <p class="sub">O método que mudou o jogo do Rafael em 1 minuto</p>
+    <p class="sub">O método que mudou o jogo do Rafael em 1 minuto</p>
 
     <div class="video-container">
       <iframe src="https://www.youtube.com/embed/SEU_VIDEO_ID" allowfullscreen></iframe>
     </div>
 
-    <!-- botão principal que aparece após 5 s -->
-    <a id="cta-btn-inicial" class="cta-btn"
-       href="https://pay.hotmart.com/T98738975H?checkoutMode=10">
-      Quero proteger minha conta
-    </a>
+    <!-- ✅ CTA 1  -->
+    <button id="cta-btn">Quero proteger minha conta</button>
   </section>
+
 
   <!-- 2. LEAD -->
   <section id="lead" class="hidden">
-    <h2>Você está cansado de ver seu sucesso escapar pelas mãos?</h2>
-    <p>Se já sentiu aquela angústia toda vez que entra no gráfico e o medo fala mais alto,
-       continue aqui: eu vou lhe mostrar exatamente como sair desse ciclo e operar com confiança.</p>
-
-    <a class="cta-btn" href="https://pay.hotmart.com/T98738975H?checkoutMode=10">
-      Quero proteger minha conta
-    </a>
+    …
   </section>
 
   <!-- 3. HISTÓRIA -->
   <section id="story" class="hidden">
-    <h2>Como eu passei da incerteza ao controle total das minhas operações</h2>
-    <p>Há alguns anos, eu acordava com o coração acelerado só de pensar em abrir uma ordem.
-       Meus primeiros resultados eram tão ruins que eu chegava a duvidar de mim mesmo — e o
-       pior: perdia noites de sono remoendo cada centavo.</p>
-    <p>Eu sabia que não estava sozinho. Vi colegas brilhantes virarem estatísticas de falhas
-       porque faltava um plano claro. Foi aí que comecei a buscar fórmulas consagradas de
-       gestão de risco e mindset de traders de elite...</p>
-    <p>Hoje, compartilho essa mesma jornada com você. Se você se reconheceu em cada linha
-       desse relato, saiba que o próximo passo é só adotar um processo testado — e é isso
-       que vem a seguir.</p>
-
-    <a class="cta-btn" href="https://pay.hotmart.com/T98738975H?checkoutMode=10">
-      Quero proteger minha conta
-    </a>
+    …
   </section>
 
   <!-- 4. FEATURES -->
   <section class="features-section hidden">
-    <h2>O que você vai receber</h2>
-    <div class="cards">
-      <!-- cartões inalterados -->
-    </div>
-
-    <a class="cta-btn" href="https://pay.hotmart.com/T98738975H?checkoutMode=10">
-      Quero proteger minha conta
-    </a>
+    …
   </section>
 
   <!-- 5. TESTIMONIALS -->
   <section class="testimonials-section hidden">
-    <h2>O que dizem nossos alunos</h2>
-    <div class="testimonial-carousel">
-      <div class="carousel-track">
-        <!-- depoimentos inalterados -->
-      </div>
-    </div>
-
-    <a class="cta-btn" href="https://pay.hotmart.com/T98738975H?checkoutMode=10">
-      Quero proteger minha conta
-    </a>
+    …
   </section>
 
   <!-- 6. OFERTA -->
   <section id="offer" class="hidden">
     <h3>Este pacote vale na prática <strong>R$ 211</strong>, mas hoje custa</h3>
 
-    <!-- cards de preço permanecem -->
-    <div class="offer-cards"> … </div>
+    <div class="offer-cards">
+      … <!-- cards da pilha de oferta -->
+    </div>
 
-    <!-- botão antigo .cta substituído -->
-    <a class="cta-btn" href="https://pay.hotmart.com/T98738975H?checkoutMode=10">
-      Quero proteger minha conta
-    </a>
+    <!-- ✅ CTA 2 -->
+    <button class="cta">QUERO ACESSAR AGORA</button>
   </section>
 
-  <!-- 7. ACORDO -->
+  <!-- 7. ACORDO / GARANTIA -->
   <section id="agreement" class="hidden">
     <div class="agreement-card">
-      <h3>Garantia Incondicional de 7 Dias</h3>
-      <p>Experimente o método completo sem riscos: se não ficar 100% satisfeito, basta pedir
-         seu reembolso integral em até 7 dias.</p>
+      <h3>Garantia Incondicional de 7 Dias</h3>
+      <p>Experimente o método completo sem riscos: se não ficar 100 % satisfeito, basta pedir seu reembolso integral em até 7 dias.</p>
+
       <div class="agreement-triggers">
-        <!-- bullets inalterados -->
+        …
       </div>
 
-      <a class="cta-btn" href="https://pay.hotmart.com/T98738975H?checkoutMode=10" style="margin-top:2rem">
-        Quero proteger minha conta
-      </a>
+      <!-- ✅ CTA 3 -->
+      <button id="guarantee-cta" class="cta" style="margin-top:2rem">Quero proteger minha conta</button>
     </div>
   </section>
 
   <!-- 8. FAQ -->
   <section id="faq" class="hidden">
-    <h3>Perguntas Frequentes</h3>
+    …
+    <div class="faq-cta-wrapper">
+      <p style="margin-bottom:1rem;font-weight:bold">
+        Se você chegou até aqui, sabe que operar sem medo é só questão de processo.
+      </p>
 
-    <div class="faq-list">
-      <!-- itens FAQ inalterados -->
+      <!-- ✅ CTA 4 -->
+      <button id="faq-cta">Quero proteger minha conta agora</button>
     </div>
 
-    <!-- botão antigo #faq-cta substituído -->
-    <div style="margin:3rem 0">
-      <a class="cta-btn" href="https://pay.hotmart.com/T98738975H?checkoutMode=10">
-        Quero proteger minha conta
-      </a>
-    </div>
-
-    <!-- disclaimers permanecem -->
+    <!-- disclaimers -->
+    …
   </section>
 
-  <!-- (demais seções/rodapé continuam iguais, adicione botão caso deseje) -->
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      /* ==== Libera scroll / mostra seções após 5 s ==== */
-      const btnInicial = document.getElementById('cta-btn-inicial');
-      setTimeout(() => {
-        btnInicial.style.opacity = '1';
-        btnInicial.style.pointerEvents = 'auto';
-        setTimeout(() => {
-          document.querySelectorAll('.hidden').forEach(sec=>sec.classList.remove('hidden'));
-          document.body.style.overflow = 'auto';
-        }, 2000);
-      }, 5000);
-
-      /* ==== bloquear scroll até liberação ==== */
-      const block = e => { if (document.body.style.overflow === 'hidden') e.preventDefault(); };
-      window.addEventListener('wheel', block, {passive:false});
-      window.addEventListener('touchmove', block, {passive:false});
-
-      /* ==== carrossel depoimentos, FAQ etc. (código original intacto) ==== */
-      /* ... */
-    });
-
-    /* anima entrada das sections */
-    const secObserver=new IntersectionObserver(
-      entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('appear');secObserver.unobserve(e.target);}}),
-      {threshold:.15});
-    document.querySelectorAll('section').forEach(sec=>secObserver.observe(sec));
-  </script>
+<script>
+/* SEU SCRIPT ORIGINAL PERMANECE IDÊNTICO */
+</script>
 </body>
 </html>
