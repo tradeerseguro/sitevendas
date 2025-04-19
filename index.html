@@ -118,6 +118,69 @@
     .q { max-width:800px; margin:.5rem auto }
     .question { font-weight:bold }
     .answer { margin-left:1rem; color:#555 }
+    <style>
+  /* ==== ESTILOS DA OFERTA ==== */
+  #offer {
+    padding: 2rem 1rem 4rem;
+    text-align: center;
+  }
+  #offer h3 {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: #222;
+  }
+
+  /* Container centralizado para o stack */
+  .offer-stack {
+    position: relative;
+    display: inline-block;
+    padding-top: 4rem; /* espaço pra sombra do card de cima */
+    margin-bottom: 2rem;
+  }
+
+  /* Cards do stack */
+  .stack-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+    padding: 1rem;
+    width: 220px;
+    position: relative;
+    text-align: left;
+    transition: transform .3s, box-shadow .3s;
+  }
+  .stack-card h4 {
+    margin: 0 0 .5rem;
+    font-size: 1.125rem;
+    color: #0d47a1;
+  }
+  .stack-card p {
+    margin: 0;
+    color: #555;
+    font-size: .95rem;
+  }
+
+  /* offsets para empilhar */
+  .stack-card:nth-child(1) { z-index: 4; }
+  .stack-card:nth-child(2) { margin-top: -20px; z-index: 3; }
+  .stack-card:nth-child(3) { margin-top: -40px; z-index: 2; }
+  .stack-card:nth-child(4) { margin-top: -60px; z-index: 1; }
+
+  /* Efeito de hover para destaque */
+  .stack-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+  }
+
+  /* Preço final destacado */
+  .final-price {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #007bff;
+    margin-top: 1rem;
+  }
+</style>
+
   </style>
 </head>
 <body>
@@ -197,113 +260,32 @@
   </section>
 
   <!-- 7. OFERTA -->
- <style>
-  /* ==== ESTILOS DA OFERTA ==== */
-   <!-- 7. OFERTA (Stack de Russell) -->
-  <section id="offer" class="hidden">
-    <h3>Este pacote vale na prática R$ 211, mas hoje custa</h3>
+ <section id="offer" class="hidden">
+  <h3>Este pacote vale na prática R$ 211, mas hoje custa</h3>
 
-    <div class="offer-stack">
-      <div class="stack-card">
-        <h4>eBook Completo</h4>
-        <p><del>R$ 97</del></p>
-      </div>
-      <div class="stack-card">
-        <h4>Planilha Automática</h4>
-        <p><del>R$ 67</del></p>
-      </div>
-      <div class="stack-card">
-        <h4>Clareza Emocional</h4>
-        <p><del>R$ 47</del></p>
-      </div>
-      <div class="stack-card">
-        <h4>Bônus Aulas Extras</h4>
-        <p><del>R$ 0</del></p>
-      </div>
+  <div class="offer-stack">
+    <div class="stack-card">
+      <h4>eBook Completo</h4>
+      <p><del>R$ 97</del></p>
     </div>
-
-    <div class="final-price">
-      <span class="new">R$ 47</span>
+    <div class="stack-card">
+      <h4>Planilha Automática</h4>
+      <p><del>R$ 67</del></p>
     </div>
-  </section>
+    <div class="stack-card">
+      <h4>Clareza Emocional</h4>
+      <p><del>R$ 47</del></p>
+    </div>
+    <div class="stack-card">
+      <h4>Bônus Aulas Extras</h4>
+      <p><del>R$ 0</del></p>
+    </div>
+  </div>
 
-</style>
-#offer {
-  padding:2rem 1rem 4rem;
-  text-align:center;
-}
-#offer h3 {
-  font-size:1.5rem;
-  margin-bottom:2rem;
-  color:#222;
-}
-
-/* Container centralizado para o stack */
-.offer-stack {
-  position: relative;
-  display: inline-block;
-  padding-top: 4rem; /* espaço pra sombra do card de cima */
-  margin-bottom: 2rem;
-}
-
-/* Cards do stack */
-.stack-card {
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.08);
-  padding: 1rem;
-  width: 220px;
-  position: relative;
-  text-align: left;
-  z-index: 10;
-  transition: transform .3s;
-}
-.stack-card h4 {
-  margin: 0 0 .5rem;
-  font-size: 1.125rem;
-  color: #0d47a1;
-}
-.stack-card p {
-  margin: 0;
-  color: #555;
-  font-size: .95rem;
-}
-
-/* offsets para empilhar */
-.stack-card:nth-child(1) { z-index:4; }
-.stack-card:nth-child(2) {
-  margin-top: -20px;
-  z-index:3;
-}
-.stack-card:nth-child(3) {
-  margin-top: -40px;
-  z-index:2;
-}
-.stack-card:nth-child(4) {
-  margin-top: -60px;
-  z-index:1;
-}
-
-/* Efeito de hover para destaque */
-.stack-card:hover {
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 12px 24px rgba(0,0,0,0.12);
-}
-
-/* Preço final destacado */
-.final-price {
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: #007bff;
-}
-.final-price .new {
-  font-size: 2.5rem;
-}
-
-
+  <div class="final-price">
+    R$ 47
+  </div>
 </section>
-
-
   <!-- 8. ACORDO -->
  <style>
   /* ==== ESTILOS DA SEÇÃO ACORDO ==== */
