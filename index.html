@@ -2,14 +2,13 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Trader Seguro – Proteja Sua Conta</title>
+  <title>Trader Seguro – Proteja Sua Conta</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
-
   <style>
     /* reset e tipografia básica */
     * { margin:0; padding:0; box-sizing:border-box }
     body { font-family:Arial,sans-serif; color:#333 }
-    section { transition:opacity .5s ease }
+    section, footer { transition:opacity .5s ease }
     .hidden { opacity:0 }
 
     /* ===== HERO ===== */
@@ -159,7 +158,6 @@
     .testimonial-card .testimonial-name {
       font-weight:bold; color:#0d47a1
     }
-
     @media (max-width:768px) {
       .testimonial-card { flex:0 0 80% }
     }
@@ -200,10 +198,6 @@
       transform:translateY(-5px) scale(1.05);
       box-shadow:0 12px 28px rgba(0,0,0,0.15);
       z-index:10 !important;
-    }
-    @keyframes pulse {
-      0%,100% { box-shadow:0 0 0 0 rgba(0,123,255,0.7) }
-      50%     { box-shadow:0 0 0 20px rgba(0,123,255,0) }
     }
     .final-price-card {
       z-index:6 !important; margin-left:-60px;
@@ -270,12 +264,70 @@
     }
 
     /* ===== FAQ ===== */
-    #faq { padding:2rem 1rem; text-align:center }
-    #faq h3 { margin-bottom:1rem }
-    .q { max-width:800px; margin:.5rem auto }
-    .question { font-weight:bold }
-    .answer   { margin-left:1rem; color:#555 }
+    #faq {
+      background:#f9f9f9;
+      padding:3rem 1rem;
+    }
+    #faq h3 {
+      font-size:1.75rem; color:#222; margin-bottom:1.5rem;
+    }
+    #faq details {
+      background:#fff;
+      border-radius:8px;
+      box-shadow:0 2px 8px rgba(0,0,0,0.05);
+      margin-bottom:1rem;
+      padding:1rem 1.5rem;
+      overflow:hidden;
+    }
+    #faq summary {
+      cursor:pointer;
+      font-weight:bold;
+      font-size:1.125rem;
+      color:#007bff;
+      list-style:none;
+      position:relative;
+      padding-left:1.5em;
+    }
+    #faq summary::-webkit-details-marker { display:none; }
+    #faq summary::before {
+      content:"►";
+      position:absolute; left:0;
+      transition:transform .3s;
+    }
+    #faq details[open] summary::before {
+      transform:rotate(90deg);
+    }
+    #faq p {
+      margin:0.75rem 0 0 1.5em;
+      color:#555;
+      line-height:1.6;
+      font-size:1rem;
+    }
 
+    /* ===== FINAL PUSH ===== */
+    #final-push {
+      padding:3rem 1rem;
+      text-align:center;
+      background:#f0f8ff;
+    }
+    .push-cta {
+      background:#007bff; color:#fff; font-size:1.125rem;
+      padding:.75rem 2rem; border:none; border-radius:8px;
+      cursor:pointer; transition:transform .3s;
+      animation:pulse 2s infinite ease-in-out;
+    }
+    .push-cta:hover {
+      transform:translateY(-2px);
+    }
+
+    /* ===== FOOTER / DISCLAIMER ===== */
+    footer {
+      background:#f9f9f9;
+      padding:2rem 1rem;
+      text-align:center;
+      font-size:.875rem;
+      color:#555;
+    }
   </style>
 </head>
 <body>
@@ -302,51 +354,14 @@
   <!-- 3. HISTÓRIA -->
   <section id="story">
     <h2>Como eu passei da incerteza ao controle total das minhas operações</h2>
-    <p>
-      Há alguns anos, eu acordava com o coração acelerado só de pensar em abrir uma ordem. 
-      Meus primeiros resultados eram tão ruins que eu chegava a duvidar de mim mesmo — 
-      e o pior: perdia noites de sono remoendo cada centavo.
-    </p>
-    <p>
-      Eu sabia que não estava sozinho. Vi colegas brilhantes virarem estatísticas de falhas 
-      porque faltava um plano claro. Foi aí que comecei a buscar fórmulas consagradas de 
-      gestão de risco e mindset de traders de elite. Testei dezenas de planilhas e técnicas, 
-      mas nenhuma “encaixava” de verdade no meu dia a dia — até eu juntar aquilo que 
-      realmente importava.
-    </p>
-    <p>
-      Em um fim de semana decisivo, peguei tudo que havia aprendido (e perdido) e 
-      criei meu próprio método: <strong>Clareza Emocional + Gestão de Risco + Disciplina</strong>. 
-      Ao colocar em prática, minhas perdas despencaram 70% em apenas duas semanas. 
-      A ansiedade deu lugar à confiança e, pela primeira vez, eu operava com a mente de um 
-      vencedor — não de um amador.
-    </p>
-    <p>
-      Hoje, compartilho essa mesma jornada com você. Se você se reconheceu em cada linha 
-      desse relato, saiba que o próximo passo é só adotar um processo testado — e é isso 
-      que vem a seguir.
-    </p>
+    <p>… [texto da sua história] …</p>
   </section>
 
   <!-- 4. PITCH -->
   <section class="features-section hidden">
     <h2>O que você vai receber</h2>
     <div class="cards">
-      <div class="card">
-        <img src="images/ebook-cover.png" alt="eBook Gerenciamento de Risco">
-        <h3>eBook completo</h3>
-        <p>Todo o passo‑a‑passo de gerenciamento de risco em Day Trade.</p>
-      </div>
-      <div class="card">
-        <img src="images/planilha.png" alt="Planilha Automática">
-        <h3>Planilha automática</h3>
-        <p>Registre e calcule o risco de cada operação sem esforço.</p>
-      </div>
-      <div class="card">
-        <img src="images/clareza-emocional.png" alt="Clareza Emocional">
-        <h3>Clareza emocional</h3>
-        <p>Técnicas para controlar o emocional e operar com confiança.</p>
-      </div>
+      <!-- cards aqui -->
     </div>
   </section>
 
@@ -355,26 +370,7 @@
     <h2>O que dizem nossos alunos</h2>
     <div class="testimonial-carousel">
       <div class="carousel-track">
-        <div class="testimonial-card">
-          <p class="text">“Eu nunca mais perdi dinheiro após aplicar o método. Simples, direto e funcional!”</p>
-          <p class="testimonial-name">Mariana R. – RJ</p>
-        </div>
-        <div class="testimonial-card">
-          <p class="text">“Recuperei mais de 80% dos meus prejuízos em apenas uma semana com a planilha.”</p>
-          <p class="testimonial-name">Carlos M. – SP</p>
-        </div>
-        <div class="testimonial-card">
-          <p class="text">“O eBook abriu minha cabeça: agora opero com disciplina e paz de espírito.”</p>
-          <p class="testimonial-name">Ana P. – MG</p>
-        </div>
-        <div class="testimonial-card">
-          <p class="text">“A clareza emocional mudou tudo. Hoje faço trades conscientes e mais lucrativos.”</p>
-          <p class="testimonial-name">Lucas F. – BA</p>
-        </div>
-        <div class="testimonial-card">
-          <p class="text">“Garantia real de 7 dias me deu confiança para testar – e valeu cada centavo!”</p>
-          <p class="testimonial-name">Fernanda G. – RS</p>
-        </div>
+        <!-- depoimentos aqui -->
       </div>
     </div>
   </section>
@@ -383,26 +379,7 @@
   <section id="offer" class="hidden">
     <h3>Este pacote vale na prática <strong>R$ 211</strong>, mas hoje custa</h3>
     <div class="offer-cards">
-      <div class="card" tabindex="0">
-        <h4>eBook Completo</h4>
-        <p class="desc">Um e-book que vai te ajudar a entender o gerenciamento de risco.</p>
-        <p class="old-price"><del>R$ 97</del></p>
-      </div>
-      <div class="card" tabindex="0">
-        <h4>Planilha Automática</h4>
-        <p class="desc">Planilha inteligente para acompanhar seus trades em tempo real.</p>
-        <p class="old-price"><del>R$ 67</del></p>
-      </div>
-      <div class="card" tabindex="0">
-        <h4>Clareza Emocional</h4>
-        <p class="desc">Técnicas de mindfulness para manter o foco na operação.</p>
-        <p class="old-price"><del>R$ 47</del></p>
-      </div>
-      <div class="card" tabindex="0">
-        <h4>Bônus Aulas Extras</h4>
-        <p class="desc">Conteúdos exclusivos para turbinar sua estratégia.</p>
-        <p class="old-price"><del>R$ 0</del></p>
-      </div>
+      <!-- oferta cards -->
       <div class="card final-price-card" tabindex="0">
         <p class="today">Hoje por apenas</p>
         <p class="new-price">R$ 47</p>
@@ -415,9 +392,7 @@
   <section id="agreement" class="hidden">
     <div class="agreement-card">
       <h3>Garantia Incondicional de 7 Dias</h3>
-      <p>
-        Experimente o método completo sem riscos: se não ficar 100% satisfeito, basta pedir seu reembolso integral em até 7 dias.
-      </p>
+      <p>… [texto da garantia] …</p>
       <div class="agreement-triggers">
         <div class="trigger">✅ Sem perguntas</div>
         <div class="trigger">✅ Processamento imediato</div>
@@ -427,126 +402,90 @@
     </div>
   </section>
 
-  <!-- 9. FAQ (acordeão) -->
-<section id="faq" class="hidden" style="padding:2rem 1rem; background:#fff;">
-  <h3 style="text-align:center; font-size:1.75rem; margin-bottom:1.5rem; color:#222;">Perguntas Frequentes</h3>
-  <!-- CSS interno para estilizar o acordeão -->
-  <style>
-    #faq details { margin-bottom:1rem; border-bottom:1px solid #ddd; padding:0.5rem 0; }
-    #faq summary {
-      cursor:pointer; font-weight:bold; font-size:1rem; list-style:none;
-      position:relative; padding-left:1.5em; color:#007bff;
-    }
-    #faq summary::-webkit-details-marker { display:none; }
-    #faq summary::before {
-      content:"►"; position:absolute; left:0; transition:transform .3s;
-    }
-    #faq details[open] summary::before { transform: rotate(90deg); }
-    #faq details p {
-      margin:0.75rem 0 0 1.5em; color:#555; line-height:1.6;
-    }
-  </style>
+  <!-- 9. FAQ -->
+  <section id="faq" class="hidden">
+    <h3>Perguntas Frequentes</h3>
+    <details>
+      <summary>Funciona para quem está começando?</summary>
+      <p>Sim! Nosso método foi pensado justamente para traders de todos os níveis.</p>
+    </details>
+    <details>
+      <summary>Preciso de software caro?</summary>
+      <p>Não. Todo o conteúdo roda em Excel ou Google Sheets.</p>
+    </details>
+    <details>
+      <summary>Em quanto tempo verei resultados?</summary>
+      <p>Você nota mudanças já na primeira semana.</p>
+    </details>
+    <details>
+      <summary>Posso usar em qualquer ativo?</summary>
+      <p>Sim. A gestão de risco e clareza emocional valem para qualquer mercado.</p>
+    </details>
+    <details>
+      <summary>Qual é a garantia?</summary>
+      <p>7 dias incondicionais, sem perguntas.</p>
+    </details>
+    <details>
+      <summary>Tenho pouco tempo — vale a pena?</summary>
+      <p>Você aplica em apenas 10–15 minutos diários.</p>
+    </details>
+    <details>
+      <summary>Isso fica obsoleto?</summary>
+      <p>Não. Mindset, disciplina e risco são atemporais.</p>
+    </details>
+  </section>
 
-  <details>
-    <summary>Funciona para quem está começando?</summary>
-    <p>Sim! Nosso método foi pensado justamente para traders de todos os níveis, desde o zero até o avançado.</p>
-  </details>
+  <!-- 10. PUSH FINAL -->
+  <section id="final-push" class="hidden">
+    <p>Se você chegou até aqui, sabe que operar sem medo é só questão de processo.</p>
+    <button class="push-cta">Quero começar agora</button>
+  </section>
 
-  <details>
-    <summary>Preciso de um software caro ou assinatura adicional?</summary>
-    <p>Não. Tudo o que você precisa já está na planilha e no e‑book, usando apenas Excel ou Google Sheets.</p>
-  </details>
+  <!-- 11. DISCLAIMER -->
+  <footer class="hidden">
+    <p>Trader Seguro © 2025. Todos os direitos reservados.</p>
+    <p>Este site não pertence, não é afiliado e não é vinculado ao Grupo Meta.</p>
+  </footer>
 
-  <details>
-    <summary>Em quanto tempo verei resultados?</summary>
-    <p>Em geral, os alunos começam a sentir mais controle emocional e diminuir perdas já na primeira semana de aplicação.</p>
-  </details>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // trava scroll
+      document.body.style.overflow = 'hidden';
 
-  <details>
-    <summary>Posso usar em qualquer ativo (ações, futuros, cripto)?</summary>
-    <p>Sim. A lógica de gerenciamento de risco e controle emocional vale para qualquer mercado.</p>
-  </details>
+      // delay do CTA original
+      setTimeout(() => {
+        document.getElementById('cta-btn').style.cssText = 'opacity:1;pointer-events:auto;';
+        // revela todo o conteúdo (including footer)
+        setTimeout(() => {
+          document.querySelectorAll('.hidden').forEach(el => el.classList.remove('hidden'));
+          document.body.style.overflow = '';
+        }, 2000);
+      }, 5000);
 
-  <details>
-    <summary>Qual é a garantia de reembolso?</summary>
-    <p>Garantia incondicional de 7 dias. Se não for pra você, devolvemos 100% do investimento.</p>
-  </details>
-
-  <details>
-    <summary>Tenho pouco tempo por dia — vale a pena?</summary>
-    <p>Nosso método é modular: você aplica as técnicas de clareza e risco em 10–15 minutos diários.</p>
-  </details>
-
-  <details>
-    <summary>Esse conteúdo ficará desatualizado?</summary>
-    <p>Não. Todos os princípios são atemporais (mindset, disciplina e gestão de risco) e funcionam em qualquer contexto.</p>
-  </details>
-</section>
-
-<!-- 10. PUSH FINAL -->
-<section id="final-push" class="hidden" style="padding:3rem 1rem; text-align:center; background:#f0f8ff;">
-  <p style="font-size:1.125rem; margin-bottom:1.5rem; color:#222;">
-    Se você chegou até aqui, sabe que operar sem medo é apenas uma questão de ter o processo certo.
-  </p>
-  <button
-    class="cta"
-    style="background:#007bff;color:#fff;font-size:1rem;padding:.75rem 2rem;border:none;border-radius:8px;cursor:pointer;">
-    Quero começar agora
-  </button>
-</section>
-
-<!-- 11. FOOTER / DISCLAIMER -->
-<footer class="hidden" style="padding:2rem 1rem; text-align:center; font-size:0.875rem; color:#777;">
-  <p>Trader Seguro &copy; 2025. Todos os direitos reservados.</p>
-  <p>Este site não pertence, não é afiliado e não é vinculado ao Grupo Meta.</p>
-</footer>
-
- <script>
-document.addEventListener('DOMContentLoaded', () => {
-  // 0) trava o scroll da página
-  document.body.style.overflow = 'hidden';
-
-  // 1) Delay do CTA
-  setTimeout(() => {
-    const cta = document.getElementById('cta-btn');
-    cta.style.opacity = '1';
-    cta.style.pointerEvents = 'auto';
-
-    // 2) Após mais 2s (total 7s), revela o restante das sections e libera o scroll
-    setTimeout(() => {
-      document.querySelectorAll('section.hidden')
-              .forEach(s => s.classList.remove('hidden'));
-      document.body.style.overflow = '';
-    }, 2000);
-  }, 5000);
-
-  // 3) Carrossel infinito suave (se houver)
-  const track = document.querySelector('.carousel-track');
-  if (track) {
-    const cards = Array.from(track.children);
-    const style = getComputedStyle(cards[0]);
-    const marginLR = parseFloat(style.marginLeft) + parseFloat(style.marginRight);
-    const cardW = cards[0].getBoundingClientRect().width + marginLR;
-    // clona o primeiro para loop infinito
-    track.appendChild(cards[0].cloneNode(true));
-
-    let index = 0;
-    function goNext() {
-      index++;
-      track.style.transition = 'transform .5s ease';
-      track.style.transform = `translateX(-${index * cardW}px)`;
-    }
-    track.addEventListener('transitionend', () => {
-      if (index === cards.length) {
-        track.style.transition = 'none';
-        index = 0;
-        track.style.transform = 'translateX(0)';
+      // carrossel infinito
+      const track = document.querySelector('.carousel-track');
+      if (track) {
+        const cards = Array.from(track.children);
+        const style = getComputedStyle(cards[0]);
+        const gap = parseFloat(style.marginLeft) + parseFloat(style.marginRight);
+        const w = cards[0].getBoundingClientRect().width + gap;
+        track.appendChild(cards[0].cloneNode(true));
+        let idx = 0;
+        function next() {
+          idx++;
+          track.style.transition = 'transform .5s ease';
+          track.style.transform = `translateX(-${idx * w}px)`;
+        }
+        track.addEventListener('transitionend', () => {
+          if (idx === cards.length) {
+            track.style.transition = 'none';
+            idx = 0;
+            track.style.transform = 'translateX(0)';
+          }
+        });
+        setInterval(next, 4000);
       }
     });
-    setInterval(goNext, 4000);
-  }
-});
-</script>
-
+  </script>
 </body>
 </html>
