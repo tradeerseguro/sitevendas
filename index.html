@@ -4,6 +4,19 @@
   <meta charset="UTF-8">
   <title>Trader Seguro – Proteja Sua Conta</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
+/* ========== FAQ NOVO ========== */
+#faq{padding:2.5rem 1rem 0;text-align:center}
+#faq h3{margin-bottom:1.75rem;font-size:2rem}
+.faq-list{max-width:800px;margin:0 auto}
+.faq-item{border:1px solid #e2e2e2;border-radius:8px;margin-bottom:12px;overflow:hidden;transition:box-shadow .25s}
+.faq-item.open{box-shadow:0 6px 16px rgba(0,0,0,.08)}
+.faq-q{background:#fafafa;padding:.9rem 1.25rem;cursor:pointer;font-weight:600;text-align:left}
+.faq-a{padding:1rem 1.25rem;text-align:left;color:#555;line-height:1.55;display:none}
+.faq-item.open .faq-a{display:block}
+.faq-cta-wrapper{margin:3rem 0 48px;text-align:center}
+#faq-cta{background:#ff5722;color:#fff;font-size:1.125rem;padding:.9rem 2.2rem;border:none;border-radius:6px;cursor:pointer;animation:pulseSoft 2.8s infinite ease-in-out}
+@keyframes pulseSoft{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
+#disclaimer{max-width:800px;margin:0 auto 60px;font-size:.82rem;color:#777;line-height:1.5}
 
   <style>
     /* reset e tipografia básica */
@@ -256,26 +269,62 @@
     </div>
   </section>
 
-  <!-- 9. FAQ -->
-  <section id="faq" class="hidden">
-    <h3>Perguntas Frequentes</h3>
+ <!-- 9. FAQ -->
+<section id="faq" class="hidden">
+  <h3>Perguntas Frequentes</h3>
+
+  <div class="faq-list">
 
     <div class="faq-item">
-      <div class="faq-q">Funciona para iniciantes?</div>
-      <div class="faq-a">Sim — explicamos tudo do zero.</div>
+      <div class="faq-q">Preciso ter experiência prévia em trading?</div>
+      <div class="faq-a">Não. O método começa pelos fundamentos para que iniciantes possam aplicar desde o primeiro dia.</div>
     </div>
 
     <div class="faq-item">
-      <div class="faq-q">Preciso de software especial?</div>
-      <div class="faq-a">Não — basta Excel ou Google Sheets.</div>
+      <div class="faq-q">Funciona para qualquer mercado (ações, futuros, cripto)?</div>
+      <div class="faq-a">Sim — o processo de gestão de risco e clareza emocional é independente do ativo que você negocia.</div>
     </div>
 
     <div class="faq-item">
-      <div class="faq-q">Tenho garantia mesmo?</div>
-      <div class="faq-a">Claro! Você tem 7 dias para testar e, se não curtir, recebe 100% do seu dinheiro.</div>
+      <div class="faq-q">Preciso pagar mensalidade ou software extra?</div>
+      <div class="faq-a">Não. Você recebe a planilha automática (Excel/Sheets) já pronta para usar e o e‑book em PDF.</div>
     </div>
-  </section>
 
+    <div class="faq-item">
+      <div class="faq-q">Em quanto tempo verei resultado?</div>
+      <div class="faq-a">A maioria dos alunos relata redução imediata na ansiedade e nas perdas já na primeira semana de aplicação.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">E se eu não gostar do conteúdo?</div>
+      <div class="faq-a">Você conta com Garantia Incondicional de 7 dias: basta enviar um e‑mail e devolvemos 100 % do valor.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Posso acessar em celular ou tablet?</div>
+      <div class="faq-a">Sim. Todo material é digital e responsivo. Basta login e senha para acessar de qualquer dispositivo.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">As atualizações futuras estão incluídas?</div>
+      <div class="faq-a">Sim. Sempre que ampliarmos o método, você recebe a nova versão sem custo adicional.</div>
+    </div>
+
+  </div>
+
+  <div class="faq-cta-wrapper">
+    <p style="margin-bottom:1rem;font-weight:bold">
+      Se você chegou até aqui, sabe que operar sem medo é só questão de processo.
+    </p>
+    <button id="faq-cta">Quero proteger minha conta agora</button>
+  </div>
+
+  <p id="disclaimer">
+    * Este produto tem caráter exclusivamente educacional e não constitui recomendação de investimento. Resultados passados não garantem retorno futuro.
+  </p>
+</section>
+
+ 
   <!-- CTA final + disclaimer -->
   <div class="bottom-cta-wrapper hidden">
     <button class="cta">SIM, QUERO COMEÇAR AGORA</button>
@@ -337,6 +386,13 @@
       document.querySelectorAll('.faq-q').forEach(q => {
         q.addEventListener('click', () => q.parentElement.classList.toggle('open'));
       });
+        /* Acordeão do FAQ */
+  document.querySelectorAll('.faq-q').forEach(q=>{
+    q.addEventListener('click',()=>{
+      q.parentElement.classList.toggle('open');
+    });
+  });
+
     });
   </script>
 </body>
