@@ -120,31 +120,40 @@
     .answer { margin-left:1rem; color:#555 }
     <style>
   /* ==== ESTILOS DA OFERTA ==== */
+ <style>
+  /* ==== ESTILOS DA OFERTA – STACK VERTICAL ==== */
   #offer {
     padding: 2rem 1rem 4rem;
     text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
   }
   #offer h3 {
+    width: 100%;
     font-size: 1.5rem;
     margin-bottom: 2rem;
     color: #222;
   }
 
-  /* Container centralizado para o stack */
+  /* container do stack vertical */
   .offer-stack {
     position: relative;
-    display: inline-block;
-    padding-top: 4rem; /* espaço pra sombra do card de cima */
-    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 260px;
   }
 
-  /* Cards do stack */
+  /* cards do stack vertical */
   .stack-card {
     background: #fff;
     border-radius: 12px;
     box-shadow: 0 8px 16px rgba(0,0,0,0.08);
     padding: 1rem;
-    width: 220px;
+    width: 100%;
     position: relative;
     text-align: left;
     transition: transform .3s, box-shadow .3s;
@@ -160,26 +169,34 @@
     font-size: .95rem;
   }
 
-  /* offsets para empilhar */
-  .stack-card:nth-child(1) { z-index: 4; }
-  .stack-card:nth-child(2) { margin-top: -20px; z-index: 3; }
-  .stack-card:nth-child(3) { margin-top: -40px; z-index: 2; }
-  .stack-card:nth-child(4) { margin-top: -60px; z-index: 1; }
+  /* offset vertical para empilhar */
+  .stack-card:nth-child(1) { z-index: 4; top: 0; }
+  .stack-card:nth-child(2) { z-index: 3; top:  -20px; }
+  .stack-card:nth-child(3) { z-index: 2; top:  -40px; }
+  .stack-card:nth-child(4) { z-index: 1; top:  -60px; }
 
-  /* Efeito de hover para destaque */
+  /* como todos os cards são posicionados relativamente, precisamos definir isso: */
+  .stack-card {
+    margin-top: 0; /* remove gap natural */
+    position: relative;
+  }
+
+  /* ação no hover */
   .stack-card:hover {
     transform: translateY(-5px) scale(1.02);
     box-shadow: 0 12px 24px rgba(0,0,0,0.12);
   }
 
-  /* Preço final destacado */
+  /* preço final destacado, à direita do stack */
   .final-price {
     font-size: 2.5rem;
     font-weight: bold;
     color: #007bff;
-    margin-top: 1rem;
+    align-self: center;
+    margin-left: 2rem;
   }
 </style>
+
 
   </style>
 </head>
@@ -260,7 +277,7 @@
   </section>
 
   <!-- 7. OFERTA -->
- <section id="offer" class="hidden">
+<section id="offer" class="hidden">
   <h3>Este pacote vale na prática R$ 211, mas hoje custa</h3>
 
   <div class="offer-stack">
