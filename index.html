@@ -281,32 +281,32 @@
 
   <div class="offer-cards">
     <!-- Card 1 -->
-    <div class="card">
+    <div class="card" tabindex="0">
       <h4>eBook Completo</h4>
       <p class="desc">Um e-book que vai te ajudar a entender o gerenciamento de risco.</p>
       <p class="old-price"><del>R$ 97</del></p>
     </div>
     <!-- Card 2 -->
-    <div class="card">
+    <div class="card" tabindex="0">
       <h4>Planilha Automática</h4>
       <p class="desc">Planilha inteligente para acompanhar seus trades em tempo real.</p>
       <p class="old-price"><del>R$ 67</del></p>
     </div>
     <!-- Card 3 -->
-    <div class="card">
+    <div class="card" tabindex="0">
       <h4>Clareza Emocional</h4>
       <p class="desc">Técnicas de mindfulness para manter o foco na operação.</p>
       <p class="old-price"><del>R$ 47</del></p>
     </div>
     <!-- Card 4 -->
-    <div class="card">
+    <div class="card" tabindex="0">
       <h4>Bônus Aulas Extras</h4>
       <p class="desc">Conteúdos exclusivos para turbinar sua estratégia.</p>
       <p class="old-price"><del>R$ 0</del></p>
     </div>
     <!-- Preço final em card destacado -->
-    <div class="card final-price-card">
-      <span>R$ 47</span>
+    <div class="card final-price-card" tabindex="0">
+      <span class="new-price">R$ 47</span>
     </div>
   </div>
 
@@ -327,16 +327,16 @@
 
   /* container flex que alinha todos os cards horizontalmente */
   .offer-cards {
-    position: relative;
     display: flex;
     justify-content: center;
     align-items: flex-end;
     margin-bottom: 2.5rem;
+    position: relative;
   }
 
   /* estilo base de cada card */
   .offer-cards .card {
-    background: #ffffff;
+    background: #fff;
     border-radius: 12px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.08);
     padding: 1.5rem;
@@ -344,6 +344,7 @@
     text-align: left;
     position: relative;
     transition: transform .3s, box-shadow .3s;
+    cursor: pointer;
   }
   .offer-cards .card h4 {
     margin: 0 0 .5rem;
@@ -366,7 +367,7 @@
     margin-left: -60px;
   }
 
-  /* z-index crescente para cada próximo card */
+  /* z-index base */
   .offer-cards .card:nth-child(1) { z-index: 5; }
   .offer-cards .card:nth-child(2) { z-index: 4; }
   .offer-cards .card:nth-child(3) { z-index: 3; }
@@ -381,17 +382,20 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 2rem 1rem;
     animation: pulse 1.5s infinite;
   }
-  .final-price-card span {
+  .final-price-card .new-price {
     font-size: 2.5rem;
     font-weight: bold;
   }
 
-  /* efeito hover nos cards */
-  .offer-cards .card:hover {
-    transform: translateY(-5px) scale(1.03);
+  /* efeito hover/focus para destacar */
+  .offer-cards .card:hover,
+  .offer-cards .card:focus {
+    transform: translateY(-5px) scale(1.05);
     box-shadow: 0 12px 28px rgba(0,0,0,0.15);
+    z-index: 10 !important;
   }
 
   /* animação de pulso */
