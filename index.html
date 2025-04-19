@@ -440,43 +440,52 @@
     </div>
   </section>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // 1) Delay do CTA + revelação das sections
-      setTimeout(() => {
-        document.getElementById('cta-btn').style.opacity = '1';
-        document.getElementById('cta-btn').style.pointerEvents = 'auto';
-        setTimeout(() => {
-          document.querySelectorAll('section.hidden').forEach(s => s.classList.remove('hidden'));
-        }, 2000);
-      }, 5000);
+ <script>
+document.addEventListener('DOMContentLoaded', () => {
+  // 0) trava o scroll da página
+  document.body.style.overflow = 'hidden';
 
-      // 2) Carrossel infinito suave
-      const track = document.querySelector('.carousel-track');
-      if (track) {
-        const cards = Array.from(track.children);
-        const style = getComputedStyle(cards[0]);
-        const marginLR = parseFloat(style.marginLeft) + parseFloat(style.marginRight);
-        const cardW = cards[0].getBoundingClientRect().width + marginLR;
-        const firstClone = cards[0].cloneNode(true);
-        track.appendChild(firstClone);
+  // 1) Delay do CTA
+  setTimeout(() => {
+    const cta = document.getElementById('cta-btn');
+    cta.style.opacity = '1';
+    cta.style.pointerEvents = 'auto';
 
-        let index = 0;
-        function goNext() {
-          index++;
-          track.style.transition = 'transform .5s ease';
-          track.style.transform = `translateX(-${index * cardW}px)`;
-        }
-        track.addEventListener('transitionend', () => {
-          if (index === cards.length) {
-            track.style.transition = 'none';
-            index = 0;
-            track.style.transform = 'translateX(0)';
-          }
-        });
-        setInterval(goNext, 4000);
+    // 2) Após mais 2s (total 7s), revela o restante das sections e libera o scroll
+    setTimeout(() => {
+      document.querySelectorAll('section.hidden')
+              .forEach(s => s.classList.remove('hidden'));
+      document.body.style.overflow = '';
+    }, 2000);
+  }, 5000);
+
+  // 3) Carrossel infinito suave (se houver)
+  const track = document.querySelector('.carousel-track');
+  if (track) {
+    const cards = Array.from(track.children);
+    const style = getComputedStyle(cards[0]);
+    const marginLR = parseFloat(style.marginLeft) + parseFloat(style.marginRight);
+    const cardW = cards[0].getBoundingClientRect().width + marginLR;
+    // clona o primeiro para loop infinito
+    track.appendChild(cards[0].cloneNode(true));
+
+    let index = 0;
+    function goNext() {
+      index++;
+      track.style.transition = 'transform .5s ease';
+      track.style.transform = `translateX(-${index * cardW}px)`;
+    }
+    track.addEventListener('transitionend', () => {
+      if (index === cards.length) {
+        track.style.transition = 'none';
+        index = 0;
+        track.style.transform = 'translateX(0)';
       }
     });
-  </script>
+    setInterval(goNext, 4000);
+  }
+});
+</script>
+
 </body>
 </html>
