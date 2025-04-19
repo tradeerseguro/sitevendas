@@ -194,6 +194,120 @@
   color: #007bff;
   line-height: 1;
 }
+    /* ===  OFERTA – carrossel de cards e preço final === */
+#offer {
+  padding: 3rem 1rem;
+  text-align: center;
+}
+#offer h3 {
+  font-size: 2rem;
+  margin-bottom: 2.5rem;
+  color: #222;
+}
+
+/* container flex para organizar os cards na horizontal */
+.offer-cards {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin-bottom: 2.5rem;
+  position: relative;
+}
+
+/* estilo base de cada card */
+.offer-cards .card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  padding: 1.5rem;
+  width: 220px;
+  text-align: left;            /* alinha todo o conteúdo à esquerda */
+  position: relative;
+  transition: transform .3s, box-shadow .3s;
+  cursor: pointer;
+}
+/* título, descrição e preço riscado */
+.offer-cards .card h4 {
+  margin: 0 0 .5rem;
+  font-size: 1.125rem;
+  color: #0d47a1;
+}
+.offer-cards .card .desc {
+  margin: 0 0 .75rem;
+  font-size: .95rem;
+  color: #555;
+}
+.offer-cards .card .old-price {
+  margin: 0;
+  font-size: .9rem;
+  color: #999;
+}
+
+/* sobreposição: cada card empurra o próximo pra cima da esquerda */
+.offer-cards .card + .card {
+  margin-left: -60px;
+}
+
+/* ordem de empilhamento inicial */
+.offer-cards .card:nth-child(1) { z-index: 5; }
+.offer-cards .card:nth-child(2) { z-index: 4; }
+.offer-cards .card:nth-child(3) { z-index: 3; }
+.offer-cards .card:nth-child(4) { z-index: 2; }
+
+/* card do preço final – destaque total */
+.final-price-card {
+  z-index: 6 !important;
+  margin-left: -60px;
+  background: #007bff;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  min-height: 180px;               /* espaço para a linha “Hoje por apenas” */
+  animation: pulse 1.5s infinite;  /* efeito de pulso */
+}
+.final-price-card .today {
+  margin: 0 0 .5rem;
+  font-size: 1rem;
+}
+.final-price-card .new-price {
+  margin: 0;
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+/* animação pulse */
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0,123,255, 0.7); }
+  50%     { box-shadow: 0 0 0 20px rgba(0,123,255, 0); }
+}
+
+/* hover e focus: traz o card para frente */
+.offer-cards .card:hover,
+.offer-cards .card:focus {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.15);
+  z-index: 10 !important;
+}
+
+/* botão CTA */
+.cta {
+  background: #28a745;
+  color: #fff;
+  font-size: 1.125rem;
+  padding: .75rem 2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background .3s, transform .2s;
+}
+.cta:hover {
+  background: #218838;
+  transform: translateY(-2px);
+}
+
 </style>
 
 
@@ -280,147 +394,38 @@
   <h3>Este pacote vale na prática <strong>R$ 211</strong>, mas hoje custa</h3>
 
   <div class="offer-cards">
-    <!-- Card 1 -->
+    <!-- Cards de conteúdo -->
     <div class="card" tabindex="0">
       <h4>eBook Completo</h4>
       <p class="desc">Um e-book que vai te ajudar a entender o gerenciamento de risco.</p>
       <p class="old-price"><del>R$ 97</del></p>
     </div>
-    <!-- Card 2 -->
     <div class="card" tabindex="0">
       <h4>Planilha Automática</h4>
       <p class="desc">Planilha inteligente para acompanhar seus trades em tempo real.</p>
       <p class="old-price"><del>R$ 67</del></p>
     </div>
-    <!-- Card 3 -->
     <div class="card" tabindex="0">
       <h4>Clareza Emocional</h4>
       <p class="desc">Técnicas de mindfulness para manter o foco na operação.</p>
       <p class="old-price"><del>R$ 47</del></p>
     </div>
-    <!-- Card 4 -->
     <div class="card" tabindex="0">
       <h4>Bônus Aulas Extras</h4>
       <p class="desc">Conteúdos exclusivos para turbinar sua estratégia.</p>
       <p class="old-price"><del>R$ 0</del></p>
     </div>
-    <!-- Preço final em card destacado -->
+
+    <!-- Card de preço final -->
     <div class="card final-price-card" tabindex="0">
-      <span class="new-price">R$ 47</span>
+      <p class="today">Hoje por apenas</p>
+      <p class="new-price">R$ 47</p>
     </div>
   </div>
 
   <button class="cta">QUERO ACESSAR AGORA</button>
 </section>
 
-<style>
-  /* === ESTILOS DA OFERTA === */
-  #offer {
-    padding: 3rem 1rem;
-    text-align: center;
-  }
-  #offer h3 {
-    font-size: 2rem;
-    margin-bottom: 2.5rem;
-    color: #222;
-  }
-
-  /* container flex que alinha todos os cards horizontalmente */
-  .offer-cards {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    margin-bottom: 2.5rem;
-    position: relative;
-  }
-
-  /* estilo base de cada card */
-  .offer-cards .card {
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-    padding: 1.5rem;
-    width: 220px;
-    text-align: left;
-    position: relative;
-    transition: transform .3s, box-shadow .3s;
-    cursor: pointer;
-  }
-  .offer-cards .card h4 {
-    margin: 0 0 .5rem;
-    font-size: 1.125rem;
-    color: #0d47a1;
-  }
-  .offer-cards .card .desc {
-    font-size: .95rem;
-    color: #555;
-    margin-bottom: .75rem;
-  }
-  .offer-cards .card .old-price {
-    font-size: .9rem;
-    color: #999;
-    margin: 0;
-  }
-
-  /* sobreposição lateral */
-  .offer-cards .card + .card {
-    margin-left: -60px;
-  }
-
-  /* z-index base */
-  .offer-cards .card:nth-child(1) { z-index: 5; }
-  .offer-cards .card:nth-child(2) { z-index: 4; }
-  .offer-cards .card:nth-child(3) { z-index: 3; }
-  .offer-cards .card:nth-child(4) { z-index: 2; }
-
-  /* Preço final – card extra */
-  .final-price-card {
-    z-index: 6 !important;
-    margin-left: -60px;
-    background: #007bff;
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem 1rem;
-    animation: pulse 1.5s infinite;
-  }
-  .final-price-card .new-price {
-    font-size: 2.5rem;
-    font-weight: bold;
-  }
-
-  /* efeito hover/focus para destacar */
-  .offer-cards .card:hover,
-  .offer-cards .card:focus {
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 12px 28px rgba(0,0,0,0.15);
-    z-index: 10 !important;
-  }
-
-  /* animação de pulso */
-  @keyframes pulse {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(0,123,255, 0.7); }
-    50% { box-shadow: 0 0 0 20px rgba(0,123,255, 0); }
-  }
-
-  /* botão CTA */
-  .cta {
-    background: #28a745;
-    color: #fff;
-    font-size: 1.125rem;
-    padding: .75rem 2rem;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background .3s, transform .2s;
-  }
-  .cta:hover {
-    background: #218838;
-    transform: translateY(-2px);
-  }
-</style>
-  
   <!-- 8. ACORDO -->
  <style>
   /* ==== ESTILOS DA SEÇÃO ACORDO ==== */
