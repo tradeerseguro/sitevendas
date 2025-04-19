@@ -1,240 +1,488 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<title>Trader Seguro – Método Sem Medo</title>
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<style>
-/* ========== RESET & BASE ========== */
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-body{font-family:Arial,Helvetica,sans-serif;color:#333;line-height:1.55;overflow:hidden}
-section{width:100%;padding:3rem 1rem;opacity:1;transition:opacity .6s ease}
-img{display:block;max-width:100%}
-h2{font-size:1.9rem;margin-bottom:1rem;color:#222}
+  <meta charset="UTF-8">
+  <title>Trader Seguro – Proteja Sua Conta</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
 
-/* ========== HERO ========== */
-.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:#fbfcfd;padding:2.5rem 1rem}
-.hero .sub{font-size:1.35rem;color:#0d47a1;margin-bottom:1.5rem;max-width:600px}
-.hero .video-wrap{width:100%;max-width:640px;margin:0 auto}
-.hero iframe{width:100%;height:360px;border:none}
-#cta-btn{margin-top:1.8rem;padding:.9rem 2rem;font-size:1rem;border:none;border-radius:6px;background:#007bff;color:#fff;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .4s ease}
-#cta-btn.pulse{animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+  <style>
+    /* reset e tipografia básica */
+    * { margin:0; padding:0; box-sizing:border-box }
+    body { font-family:Arial,sans-serif; color:#333 }
+    section { transition:opacity .5s ease }
+    .hidden { opacity:0 }
 
-/* ========== DELAYED SECTIONS (invisíveis até 7 s) ========== */
-.delayed{opacity:0;pointer-events:none}
+    /* ===== HERO ===== */
+    .hero {
+      display:flex; flex-direction:column;
+      justify-content:center; align-items:center;
+      background:#fbfcfd; min-height:100vh;
+      padding:2rem 1rem; text-align:center;
+    }
+    .hero h1 { font-size:2.25rem; margin-bottom:.5rem }
+    .hero p.sub { font-size:1.125rem; margin-bottom:1.5rem; color:#555 }
+    .hero .video-container {
+      width:100%; max-width:640px; margin-bottom:1.5rem;
+    }
+    .hero iframe { width:100%; height:360px; border:none }
 
-/* ========== STORY ========== */
-#story p{max-width:700px;margin:.75rem auto;text-align:left;color:#555}
+    /* CTA abaixo do vídeo (invisível até 5s) */
+    #cta-btn {
+      opacity:0; pointer-events:none;
+      padding:.8rem 1.6rem; font-size:1rem;
+      background:#007bff; color:#fff; border:none;
+      border-radius:4px; cursor:pointer; position:relative;
+      z-index:1;
+      animation: pulse 2s infinite ease-in-out, neon 1.5s infinite alternate ease-in-out;
+      transition:opacity .3s ease, pointer-events .3s;
+    }
+    @keyframes pulse {
+      0%,100%{ transform:scale(1) }
+      50%   { transform:scale(1.05) }
+    }
+    @keyframes neon {
+      from { box-shadow:0 0 5px rgba(0,123,255,0.6) }
+      to   { box-shadow:0 0 20px rgba(0,123,255,1) }
+    }
+    #cta-btn::after {
+      content:''; position:absolute;
+      top:100%; left:50%;
+      width:120%; height:8px;
+      transform:translateX(-50%);
+      background:rgba(0,123,255,0.4);
+      filter:blur(8px); border-radius:50%;
+      animation:neon 1.5s infinite alternate ease-in-out;
+      z-index:-1;
+    }
 
-/* ========== FEATURES / O QUE VAI RECEBER ========== */
-.features h2{text-align:center}
-.cards{display:flex;flex-wrap:wrap;justify-content:center;gap:24px;margin-top:2rem}
-.card{width:280px;background:#fff;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.08);padding:1.25rem;transition:transform .3s,box-shadow .3s;cursor:default}
-.card:hover{transform:translateY(-8px);box-shadow:0 12px 22px rgba(0,0,0,.12)}
-.card h3{font-size:1.25rem;color:#0d47a1;margin:1rem 0 .5rem}
-.card p{color:#555}
+    /* ===== SEÇÃO LEAD ===== */
+    #lead {
+      text-align:center;
+      padding:3rem 1rem;
+      background:#f9f9f9;
+    }
+    #lead h2 {
+      font-size:1.75rem;
+      color:#222;
+      margin-bottom:1rem;
+      line-height:1.3;
+    }
+    #lead p {
+      font-size:1rem;
+      color:#555;
+      max-width:600px;
+      margin:0 auto;
+      line-height:1.6;
+    }
 
-/* ========== TESTIMONIALS ========== */
-.testimonials{text-align:center;background:#f9f9f9}
-.carousel{overflow:hidden;max-width:960px;margin:0 auto}
-.track{display:flex;gap:24px;transition:transform .55s ease}
-.t-card{flex:0 0 280px;background:#fff;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,.08);padding:1.5rem;text-align:left}
-.t-card .txt{margin-bottom:1rem}
-.t-card .name{font-weight:bold;color:#0d47a1}
+    /* ===== SEÇÃO HISTÓRIA ===== */
+    #story {
+      text-align:center;
+      padding:3rem 1rem;
+    }
+    #story h2 {
+      font-size:1.75rem;
+      color:#222;
+      margin-bottom:1.5rem;
+      line-height:1.3;
+    }
+    #story p {
+      font-size:1rem;
+      color:#555;
+      max-width:700px;
+      margin:0.75rem auto;
+      text-align:left;
+      line-height:1.6;
+    }
 
-/* ========== STACK / OFERTA ========== */
-.offer{text-align:center}
-.stack{display:flex;justify-content:center;align-items:flex-end;margin:2.5rem 0}
-.stack .card{width:220px;background:#fff;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,.08);padding:1.2rem;text-align:left;transition:.3s}
-.stack .card+ .card{margin-left:-60px}
-.stack .card:hover{transform:translateY(-6px) scale(1.05);z-index:10}
-.final{background:#007bff;color:#fff;padding:2rem 1rem!important;z-index:5}
-.final .new{font-size:2.5rem;font-weight:700;margin:0}
+    @media (max-width: 600px) {
+      #lead p,
+      #story p {
+        text-align:justify;
+        padding:0 1rem;
+      }
+    }
 
-/* ========== CTA GENÉRICO ========== */
-.btn{display:inline-block;padding:.9rem 2rem;font-size:1.05rem;border:none;border-radius:8px;background:#28a745;color:#fff;cursor:pointer;transition:background .25s}
-.btn:hover{background:#218838}
+    /* ===== FEATURES ===== */
+    .features-section {
+      padding:60px 20px; background:#fafafa; text-align:center
+    }
+    .features-section h2 {
+      font-size:2.5rem; margin-bottom:40px; color:#222
+    }
+    .cards {
+      display:flex; flex-wrap:wrap;
+      justify-content:center; gap:24px;
+    }
+    .card {
+      background:#fff; border-radius:12px;
+      box-shadow:0 4px 8px rgba(0,0,0,0.1);
+      overflow:hidden; width:280px;
+      transition:transform .3s,box-shadow .3s;
+    }
+    .card:hover {
+      transform:translateY(-10px);
+      box-shadow:0 12px 20px rgba(0,0,0,0.15);
+    }
+    .card img { display:block; width:100%; height:auto }
+    .card h3 { font-size:1.25rem; margin:16px; color:#0d47a1 }
+    .card p { font-size:1rem; margin:0 16px 24px; color:#555; line-height:1.4 }
 
-/* ========== AGREEMENT / GARANTIA ========== */
-#agreement{background:#eaf8ea;display:flex;justify-content:center}
-.ag-card{position:relative;background:#fff;border-radius:16px;box-shadow:0 10px 22px rgba(0,0,0,.1);padding:6rem 2rem 2rem;max-width:480px;text-align:center}
-.ag-card::before{content:'✓';position:absolute;top:-40px;left:50%;transform:translateX(-50%);background:#28a745;color:#fff;width:80px;height:80px;line-height:80px;font-size:2.5rem;border-radius:50%}
-.triggers{display:flex;flex-wrap:wrap;gap:.75rem;justify-content:center;margin-top:1rem}
-.trigger{flex:1 1 120px;background:#f0fff4;border:1px solid #c3f0d8;padding:.7rem;border-radius:8px;font-size:.9rem;color:#236e3f;text-align:center}
-.trigger.urg{background:#fff4e5;border-color:#ffd8a8;color:#a85c00}
+    @media (max-width:768px) {
+      .card { width:calc(50% - 16px) }
+      .cards { gap:16px }
+    }
+    @media (max-width:480px) {
+      .card { width:100% }
+    }
 
-/* ========== FAQ ========== */
-#faq{background:#f9f9f9;text-align:center}
-#faq details{background:#fff;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.05);margin-bottom:1rem;padding:1rem 1.4rem}
-#faq summary{cursor:pointer;font-weight:700;font-size:1.1rem;color:#007bff;list-style:none;text-align:center}
-#faq summary::-webkit-details-marker{display:none}
-#faq p{margin:.7rem 0;text-align:left;color:#555}
+    /* ===== TESTIMONIALS ===== */
+    .testimonials-section {
+      padding:80px 20px; background:#f9f9f9; text-align:center
+    }
+    .testimonials-section h2 {
+      font-size:2.5rem; margin-bottom:40px; color:#222
+    }
+    .testimonial-carousel { overflow:hidden; margin:0 auto; max-width:100% }
+    .carousel-track {
+      display:flex; transition:transform .5s ease;
+    }
+    .testimonial-card {
+      flex:0 0 300px; margin:0 15px;
+      background:#fff; border-radius:12px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.08);
+      padding:24px; text-align:left;
+    }
+    .testimonial-card .text {
+      font-size:1rem; line-height:1.5; color:#555; margin-bottom:16px
+    }
+    .testimonial-card .testimonial-name {
+      font-weight:bold; color:#0d47a1
+    }
 
-/* ========== FINAL PUSH ========== */
-#final{background:#f0f8ff;text-align:center}
-#final p{margin-bottom:1.5rem;font-size:1.15rem;font-weight:600;color:#0d47a1}
-#final .btn{background:#007bff}
-#final .btn:hover{background:#0069d9}
+    @media (max-width:768px) {
+      .testimonial-card { flex:0 0 80% }
+    }
+    @media (max-width:480px) {
+      .testimonial-card { flex:0 0 100%; margin:0 8px }
+    }
 
-/* ========== FOOTER ========== */
-footer{font-size:.85rem;padding:1.8rem 1rem;text-align:center;background:#fafafa;color:#555}
-</style>
+    /* ===== OFFER ===== */
+    #offer {
+      padding:3rem 1rem; text-align:center
+    }
+    #offer h3 {
+      font-size:2rem; margin-bottom:2.5rem; color:#222
+    }
+    .offer-cards {
+      display:flex; justify-content:center; align-items:flex-end;
+      margin-bottom:2.5rem; position:relative;
+    }
+    .offer-cards .card {
+      background:#fff; border-radius:12px;
+      box-shadow:0 8px 20px rgba(0,0,0,0.08);
+      padding:1rem; width:220px; text-align:left;
+      position:relative; transition:transform .3s,box-shadow .3s;
+      cursor:pointer;
+    }
+    .offer-cards .card + .card { margin-left:-60px }
+    .offer-cards .card h4 {
+      margin:0 0 .5rem; font-size:1.125rem; color:#0d47a1
+    }
+    .offer-cards .card .desc {
+      margin:0 0 .75rem; font-size:.95rem; color:#555
+    }
+    .offer-cards .card .old-price {
+      margin:0; font-size:.9rem; color:#999
+    }
+    .offer-cards .card:hover,
+    .offer-cards .card:focus {
+      transform:translateY(-5px) scale(1.05);
+      box-shadow:0 12px 28px rgba(0,0,0,0.15);
+      z-index:10 !important;
+    }
+    @keyframes pulse {
+      0%,100% { box-shadow:0 0 0 0 rgba(0,123,255,0.7) }
+      50%     { box-shadow:0 0 0 20px rgba(0,123,255,0) }
+    }
+    .final-price-card {
+      z-index:6 !important; margin-left:-60px;
+      background:#007bff; color:#fff;
+      display:flex; flex-direction:column;
+      align-items:center; justify-content:center;
+      padding:2rem 1rem; min-height:180px;
+      animation:pulse 1.5s infinite;
+    }
+    .final-price-card .today {
+      margin:0 0 .5rem; font-size:1rem;
+    }
+    .final-price-card .new-price {
+      margin:0; font-size:2.5rem; font-weight:bold;
+    }
+    .cta {
+      background:#28a745; color:#fff; font-size:1.125rem;
+      padding:.75rem 2rem; border:none; border-radius:8px;
+      cursor:pointer; transition:background .3s,transform .2s;
+    }
+    .cta:hover {
+      background:#218838; transform:translateY(-2px);
+    }
+
+    /* ===== AGREEMENT ===== */
+    #agreement {
+      display:flex; justify-content:center;
+      padding:3rem 1rem; background:#eaf8ea;
+    }
+    .agreement-card {
+      background:#fff; border-radius:16px;
+      box-shadow:0 12px 24px rgba(0,0,0,0.08);
+      padding:5.5rem 2rem 2rem;
+      max-width:500px; text-align:center;
+      position:relative; overflow:hidden;
+    }
+    .agreement-card::before {
+      content:'✓'; position:absolute;
+      top:8px; left:50%; transform:translate(-50%);
+      font-size:4rem; color:#28a745;
+      background:#eaf8ea; width:80px; height:80px;
+      line-height:80px; border-radius:50%;
+      box-shadow:0 4px 8px rgba(0,0,0,0.1);
+    }
+    .agreement-card h3 {
+      margin-top:.5rem; font-size:1.75rem; color:#28a745;
+    }
+    .agreement-card p {
+      margin:1rem 0; color:#555; line-height:1.6;
+    }
+    .agreement-triggers {
+      display:flex; flex-wrap:wrap;
+      justify-content:center; gap:1rem;
+      margin-top:1.5rem;
+    }
+    .trigger {
+      background:#f0fff4; border:1px solid #c3f0d8;
+      border-radius:8px; padding:.75rem 1rem;
+      font-size:.95rem; color:#236e3f;
+      flex:1 1 140px;
+    }
+    .trigger.urgency {
+      background:#fff4e5; border-color:#ffd8a8; color:#a85c00;
+    }
+
+    /* ===== FAQ ===== */
+    #faq { padding:2rem 1rem; text-align:center }
+    #faq h3 { margin-bottom:1rem }
+    .q { max-width:800px; margin:.5rem auto }
+    .question { font-weight:bold }
+    .answer   { margin-left:1rem; color:#555 }
+
+  </style>
 </head>
 <body>
 
-<!-- HERO ================================================= -->
-<section class="hero">
-  <p class="sub">“O método que mudou o meu jogo em apenas 1 minuto por dia”</p>
-  <div class="video-wrap">
-    <iframe src="https://www.youtube.com/embed/SEU_VIDEO_ID" allowfullscreen></iframe>
-  </div>
-  <button id="cta-btn">Quero proteger minha conta</button>
-</section>
-
-<!-- RESTANTE DA PÁGINA (delayed) ========================= -->
-<section id="lead" class="delayed">
-  <h2>Por que a maioria dos traders perde dinheiro mesmo acertando análises?</h2>
-  <p style="max-width:600px;margin:0 auto;color:#555">
-    Porque ignoram gestão emocional e de risco. Aqui você descobre o processo completo
-    para operar sem medo, proteger seu capital e colher lucros consistentes.
-  </p>
-</section>
-
-<section id="story" class="delayed">
-  <h2>Minha jornada do terror no gráfico à confiança total</h2>
-  <p>Eu era o cara que fechava a plataforma quando via o candle vermelho… (conte sua história)</p>
-  <p>Depois de <strong>23 stops consecutivos</strong> eu decidi que precisava de um sistema… (continue)</p>
-</section>
-
-<section class="features delayed">
-  <h2>O que você vai receber</h2>
-  <div class="cards">
-    <div class="card">
-      <img src="img/risk.png" alt="">
-      <h3>Planilha de Gestão de Risco</h3>
-      <p>Defina lote ideal e nunca mais estoure a banca.</p>
+  <!-- 1. HERO -->
+  <section class="hero">
+    <h1>Proteja sua conta e opere sem medo</h1>
+    <p class="sub">O método que mudou o jogo do Rafael em 1 minuto</p>
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/SEU_VIDEO_ID" allowfullscreen></iframe>
     </div>
-    <div class="card">
-      <img src="img/diario.png" alt="">
-      <h3>Diário de Trades Automático</h3>
-      <p>Identifique padrões de erro em 3 cliques.</p>
-    </div>
-    <div class="card">
-      <img src="img/aulas.png" alt="">
-      <h3>Aulas Rápidas (1 min)</h3>
-      <p>Vídeos diretos para aplicar antes da próxima operação.</p>
-    </div>
-  </div>
-</section>
+    <button id="cta-btn">Quero proteger minha conta</button>
+  </section>
 
-<section class="testimonials delayed">
-  <h2>Histórias dos nossos alunos</h2>
-  <div class="carousel">
-    <div class="track" id="track">
-      <div class="t-card">
-        <p class="txt">“Saí do drawdown de –12 % para +7 % em 14 dias.”</p>
-        <p class="name">— Carol M.</p>
+  <!-- 2. LEAD -->
+  <section id="lead">
+    <h2>Você está cansado de ver seu sucesso escapar pelas mãos?</h2>
+    <p>
+      Se já sentiu aquela angústia toda vez que entra no gráfico e seu medo fala mais alto, 
+      continue aqui: eu vou lhe mostrar exatamente como sair desse ciclo e operar com confiança.
+    </p>
+  </section>
+
+  <!-- 3. HISTÓRIA -->
+  <section id="story">
+    <h2>Como eu passei da incerteza ao controle total das minhas operações</h2>
+    <p>
+      Há alguns anos, eu acordava com o coração acelerado só de pensar em abrir uma ordem. 
+      Meus primeiros resultados eram tão ruins que eu chegava a duvidar de mim mesmo — 
+      e o pior: perdia noites de sono remoendo cada centavo.
+    </p>
+    <p>
+      Eu sabia que não estava sozinho. Vi colegas brilhantes virarem estatísticas de falhas 
+      porque faltava um plano claro. Foi aí que comecei a buscar fórmulas consagradas de 
+      gestão de risco e mindset de traders de elite. Testei dezenas de planilhas e técnicas, 
+      mas nenhuma “encaixava” de verdade no meu dia a dia — até eu juntar aquilo que 
+      realmente importava.
+    </p>
+    <p>
+      Em um fim de semana decisivo, peguei tudo que havia aprendido (e perdido) e 
+      criei meu próprio método: <strong>Clareza Emocional + Gestão de Risco + Disciplina</strong>. 
+      Ao colocar em prática, minhas perdas despencaram 70% em apenas duas semanas. 
+      A ansiedade deu lugar à confiança e, pela primeira vez, eu operava com a mente de um 
+      vencedor — não de um amador.
+    </p>
+    <p>
+      Hoje, compartilho essa mesma jornada com você. Se você se reconheceu em cada linha 
+      desse relato, saiba que o próximo passo é só adotar um processo testado — e é isso 
+      que vem a seguir.
+    </p>
+  </section>
+
+  <!-- 4. PITCH -->
+  <section class="features-section hidden">
+    <h2>O que você vai receber</h2>
+    <div class="cards">
+      <div class="card">
+        <img src="images/ebook-cover.png" alt="eBook Gerenciamento de Risco">
+        <h3>eBook completo</h3>
+        <p>Todo o passo‑a‑passo de gerenciamento de risco em Day Trade.</p>
       </div>
-      <div class="t-card">
-        <p class="txt">“Nunca mais fechei o MetaTrader chorando… agora sei o quanto posso arriscar.”</p>
-        <p class="name">— Diego S.</p>
+      <div class="card">
+        <img src="images/planilha.png" alt="Planilha Automática">
+        <h3>Planilha automática</h3>
+        <p>Registre e calcule o risco de cada operação sem esforço.</p>
       </div>
-      <div class="t-card">
-        <p class="txt">“Os vídeos de 1 min salvaram minha cabeça. Bate‑meta e encerra!”</p>
-        <p class="name">— Paulo R.</p>
+      <div class="card">
+        <img src="images/clareza-emocional.png" alt="Clareza Emocional">
+        <h3>Clareza emocional</h3>
+        <p>Técnicas para controlar o emocional e operar com confiança.</p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="offer delayed">
-  <h2>Todo esse pacote custa R$ 211 — mas hoje sai por:</h2>
-  <div class="stack">
-    <div class="card">
-      <h4>Bônus #1</h4><p>Planilha de risco</p><p><s>R$ 97</s></p>
+  <!-- 5 & 6. TESTIMONIALS -->
+  <section class="testimonials-section hidden">
+    <h2>O que dizem nossos alunos</h2>
+    <div class="testimonial-carousel">
+      <div class="carousel-track">
+        <div class="testimonial-card">
+          <p class="text">“Eu nunca mais perdi dinheiro após aplicar o método. Simples, direto e funcional!”</p>
+          <p class="testimonial-name">Mariana R. – RJ</p>
+        </div>
+        <div class="testimonial-card">
+          <p class="text">“Recuperei mais de 80% dos meus prejuízos em apenas uma semana com a planilha.”</p>
+          <p class="testimonial-name">Carlos M. – SP</p>
+        </div>
+        <div class="testimonial-card">
+          <p class="text">“O eBook abriu minha cabeça: agora opero com disciplina e paz de espírito.”</p>
+          <p class="testimonial-name">Ana P. – MG</p>
+        </div>
+        <div class="testimonial-card">
+          <p class="text">“A clareza emocional mudou tudo. Hoje faço trades conscientes e mais lucrativos.”</p>
+          <p class="testimonial-name">Lucas F. – BA</p>
+        </div>
+        <div class="testimonial-card">
+          <p class="text">“Garantia real de 7 dias me deu confiança para testar – e valeu cada centavo!”</p>
+          <p class="testimonial-name">Fernanda G. – RS</p>
+        </div>
+      </div>
     </div>
-    <div class="card">
-      <h4>Bônus #2</h4><p>Checklist de setups</p><p><s>R$ 57</s></p>
+  </section>
+
+  <!-- 7. OFERTA -->
+  <section id="offer" class="hidden">
+    <h3>Este pacote vale na prática <strong>R$ 211</strong>, mas hoje custa</h3>
+    <div class="offer-cards">
+      <div class="card" tabindex="0">
+        <h4>eBook Completo</h4>
+        <p class="desc">Um e-book que vai te ajudar a entender o gerenciamento de risco.</p>
+        <p class="old-price"><del>R$ 97</del></p>
+      </div>
+      <div class="card" tabindex="0">
+        <h4>Planilha Automática</h4>
+        <p class="desc">Planilha inteligente para acompanhar seus trades em tempo real.</p>
+        <p class="old-price"><del>R$ 67</del></p>
+      </div>
+      <div class="card" tabindex="0">
+        <h4>Clareza Emocional</h4>
+        <p class="desc">Técnicas de mindfulness para manter o foco na operação.</p>
+        <p class="old-price"><del>R$ 47</del></p>
+      </div>
+      <div class="card" tabindex="0">
+        <h4>Bônus Aulas Extras</h4>
+        <p class="desc">Conteúdos exclusivos para turbinar sua estratégia.</p>
+        <p class="old-price"><del>R$ 0</del></p>
+      </div>
+      <div class="card final-price-card" tabindex="0">
+        <p class="today">Hoje por apenas</p>
+        <p class="new-price">R$ 47</p>
+      </div>
     </div>
-    <div class="card final">
-      <p class="today" style="margin-bottom:.4rem">HOJE por apenas</p>
-      <p class="new">R$ 47</p>
+    <button class="cta">QUERO ACESSAR AGORA</button>
+  </section>
+
+  <!-- 8. ACORDO -->
+  <section id="agreement" class="hidden">
+    <div class="agreement-card">
+      <h3>Garantia Incondicional de 7 Dias</h3>
+      <p>
+        Experimente o método completo sem riscos: se não ficar 100% satisfeito, basta pedir seu reembolso integral em até 7 dias.
+      </p>
+      <div class="agreement-triggers">
+        <div class="trigger">✅ Sem perguntas</div>
+        <div class="trigger">✅ Processamento imediato</div>
+        <div class="trigger">✅ Seu investimento protegido</div>
+        <div class="trigger urgency">⏳ Oferta válida por tempo limitado</div>
+      </div>
     </div>
-  </div>
-  <button class="btn">QUERO ACESSAR AGORA</button>
-</section>
+  </section>
 
-<section id="agreement" class="delayed">
-  <div class="ag-card">
-    <h3>Garantia incondicional de 7 dias</h3>
-    <p>Se não amar, devolvemos 100 % do seu investimento. Sem letras miúdas.</p>
-    <div class="triggers">
-      <div class="trigger">Devolução automática</div>
-      <div class="trigger">Sem perguntas</div>
-      <div class="trigger urg">Oferta limitada</div>
+  <!-- 9. FAQ -->
+  <section id="faq" class="hidden">
+    <h3>Perguntas Frequentes</h3>
+    <div class="q">
+      <p class="question">Funciona para iniciantes?</p>
+      <p class="answer">Sim — explicamos tudo do zero.</p>
     </div>
-  </div>
-</section>
+    <div class="q">
+      <p class="question">Preciso de software especial?</p>
+      <p class="answer">Não — só Excel ou Google Sheets.</p>
+    </div>
+  </section>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
++     // 0) trava o scroll da página
++     document.body.style.overflow = 'hidden';
 
-<section id="faq" class="delayed">
-  <h2>Perguntas Frequentes</h2>
-  <details><summary>Funciona para iniciantes?</summary><p>Sim, começamos do zero.</p></details>
-  <details><summary>Preciso de sistemas caros?</summary><p>Não, só Excel/Sheets gratuito.</p></details>
-  <details><summary>Quanto tempo até ver resultado?</summary><p>Muitos relatam evolução em 7 dias.</p></details>
-</section>
+      // 1) Delay do CTA + revelação das sections
+      setTimeout(() => {
+        document.getElementById('cta-btn').style.opacity = '1';
+        document.getElementById('cta-btn').style.pointerEvents = 'auto';
+        setTimeout(() => {
+          document.querySelectorAll('section.hidden').forEach(s => s.classList.remove('hidden'));
++         // 3) libera o scroll após o conteúdo aparecer
++         document.body.style.overflow = '';
+        }, 2000);
+      }, 5000);
 
-<section id="final" class="delayed">
-  <p>Se você chegou até aqui, sabe que operar sem medo é só questão de processo.</p>
-  <button class="btn">Começar agora</button>
-</section>
+      // 2) Carrossel infinito suave
+      const track = document.querySelector('.carousel-track');
+      if (track) {
+        const cards = Array.from(track.children);
+        const style = getComputedStyle(cards[0]);
+        const marginLR = parseFloat(style.marginLeft) + parseFloat(style.marginRight);
+        const cardW = cards[0].getBoundingClientRect().width + marginLR;
+        const firstClone = cards[0].cloneNode(true);
+        track.appendChild(firstClone);
 
-<footer>
-  Trader Seguro © 2025. Todos os direitos reservados.<br>
-  Este site não é afiliado ao Grupo Meta.
-</footer>
-
-<script>
-document.addEventListener('DOMContentLoaded',()=>{
-
-  /*=============== 1. MOSTRA BOTÃO ===============*/
-  const btn = document.getElementById('cta-btn');
-  setTimeout(()=>{
-    btn.style.opacity='1';
-    btn.style.pointerEvents='auto';
-    btn.classList.add('pulse');
-  },5000);
-
-  /*=============== 2. MOSTRA RESTANTE & LIBERA SCROLL ===============*/
-  setTimeout(()=>{
-    document.querySelectorAll('.delayed').forEach(el=>{
-      el.style.opacity='1';
-      el.style.pointerEvents='auto';
+        let index = 0;
+        function goNext() {
+          index++;
+          track.style.transition = 'transform .5s ease';
+          track.style.transform = `translateX(-${index * cardW}px)`;
+        }
+        track.addEventListener('transitionend', () => {
+          if (index === cards.length) {
+            track.style.transition = 'none';
+            index = 0;
+            track.style.transform = 'translateX(0)';
+          }
+        });
+        setInterval(goNext, 4000);
+      }
     });
-    document.body.style.overflow='auto';
-  },7000);
+  </script>
 
-  /*=============== 3. CARROSSEL DEPOIMENTOS ===============*/
-  const track=document.getElementById('track');
-  const cards=[...track.children];
-  const gap=24;
-  const w=cards[0].getBoundingClientRect().width+gap;
-  track.appendChild(cards[0].cloneNode(true));
-  let i=0;
-  setInterval(()=>{
-    i++;
-    track.style.transform=`translateX(-${i*w}px)`;
-    track.style.transition='transform .55s ease';
-    if(i===cards.length){
-      setTimeout(()=>{
-        track.style.transition='none';
-        track.style.transform='translateX(0)';
-        i=0;
-      },560);
-    }
-  },4000);
-
-});
-</script>
+  
 </body>
 </html>
