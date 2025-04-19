@@ -123,78 +123,77 @@
  <style>
   /* ==== ESTILOS DA OFERTA – STACK VERTICAL ==== */
   #offer {
-    padding: 2rem 1rem 4rem;
-    text-align: center;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 2rem;
-  }
-  #offer h3 {
-    width: 100%;
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
-    color: #222;
-  }
+  padding: 2rem 1rem 4rem;
+  text-align: center;
+}
+#offer h3 {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  color: #222;
+}
 
-  /* container do stack vertical */
-  .offer-stack {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 260px;
-  }
+/* container flex que alinha stack + preço */
+.offer-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
 
-  /* cards do stack vertical */
-  .stack-card {
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.08);
-    padding: 1rem;
-    width: 100%;
-    position: relative;
-    text-align: left;
-    transition: transform .3s, box-shadow .3s;
-  }
-  .stack-card h4 {
-    margin: 0 0 .5rem;
-    font-size: 1.125rem;
-    color: #0d47a1;
-  }
-  .stack-card p {
-    margin: 0;
-    color: #555;
-    font-size: .95rem;
-  }
+/* stack vertical */
+.offer-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 260px;
+}
 
-  /* offset vertical para empilhar */
-  .stack-card:nth-child(1) { z-index: 4; top: 0; }
-  .stack-card:nth-child(2) { z-index: 3; top:  -20px; }
-  .stack-card:nth-child(3) { z-index: 2; top:  -40px; }
-  .stack-card:nth-child(4) { z-index: 1; top:  -60px; }
+/* cards do stack */
+.stack-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+  padding: 1rem;
+  width: 100%;
+  position: relative;
+  text-align: left;
+  transition: transform .3s, box-shadow .3s;
+  margin-top: -40px;       /* empilha naturalmente */
+}
+.stack-card:first-child { margin-top: 0; }
 
-  /* como todos os cards são posicionados relativamente, precisamos definir isso: */
-  .stack-card {
-    margin-top: 0; /* remove gap natural */
-    position: relative;
-  }
+.stack-card h4 {
+  margin: 0 0 .5rem;
+  font-size: 1.125rem;
+  color: #0d47a1;
+}
+.stack-card p {
+  margin: 0;
+  color: #555;
+  font-size: .95rem;
+}
 
-  /* ação no hover */
-  .stack-card:hover {
-    transform: translateY(-5px) scale(1.02);
-    box-shadow: 0 12px 24px rgba(0,0,0,0.12);
-  }
+/* profundidade: quanto mais embaixo, menor o z-index */
+.stack-card:nth-child(1) { z-index: 4; }
+.stack-card:nth-child(2) { z-index: 3; }
+.stack-card:nth-child(3) { z-index: 2; }
+.stack-card:nth-child(4) { z-index: 1; }
 
-  /* preço final destacado, à direita do stack */
-  .final-price {
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: #007bff;
-    align-self: center;
-    margin-left: 2rem;
-  }
+/* efeito no hover */
+.stack-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+}
+
+/* preço final bem destacado */
+.final-price {
+  font-size: 4rem;
+  font-weight: bold;
+  color: #007bff;
+  line-height: 1;
+}
 </style>
 
 
@@ -280,29 +279,32 @@
 <section id="offer" class="hidden">
   <h3>Este pacote vale na prática R$ 211, mas hoje custa</h3>
 
-  <div class="offer-stack">
-    <div class="stack-card">
-      <h4>eBook Completo</h4>
-      <p><del>R$ 97</del></p>
+  <div class="offer-content">
+    <div class="offer-stack">
+      <div class="stack-card">
+        <h4>eBook Completo</h4>
+        <p><del>R$ 97</del></p>
+      </div>
+      <div class="stack-card">
+        <h4>Planilha Automática</h4>
+        <p><del>R$ 67</del></p>
+      </div>
+      <div class="stack-card">
+        <h4>Clareza Emocional</h4>
+        <p><del>R$ 47</del></p>
+      </div>
+      <div class="stack-card">
+        <h4>Bônus Aulas Extras</h4>
+        <p><del>R$ 0</del></p>
+      </div>
     </div>
-    <div class="stack-card">
-      <h4>Planilha Automática</h4>
-      <p><del>R$ 67</del></p>
-    </div>
-    <div class="stack-card">
-      <h4>Clareza Emocional</h4>
-      <p><del>R$ 47</del></p>
-    </div>
-    <div class="stack-card">
-      <h4>Bônus Aulas Extras</h4>
-      <p><del>R$ 0</del></p>
-    </div>
-  </div>
 
-  <div class="final-price">
-    R$ 47
+    <div class="final-price">
+      R$ 47
+    </div>
   </div>
 </section>
+  
   <!-- 8. ACORDO -->
  <style>
   /* ==== ESTILOS DA SEÇÃO ACORDO ==== */
