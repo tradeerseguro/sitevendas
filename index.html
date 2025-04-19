@@ -5,13 +5,12 @@
   <title>Trader Seguro – Proteja Sua Conta</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
-    /* reset e tipografia básica */
+    /* reset */
     * { margin:0; padding:0; box-sizing:border-box }
     body { font-family:Arial,sans-serif; color:#333 }
-    section, footer { transition:opacity .5s ease }
-    .hidden { opacity:0 }
+    section, footer { opacity:1; transition:opacity .5s ease }
 
-    /* ===== HERO ===== */
+    /* HERO */
     .hero {
       display:flex; flex-direction:column;
       justify-content:center; align-items:center;
@@ -25,93 +24,44 @@
     }
     .hero iframe { width:100%; height:360px; border:none }
 
-    /* CTA abaixo do vídeo (invisível até 5s) */
+    /* botão inicial: invisível até 5s */
     #cta-btn {
       opacity:0; pointer-events:none;
       padding:.8rem 1.6rem; font-size:1rem;
       background:#007bff; color:#fff; border:none;
-      border-radius:4px; cursor:pointer; position:relative;
-      z-index:1;
-      animation: pulse 2s infinite ease-in-out, neon 1.5s infinite alternate ease-in-out;
+      border-radius:4px; cursor:pointer;
+      animation: pulse 2s infinite ease-in-out;
       transition:opacity .3s ease, pointer-events .3s;
     }
     @keyframes pulse {
       0%,100%{ transform:scale(1) }
       50%   { transform:scale(1.05) }
     }
-    @keyframes neon {
-      from { box-shadow:0 0 5px rgba(0,123,255,0.6) }
-      to   { box-shadow:0 0 20px rgba(0,123,255,1) }
-    }
-    #cta-btn::after {
-      content:''; position:absolute;
-      top:100%; left:50%;
-      width:120%; height:8px;
-      transform:translateX(-50%);
-      background:rgba(0,123,255,0.4);
-      filter:blur(8px); border-radius:50%;
-      animation:neon 1.5s infinite alternate ease-in-out;
-      z-index:-1;
-    }
 
-    /* ===== SEÇÃO LEAD ===== */
+    /* LEAD */
     #lead {
       text-align:center;
       padding:3rem 1rem;
       background:#f9f9f9;
     }
-    #lead h2 {
-      font-size:1.75rem;
-      color:#222;
-      margin-bottom:1rem;
-      line-height:1.3;
-    }
-    #lead p {
-      font-size:1rem;
-      color:#555;
-      max-width:600px;
-      margin:0 auto;
-      line-height:1.6;
-    }
+    #lead h2 { font-size:1.75rem; color:#222; margin-bottom:1rem; }
+    #lead p  { font-size:1rem; color:#555; max-width:600px; margin:0 auto; line-height:1.6; }
 
-    /* ===== SEÇÃO HISTÓRIA ===== */
+    /* STORY */
     #story {
       text-align:center;
       padding:3rem 1rem;
     }
-    #story h2 {
-      font-size:1.75rem;
-      color:#222;
-      margin-bottom:1.5rem;
-      line-height:1.3;
-    }
-    #story p {
-      font-size:1rem;
-      color:#555;
-      max-width:700px;
-      margin:0.75rem auto;
-      text-align:left;
-      line-height:1.6;
-    }
+    #story h2 { font-size:1.75rem; color:#222; margin-bottom:1.5rem; }
+    #story p  { font-size:1rem; color:#555; max-width:700px; margin:0.75rem auto; line-height:1.6; text-align:left; }
 
-    @media (max-width: 600px) {
-      #lead p,
-      #story p {
-        text-align:justify;
-        padding:0 1rem;
-      }
-    }
-
-    /* ===== FEATURES ===== */
+    /* FEATURES */
     .features-section {
       padding:60px 20px; background:#fafafa; text-align:center
     }
-    .features-section h2 {
-      font-size:2.5rem; margin-bottom:40px; color:#222
-    }
+    .features-section h2 { font-size:2.5rem; margin-bottom:40px; color:#222 }
     .cards {
-      display:flex; flex-wrap:wrap;
-      justify-content:center; gap:24px;
+      display:flex; flex-wrap:wrap; justify-content:center; gap:24px;
     }
     .card {
       background:#fff; border-radius:12px;
@@ -123,26 +73,16 @@
       transform:translateY(-10px);
       box-shadow:0 12px 20px rgba(0,0,0,0.15);
     }
-    .card img { display:block; width:100%; height:auto }
-    .card h3 { font-size:1.25rem; margin:16px; color:#0d47a1 }
-    .card p { font-size:1rem; margin:0 16px 24px; color:#555; line-height:1.4 }
+    .card img { width:100%; height:auto; display:block }
+    .card h3  { margin:16px; color:#0d47a1; font-size:1.25rem }
+    .card p   { margin:0 16px 24px; color:#555; font-size:1rem; line-height:1.4 }
 
-    @media (max-width:768px) {
-      .card { width:calc(50% - 16px) }
-      .cards { gap:16px }
-    }
-    @media (max-width:480px) {
-      .card { width:100% }
-    }
-
-    /* ===== TESTIMONIALS ===== */
+    /* TESTIMONIALS */
     .testimonials-section {
       padding:80px 20px; background:#f9f9f9; text-align:center
     }
-    .testimonials-section h2 {
-      font-size:2.5rem; margin-bottom:40px; color:#222
-    }
-    .testimonial-carousel { overflow:hidden; margin:0 auto; max-width:100% }
+    .testimonials-section h2 { font-size:2.5rem; margin-bottom:40px; color:#222 }
+    .testimonial-carousel { overflow:hidden; margin:0 auto; }
     .carousel-track {
       display:flex; transition:transform .5s ease;
     }
@@ -152,77 +92,48 @@
       box-shadow:0 4px 12px rgba(0,0,0,0.08);
       padding:24px; text-align:left;
     }
-    .testimonial-card .text {
-      font-size:1rem; line-height:1.5; color:#555; margin-bottom:16px
-    }
-    .testimonial-card .testimonial-name {
-      font-weight:bold; color:#0d47a1
-    }
-    @media (max-width:768px) {
-      .testimonial-card { flex:0 0 80% }
-    }
-    @media (max-width:480px) {
-      .testimonial-card { flex:0 0 100%; margin:0 8px }
-    }
+    .testimonial-card .text { color:#555; margin-bottom:16px; line-height:1.5 }
+    .testimonial-card .testimonial-name { font-weight:bold; color:#0d47a1 }
 
-    /* ===== OFFER ===== */
+    /* OFFER */
     #offer {
       padding:3rem 1rem; text-align:center
     }
     #offer h3 {
       font-size:2rem; margin-bottom:2.5rem; color:#222
     }
-    .offer-cards {
-      display:flex; justify-content:center; align-items:flex-end;
-      margin-bottom:2.5rem; position:relative;
-    }
+    .offer-cards { display:flex; justify-content:center; align-items:flex-end; margin-bottom:2.5rem }
     .offer-cards .card {
       background:#fff; border-radius:12px;
       box-shadow:0 8px 20px rgba(0,0,0,0.08);
       padding:1rem; width:220px; text-align:left;
-      position:relative; transition:transform .3s,box-shadow .3s;
+      transition:transform .3s,box-shadow .3s;
       cursor:pointer;
     }
     .offer-cards .card + .card { margin-left:-60px }
-    .offer-cards .card h4 {
-      margin:0 0 .5rem; font-size:1.125rem; color:#0d47a1
-    }
-    .offer-cards .card .desc {
-      margin:0 0 .75rem; font-size:.95rem; color:#555
-    }
-    .offer-cards .card .old-price {
-      margin:0; font-size:.9rem; color:#999
-    }
-    .offer-cards .card:hover,
-    .offer-cards .card:focus {
+    .offer-cards .card:hover {
       transform:translateY(-5px) scale(1.05);
       box-shadow:0 12px 28px rgba(0,0,0,0.15);
-      z-index:10 !important;
+      z-index:10;
     }
     .final-price-card {
-      z-index:6 !important; margin-left:-60px;
+      z-index:6; margin-left:-60px;
       background:#007bff; color:#fff;
+      padding:2rem 1rem; min-height:180px;
       display:flex; flex-direction:column;
       align-items:center; justify-content:center;
-      padding:2rem 1rem; min-height:180px;
-      animation:pulse 1.5s infinite;
     }
-    .final-price-card .today {
-      margin:0 0 .5rem; font-size:1rem;
-    }
-    .final-price-card .new-price {
-      margin:0; font-size:2.5rem; font-weight:bold;
-    }
+    .final-price-card .today { margin:0 0 .5rem; font-size:1rem }
+    .final-price-card .new-price { margin:0; font-size:2.5rem; font-weight:bold }
+
     .cta {
       background:#28a745; color:#fff; font-size:1.125rem;
       padding:.75rem 2rem; border:none; border-radius:8px;
       cursor:pointer; transition:background .3s,transform .2s;
     }
-    .cta:hover {
-      background:#218838; transform:translateY(-2px);
-    }
+    .cta:hover { background:#218838; transform:translateY(-2px) }
 
-    /* ===== AGREEMENT ===== */
+    /* AGREEMENT */
     #agreement {
       display:flex; justify-content:center;
       padding:3rem 1rem; background:#eaf8ea;
@@ -232,26 +143,20 @@
       box-shadow:0 12px 24px rgba(0,0,0,0.08);
       padding:5.5rem 2rem 2rem;
       max-width:500px; text-align:center;
-      position:relative; overflow:hidden;
+      position:relative;
     }
     .agreement-card::before {
       content:'✓'; position:absolute;
-      top:8px; left:50%; transform:translate(-50%);
+      top:8px; left:50%; transform:translateX(-50%);
       font-size:4rem; color:#28a745;
       background:#eaf8ea; width:80px; height:80px;
       line-height:80px; border-radius:50%;
       box-shadow:0 4px 8px rgba(0,0,0,0.1);
     }
-    .agreement-card h3 {
-      margin-top:.5rem; font-size:1.75rem; color:#28a745;
-    }
-    .agreement-card p {
-      margin:1rem 0; color:#555; line-height:1.6;
-    }
+    .agreement-card h3 { margin-top:.5rem; font-size:1.75rem; color:#28a745 }
+    .agreement-card p  { margin:1rem 0; color:#555; line-height:1.6 }
     .agreement-triggers {
-      display:flex; flex-wrap:wrap;
-      justify-content:center; gap:1rem;
-      margin-top:1.5rem;
+      display:flex; flex-wrap:wrap; justify-content:center; gap:1rem; margin-top:1.5rem;
     }
     .trigger {
       background:#f0fff4; border:1px solid #c3f0d8;
@@ -263,70 +168,46 @@
       background:#fff4e5; border-color:#ffd8a8; color:#a85c00;
     }
 
-    /* ===== FAQ ===== */
+    /* FAQ */
     #faq {
-      background:#f9f9f9;
-      padding:3rem 1rem;
+      background:#f9f9f9; padding:3rem 1rem; text-align:center;
     }
     #faq h3 {
       font-size:1.75rem; color:#222; margin-bottom:1.5rem;
     }
     #faq details {
-      background:#fff;
-      border-radius:8px;
+      background:#fff; border-radius:8px;
       box-shadow:0 2px 8px rgba(0,0,0,0.05);
-      margin-bottom:1rem;
-      padding:1rem 1.5rem;
-      overflow:hidden;
+      margin-bottom:1rem; padding:1rem 1.5rem;
     }
     #faq summary {
-      cursor:pointer;
-      font-weight:bold;
-      font-size:1.125rem;
-      color:#007bff;
-      list-style:none;
-      position:relative;
-      padding-left:1.5em;
+      cursor:pointer; font-weight:bold;
+      font-size:1.125rem; color:#007bff;
+      list-style:none; text-align:center;
     }
-    #faq summary::-webkit-details-marker { display:none; }
-    #faq summary::before {
-      content:"►";
-      position:absolute; left:0;
-      transition:transform .3s;
-    }
-    #faq details[open] summary::before {
-      transform:rotate(90deg);
-    }
+    #faq summary::-webkit-details-marker { display:none }
     #faq p {
-      margin:0.75rem 0 0 1.5em;
-      color:#555;
-      line-height:1.6;
-      font-size:1rem;
+      margin:0.75rem 0; color:#555; line-height:1.6; font-size:1rem;
     }
 
-    /* ===== FINAL PUSH ===== */
+    /* FINAL PUSH */
     #final-push {
-      padding:3rem 1rem;
-      text-align:center;
-      background:#f0f8ff;
+      padding:3rem 1rem; text-align:center;
+      background:#f0f8ff; margin-top:2rem;
     }
     .push-cta {
       background:#007bff; color:#fff; font-size:1.125rem;
       padding:.75rem 2rem; border:none; border-radius:8px;
       cursor:pointer; transition:transform .3s;
-      animation:pulse 2s infinite ease-in-out;
     }
     .push-cta:hover {
       transform:translateY(-2px);
     }
 
-    /* ===== FOOTER / DISCLAIMER ===== */
+    /* FOOTER */
     footer {
-      background:#f9f9f9;
-      padding:2rem 1rem;
-      text-align:center;
-      font-size:.875rem;
-      color:#555;
+      background:#f9f9f9; padding:2rem 1rem;
+      text-align:center; font-size:.875rem; color:#555;
     }
   </style>
 </head>
@@ -351,36 +232,56 @@
     </p>
   </section>
 
-  <!-- 3. HISTÓRIA -->
+  <!-- 3. STORY -->
   <section id="story">
     <h2>Como eu passei da incerteza ao controle total das minhas operações</h2>
-    <p>… [texto da sua história] …</p>
+    <p>… [aqui vai seu texto completo da história] …</p>
   </section>
 
-  <!-- 4. PITCH -->
-  <section class="features-section hidden">
+  <!-- 4. FEATURES -->
+  <section class="features-section">
     <h2>O que você vai receber</h2>
     <div class="cards">
-      <!-- cards aqui -->
+      <!-- ex.: -->
+      <div class="card">
+        <img src="img/icone1.png" alt="…">
+        <h3>Gestão de risco</h3>
+        <p>Aprenda a proteger cada operação…</p>
+      </div>
+      <!-- repita para cada card -->
     </div>
   </section>
 
-  <!-- 5 & 6. TESTIMONIALS -->
-  <section class="testimonials-section hidden">
+  <!-- 5. TESTIMONIALS -->
+  <section class="testimonials-section">
     <h2>O que dizem nossos alunos</h2>
     <div class="testimonial-carousel">
       <div class="carousel-track">
-        <!-- depoimentos aqui -->
+        <!-- ex.: -->
+        <div class="testimonial-card">
+          <p class="text">“Eu nunca mais senti medo no book…”</p>
+          <p class="testimonial-name">— Ana, SP</p>
+        </div>
+        <!-- repita -->
       </div>
     </div>
   </section>
 
-  <!-- 7. OFERTA -->
-  <section id="offer" class="hidden">
+  <!-- 6. OFFER -->
+  <section id="offer">
     <h3>Este pacote vale na prática <strong>R$ 211</strong>, mas hoje custa</h3>
     <div class="offer-cards">
-      <!-- oferta cards -->
-      <div class="card final-price-card" tabindex="0">
+      <div class="card">
+        <h4>Bônus #1</h4>
+        <p class="desc">Planilha automática de risco</p>
+        <p class="old-price">R$ 97</p>
+      </div>
+      <div class="card">
+        <h4>Bônus #2</h4>
+        <p class="desc">Checklist de setup</p>
+        <p class="old-price">R$ 57</p>
+      </div>
+      <div class="card final-price-card">
         <p class="today">Hoje por apenas</p>
         <p class="new-price">R$ 47</p>
       </div>
@@ -388,22 +289,22 @@
     <button class="cta">QUERO ACESSAR AGORA</button>
   </section>
 
-  <!-- 8. ACORDO -->
-  <section id="agreement" class="hidden">
+  <!-- 7. AGREEMENT -->
+  <section id="agreement">
     <div class="agreement-card">
       <h3>Garantia Incondicional de 7 Dias</h3>
-      <p>… [texto da garantia] …</p>
+      <p>Teste sem riscos. Se não gostar, devolvemos 100% do seu investimento.</p>
       <div class="agreement-triggers">
         <div class="trigger">✅ Sem perguntas</div>
         <div class="trigger">✅ Processamento imediato</div>
         <div class="trigger">✅ Seu investimento protegido</div>
-        <div class="trigger urgency">⏳ Oferta válida por tempo limitado</div>
+        <div class="trigger urgency">⏳ Oferta por tempo limitado</div>
       </div>
     </div>
   </section>
 
-  <!-- 9. FAQ -->
-  <section id="faq" class="hidden">
+  <!-- 8. FAQ -->
+  <section id="faq">
     <h3>Perguntas Frequentes</h3>
     <details>
       <summary>Funciona para quem está começando?</summary>
@@ -419,10 +320,10 @@
     </details>
     <details>
       <summary>Posso usar em qualquer ativo?</summary>
-      <p>Sim. A gestão de risco e clareza emocional valem para qualquer mercado.</p>
+      <p>Sim. Gestão de risco e clareza emocional valem para qualquer mercado.</p>
     </details>
     <details>
-      <summary>Qual é a garantia?</summary>
+      <summary>Qual a garantia?</summary>
       <p>7 dias incondicionais, sem perguntas.</p>
     </details>
     <details>
@@ -430,44 +331,37 @@
       <p>Você aplica em apenas 10–15 minutos diários.</p>
     </details>
     <details>
-      <summary>Isso fica obsoleto?</summary>
+      <summary>Fica obsoleto?</summary>
       <p>Não. Mindset, disciplina e risco são atemporais.</p>
     </details>
   </section>
 
-  <!-- 10. PUSH FINAL -->
-  <section id="final-push" class="hidden">
+  <!-- 9. PUSH FINAL -->
+  <section id="final-push">
     <p>Se você chegou até aqui, sabe que operar sem medo é só questão de processo.</p>
-    <button class="push-cta">Quero começar agora</button>
+    <button class="push-cta">Quero Começar Agora</button>
   </section>
 
-  <!-- 11. DISCLAIMER -->
-  <footer class="hidden">
+  <!-- 10. FOOTER / DISCLAIMER -->
+  <footer>
     <p>Trader Seguro © 2025. Todos os direitos reservados.</p>
     <p>Este site não pertence, não é afiliado e não é vinculado ao Grupo Meta.</p>
   </footer>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // trava scroll
-      document.body.style.overflow = 'hidden';
-
-      // delay do CTA original
+      // delay para mostrar o botão inicial
       setTimeout(() => {
-        document.getElementById('cta-btn').style.cssText = 'opacity:1;pointer-events:auto;';
-        // revela todo o conteúdo (including footer)
-        setTimeout(() => {
-          document.querySelectorAll('.hidden').forEach(el => el.classList.remove('hidden'));
-          document.body.style.overflow = '';
-        }, 2000);
+        const btn = document.getElementById('cta-btn');
+        btn.style.opacity = '1';
+        btn.style.pointerEvents = 'auto';
       }, 5000);
 
-      // carrossel infinito
+      // carrossel dos depoimentos
       const track = document.querySelector('.carousel-track');
       if (track) {
         const cards = Array.from(track.children);
-        const style = getComputedStyle(cards[0]);
-        const gap = parseFloat(style.marginLeft) + parseFloat(style.marginRight);
+        const gap = 30; // ajuste se mudar a margin
         const w = cards[0].getBoundingClientRect().width + gap;
         track.appendChild(cards[0].cloneNode(true));
         let idx = 0;
