@@ -427,18 +427,79 @@
     </div>
   </section>
 
-  <!-- 9. FAQ -->
-  <section id="faq" class="hidden">
-    <h3>Perguntas Frequentes</h3>
-    <div class="q">
-      <p class="question">Funciona para iniciantes?</p>
-      <p class="answer">Sim — explicamos tudo do zero.</p>
-    </div>
-    <div class="q">
-      <p class="question">Preciso de software especial?</p>
-      <p class="answer">Não — só Excel ou Google Sheets.</p>
-    </div>
-  </section>
+  <!-- 9. FAQ (acordeão) -->
+<section id="faq" class="hidden" style="padding:2rem 1rem; background:#fff;">
+  <h3 style="text-align:center; font-size:1.75rem; margin-bottom:1.5rem; color:#222;">Perguntas Frequentes</h3>
+  <!-- CSS interno para estilizar o acordeão -->
+  <style>
+    #faq details { margin-bottom:1rem; border-bottom:1px solid #ddd; padding:0.5rem 0; }
+    #faq summary {
+      cursor:pointer; font-weight:bold; font-size:1rem; list-style:none;
+      position:relative; padding-left:1.5em; color:#007bff;
+    }
+    #faq summary::-webkit-details-marker { display:none; }
+    #faq summary::before {
+      content:"►"; position:absolute; left:0; transition:transform .3s;
+    }
+    #faq details[open] summary::before { transform: rotate(90deg); }
+    #faq details p {
+      margin:0.75rem 0 0 1.5em; color:#555; line-height:1.6;
+    }
+  </style>
+
+  <details>
+    <summary>Funciona para quem está começando?</summary>
+    <p>Sim! Nosso método foi pensado justamente para traders de todos os níveis, desde o zero até o avançado.</p>
+  </details>
+
+  <details>
+    <summary>Preciso de um software caro ou assinatura adicional?</summary>
+    <p>Não. Tudo o que você precisa já está na planilha e no e‑book, usando apenas Excel ou Google Sheets.</p>
+  </details>
+
+  <details>
+    <summary>Em quanto tempo verei resultados?</summary>
+    <p>Em geral, os alunos começam a sentir mais controle emocional e diminuir perdas já na primeira semana de aplicação.</p>
+  </details>
+
+  <details>
+    <summary>Posso usar em qualquer ativo (ações, futuros, cripto)?</summary>
+    <p>Sim. A lógica de gerenciamento de risco e controle emocional vale para qualquer mercado.</p>
+  </details>
+
+  <details>
+    <summary>Qual é a garantia de reembolso?</summary>
+    <p>Garantia incondicional de 7 dias. Se não for pra você, devolvemos 100% do investimento.</p>
+  </details>
+
+  <details>
+    <summary>Tenho pouco tempo por dia — vale a pena?</summary>
+    <p>Nosso método é modular: você aplica as técnicas de clareza e risco em 10–15 minutos diários.</p>
+  </details>
+
+  <details>
+    <summary>Esse conteúdo ficará desatualizado?</summary>
+    <p>Não. Todos os princípios são atemporais (mindset, disciplina e gestão de risco) e funcionam em qualquer contexto.</p>
+  </details>
+</section>
+
+<!-- 10. PUSH FINAL -->
+<section id="final-push" class="hidden" style="padding:3rem 1rem; text-align:center; background:#f0f8ff;">
+  <p style="font-size:1.125rem; margin-bottom:1.5rem; color:#222;">
+    Se você chegou até aqui, sabe que operar sem medo é apenas uma questão de ter o processo certo.
+  </p>
+  <button
+    class="cta"
+    style="background:#007bff;color:#fff;font-size:1rem;padding:.75rem 2rem;border:none;border-radius:8px;cursor:pointer;">
+    Quero começar agora
+  </button>
+</section>
+
+<!-- 11. FOOTER / DISCLAIMER -->
+<footer class="hidden" style="padding:2rem 1rem; text-align:center; font-size:0.875rem; color:#777;">
+  <p>Trader Seguro &copy; 2025. Todos os direitos reservados.</p>
+  <p>Este site não pertence, não é afiliado e não é vinculado ao Grupo Meta.</p>
+</footer>
 
  <script>
 document.addEventListener('DOMContentLoaded', () => {
