@@ -2,93 +2,206 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Trader Seguro – Proteja Sua Conta</title>
+  <title>Trader Seguro – Proteja sua conta hoje</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <!-- ―――――――――――――  STYLE  ――――――――――――― -->
   <style>
-    /* … (SEUS ESTILOS INTEIROS PERMANECEM IGUAIS) … */
+    /* RESET SIMPLES */
+    *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif;color:#222}
+    h1,h2,h3{margin:.5em 0}
+    section{padding:4rem 1rem;max-width:960px;margin:0 auto}
+    .hidden{opacity:0;transform:translateY(25px);transition:.6s}
+
+    /* BOTÃO PADRÃO */
+    .cta, #cta-btn, #guarantee-cta, #faq-cta{
+      background:#d88a03;      color:#fff;font-size:1.05rem;font-weight:700;
+      border:0;border-radius:6px;padding:1rem 1.8rem;cursor:pointer;
+      box-shadow:0 0 25px rgba(216,138,3,.6);transition:.25s
+    }
+    .cta:hover,#cta-btn:hover,#guarantee-cta:hover,#faq-cta:hover{
+      transform:scale(1.04);
+      box-shadow:0 0 32px rgba(216,138,3,.8);
+    }
+
+    /* HERO */
+    .hero{text-align:center}
+    .hero h1{font-size:2rem}
+    .hero .sub{font-size:1.15rem;margin-bottom:2rem}
+    .video-container{position:relative;padding-bottom:56.25%;height:0;margin-bottom:2rem}
+    .video-container iframe{position:absolute;top:0;left:0;width:100%;height:100%}
+
+    /* FEATURE CARDS (exemplo) */
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem}
+    .card{border:1px solid #eee;border-radius:8px;padding:1.5rem;text-align:center}
+    .card h4{margin-bottom:.5rem}
+    .card p{font-size:.95rem}
+
+    /* FAQ */
+    details{border:1px solid #ddd;border-radius:6px;padding:1rem;margin-bottom:.8rem}
+    summary{cursor:pointer;font-weight:700}
+    .faq-cta-wrapper{text-align:center;margin-top:2.5rem}
+
+    /* ACORDO / GARANTIA */
+    #agreement{background:#fafafa}
+    .agreement-card{border:2px dashed #d88a03;border-radius:8px;padding:2rem;text-align:center}
+
+    /* TRANSIÇÃO “REVEAL” */
+    .reveal{opacity:1;transform:none}
+
+    /* MOBILE AJUSTES */
+    @media (min-width:700px){
+      .hero h1{font-size:2.6rem}
+      .hero .sub{font-size:1.25rem}
+    }
   </style>
 </head>
 
 <body>
-  <!-- 1. HERO -->
+
+  <!-- ╭────────────────── HERO ──────────────────╮ -->
   <section class="hero">
     <h1>Proteja sua conta e opere sem medo</h1>
-    <p class="sub">O método que mudou o jogo do Rafael em 1 minuto</p>
+    <p class="sub">O método de gestão de risco que mudou o jogo do Rafael em 1 minuto</p>
 
     <div class="video-container">
-      <iframe src="https://www.youtube.com/embed/SEU_VIDEO_ID" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/SEU_VIDEO_ID" title="Apresentação do Método" allowfullscreen></iframe>
     </div>
 
-    <!-- ✅ CTA 1  -->
+    <!-- ✅ CTA 1 – DEBAIXO DO VÍDEO -->
     <button id="cta-btn">Quero proteger minha conta</button>
   </section>
+  <!-- ╰────────────────────────────────────────────╯ -->
 
-
-  <!-- 2. LEAD -->
+  <!-- ╭────────────────── LEAD ────────────────────╮ -->
   <section id="lead" class="hidden">
-    …
+    <h2>Você já perdeu mais do que gostaria em operações?</h2>
+    <p>Imagine poder entrar em cada trade sabendo exatamente quanto pode perder,
+       com um stop <i>blindado</i> que o mercado não consegue “varrer”.  
+       Essa é a realidade de quem aplica o nosso método (sem planilhas complicadas).</p>
   </section>
+  <!-- ╰────────────────────────────────────────────╯ -->
 
-  <!-- 3. HISTÓRIA -->
+  <!-- ╭───────────────── HISTÓRIA ─────────────────╮ -->
   <section id="story" class="hidden">
-    …
+    <h2>De quase quebrado a consistente em 3 meses</h2>
+    <p>Há pouco tempo eu estava a um clique de desistir.  
+       Depois de acumular <b>R$ 18 mil</b> em perdas, percebi que meu problema não era estratégia – era <em>proteção</em>.  
+       Foi aí que criei o protocolo <strong>Trader Seguro™</strong>, que este ano salvou mais de 1 000 contas.</p>
   </section>
+  <!-- ╰────────────────────────────────────────────╯ -->
 
-  <!-- 4. FEATURES -->
+  <!-- ╭─────────────── FEATURES ───────────────────╮ -->
   <section class="features-section hidden">
-    …
+    <h2>O que você vai receber</h2>
+    <div class="cards">
+      <div class="card">
+        <h4>Módulo 1 – Fórmula do Stop Intel.</h4>
+        <p>Defina stops matematicamente seguros em 90 seg.</p>
+      </div>
+      <div class="card">
+        <h4>Módulo 2 – Planilha Dinâmica</h4>
+        <p>Planilha automática 100 % Google Sheets (não precisa Excel).</p>
+      </div>
+      <div class="card">
+        <h4>Bônus – Alerta Telegram</h4>
+        <p>Sinal sonoro avisando quando sua perda diária for atingida.</p>
+      </div>
+    </div>
   </section>
+  <!-- ╰────────────────────────────────────────────╯ -->
 
-  <!-- 5. TESTIMONIALS -->
+  <!-- ╭────────────── TESTIMONIALS ────────────────╮ -->
   <section class="testimonials-section hidden">
-    …
+    <h2>O que dizem nossos alunos</h2>
+    <div class="cards">
+      <div class="card"><p>“Em 2 semanas recuperei 3 meses de prejuízos.”<br><b>– Bruno M.</b></p></div>
+      <div class="card"><p>“Já não opero mais suando frio. Método simples e eficaz.”<br><b>– Carla T.</b></p></div>
+      <div class="card"><p>“Parecia milagre mas é matemática pura.”<br><b>– Edu R.</b></p></div>
+    </div>
   </section>
+  <!-- ╰────────────────────────────────────────────╯ -->
 
-  <!-- 6. OFERTA -->
+  <!-- ╭────────────────── OFERTA ──────────────────╮ -->
   <section id="offer" class="hidden">
-    <h3>Este pacote vale na prática <strong>R$ 211</strong>, mas hoje custa</h3>
+    <h3>Este pacote vale na prática <span style="color:#d88a03">R$ 211</span>, mas hoje custa:</h3>
 
     <div class="offer-cards">
-      … <!-- cards da pilha de oferta -->
+      <div class="card" style="border:3px solid #d88a03">
+        <h2 style="margin:0">R$ 97</h2>
+        <p>Pagamento único, acesso vitalício.</p>
+      </div>
     </div>
 
-    <!-- ✅ CTA 2 -->
-    <button class="cta">QUERO ACESSAR AGORA</button>
+    <!-- ✅ CTA 2 – DEPOIS DO EMPILHAMENTO DE OFERTA -->
+    <button class="cta">Quero acessar agora</button>
   </section>
+  <!-- ╰────────────────────────────────────────────╯ -->
 
-  <!-- 7. ACORDO / GARANTIA -->
+  <!-- ╭───────────── GARANTIA / ACORDO ────────────╮ -->
   <section id="agreement" class="hidden">
     <div class="agreement-card">
       <h3>Garantia Incondicional de 7 Dias</h3>
-      <p>Experimente o método completo sem riscos: se não ficar 100 % satisfeito, basta pedir seu reembolso integral em até 7 dias.</p>
+      <p>Use todo o conteúdo: planilha, aulas e alertas.  
+         Se em até 7 dias você não se sentir 100 % protegido,  
+         mande um e‑mail e receberá <b>reembolso integral</b> – sem perguntas.</p>
 
-      <div class="agreement-triggers">
-        …
-      </div>
-
-      <!-- ✅ CTA 3 -->
-      <button id="guarantee-cta" class="cta" style="margin-top:2rem">Quero proteger minha conta</button>
+      <!-- ✅ CTA 3 – DENTRO DA GARANTIA -->
+      <button id="guarantee-cta" class="cta">Quero proteger minha conta</button>
     </div>
   </section>
+  <!-- ╰────────────────────────────────────────────╯ -->
 
-  <!-- 8. FAQ -->
+  <!-- ╭────────────────── FAQ ─────────────────────╮ -->
   <section id="faq" class="hidden">
-    …
-    <div class="faq-cta-wrapper">
-      <p style="margin-bottom:1rem;font-weight:bold">
-        Se você chegou até aqui, sabe que operar sem medo é só questão de processo.
-      </p>
+    <h2>Perguntas Frequentes</h2>
 
-      <!-- ✅ CTA 4 -->
+    <details>
+      <summary>Preciso saber análise técnica avançada?</summary>
+      <p>Não. O método atua na gestão do <em>risco</em>, não na escolha de entradas.</p>
+    </details>
+
+    <details>
+      <summary>Funciona para qualquer mercado?</summary>
+      <p>Sim – bolsa brasileira, Forex, cripto, futuros ou opções.</p>
+    </details>
+
+    <details>
+      <summary>E se eu operar mini‑contratos?</summary>
+      <p>Há um módulo específico mostrando o ajuste de stop por contrato.</p>
+    </details>
+
+    <!-- ✅ CTA 4 – APÓS O FAQ -->
+    <div class="faq-cta-wrapper">
+      <p><strong>Pronto para operar protegido?</strong></p>
       <button id="faq-cta">Quero proteger minha conta agora</button>
     </div>
 
-    <!-- disclaimers -->
-    …
+    <small style="display:block;text-align:center;margin-top:3rem;color:#777">
+      Aviso legal: resultados variam de pessoa para pessoa. Operar nos mercados envolve riscos.
+    </small>
   </section>
+  <!-- ╰────────────────────────────────────────────╯ -->
 
-<script>
-/* SEU SCRIPT ORIGINAL PERMANECE IDÊNTICO */
-</script>
+  <!-- ╭────────────────── SCRIPTS ─────────────────╮ -->
+  <script>
+    /* Reveal on scroll – anima as sections */
+    const reveals = document.querySelectorAll('.hidden');
+    const onScroll = () => {
+      reveals.forEach(sec=>{
+        const top = sec.getBoundingClientRect().top;
+        if(top < window.innerHeight*0.85){ sec.classList.add('reveal'); }
+      });
+    };
+    window.addEventListener('scroll',onScroll);
+    onScroll();
+
+    /* Scroll suave para CTAs */
+    const scrollToForm = () => window.scroll({top:0,behavior:'smooth'});
+    document.querySelectorAll('#cta-btn,.cta,#guarantee-cta,#faq-cta')
+      .forEach(btn => btn.addEventListener('click', scrollToForm));
+  </script>
+  <!-- ╰────────────────────────────────────────────╯ -->
+
 </body>
 </html>
