@@ -4,28 +4,15 @@
   <meta charset="UTF-8">
   <title>Trader Seguro – Proteja Sua Conta</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
-/* ========== FAQ NOVO ========== */
-#faq{padding:2.5rem 1rem 0;text-align:center}
-#faq h3{margin-bottom:1.75rem;font-size:2rem}
-.faq-list{max-width:800px;margin:0 auto}
-.faq-item{border:1px solid #e2e2e2;border-radius:8px;margin-bottom:12px;overflow:hidden;transition:box-shadow .25s}
-.faq-item.open{box-shadow:0 6px 16px rgba(0,0,0,.08)}
-.faq-q{background:#fafafa;padding:.9rem 1.25rem;cursor:pointer;font-weight:600;text-align:left}
-.faq-a{padding:1rem 1.25rem;text-align:left;color:#555;line-height:1.55;display:none}
-.faq-item.open .faq-a{display:block}
-.faq-cta-wrapper{margin:3rem 0 48px;text-align:center}
-#faq-cta{background:#ff5722;color:#fff;font-size:1.125rem;padding:.9rem 2.2rem;border:none;border-radius:6px;cursor:pointer;animation:pulseSoft 2.8s infinite ease-in-out}
-@keyframes pulseSoft{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
-#disclaimer{max-width:800px;margin:0 auto 60px;font-size:.82rem;color:#777;line-height:1.5}
 
   <style>
-    /* reset e tipografia básica */
+    /* =================== RESET & TIPOGRAFIA =================== */
     *{margin:0;padding:0;box-sizing:border-box}
-    body{font-family:Arial,sans-serif;color:#333;overflow:hidden} /* <- scroll travado inicialmente */
+    body{font-family:Arial,sans-serif;color:#333;overflow:hidden}          /* bloqueia scroll até o vídeo liberar */
     section{transition:opacity .5s ease}
     .hidden{opacity:0}
 
-    /* ===== HERO ===== */
+    /* ========================== HERO ========================== */
     .hero{display:flex;flex-direction:column;justify-content:center;align-items:center;
           background:#fbfcfd;min-height:100vh;padding:2rem 1rem;text-align:center}
     .hero h1{font-size:2.25rem;margin-bottom:.5rem}
@@ -33,7 +20,7 @@
     .hero .video-container{width:100%;max-width:640px;margin-bottom:1.5rem}
     .hero iframe{width:100%;height:360px;border:none}
 
-    /* CTA abaixo do vídeo (invisível até 5 s) */
+    /* CTA do vídeo (invisível até 5 s) */
     #cta-btn{opacity:0;pointer-events:none;padding:.8rem 1.6rem;font-size:1rem;
              background:#007bff;color:#fff;border:none;border-radius:4px;cursor:pointer;position:relative;z-index:1;
              animation:pulse 2s infinite ease-in-out,neon 1.5s infinite alternate ease-in-out;
@@ -44,21 +31,14 @@
                     background:rgba(0,123,255,.4);filter:blur(8px);border-radius:50%;
                     animation:neon 1.5s infinite alternate ease-in-out;z-index:-1}
 
-    /* ===== SEÇÃO LEAD ===== */
-    #lead{text-align:center;padding:3rem 1rem;background:#f9f9f9}
-    #lead h2{font-size:1.75rem;color:#222;margin-bottom:1rem;line-height:1.3}
-    #lead p{font-size:1rem;color:#555;max-width:600px;margin:0 auto;line-height:1.6}
+    /* ====================== LEAD & STORY ====================== */
+    #lead,#story{text-align:center;padding:3rem 1rem}
+    #lead{background:#f9f9f9}
+    #lead h2,#story h2{font-size:1.75rem;color:#222;margin-bottom:1rem;line-height:1.3}
+    #lead p,#story p{font-size:1rem;color:#555;max-width:700px;margin:.75rem auto;line-height:1.6;text-align:left}
+    @media(max-width:600px){#lead p,#story p{text-align:justify;padding:0 1rem}}
 
-    /* ===== SEÇÃO HISTÓRIA ===== */
-    #story{text-align:center;padding:3rem 1rem}
-    #story h2{font-size:1.75rem;color:#222;margin-bottom:1.5rem;line-height:1.3}
-    #story p{font-size:1rem;color:#555;max-width:700px;margin:.75rem auto;text-align:left;line-height:1.6}
-
-    @media(max-width:600px){
-      #lead p,#story p{text-align:justify;padding:0 1rem}
-    }
-
-    /* ===== FEATURES (cards “o que vai receber”) ===== */
+    /* ======================== FEATURES ======================== */
     .features-section{padding:60px 20px;background:#fafafa;text-align:center}
     .features-section h2{font-size:2.5rem;margin-bottom:40px;color:#222}
     .cards{display:flex;flex-wrap:wrap;justify-content:center;gap:24px}
@@ -71,7 +51,7 @@
     @media(max-width:768px){.card{width:calc(50% - 16px)}.cards{gap:16px}}
     @media(max-width:480px){.card{width:100%}}
 
-    /* ===== TESTIMONIALS ===== */
+    /* ===================== TESTIMONIALS ====================== */
     .testimonials-section{padding:80px 20px;background:#f9f9f9;text-align:center}
     .testimonials-section h2{font-size:2.5rem;margin-bottom:40px;color:#222}
     .testimonial-carousel{overflow:hidden;margin:0 auto;max-width:100%}
@@ -83,7 +63,7 @@
     @media(max-width:768px){.testimonial-card{flex:0 0 80%}}
     @media(max-width:480px){.testimonial-card{flex:0 0 100%;margin:0 8px}}
 
-    /* ===== OFFER ===== */
+    /* ========================= OFFER ========================= */
     #offer{padding:3rem 1rem;text-align:center}
     #offer h3{font-size:2rem;margin-bottom:2.5rem;color:#222}
     .offer-cards{display:flex;justify-content:center;align-items:flex-end;margin-bottom:2.5rem;position:relative}
@@ -96,7 +76,6 @@
     .offer-cards .card .old-price{margin:0;font-size:.9rem;color:#999}
     .offer-cards .card:hover,
     .offer-cards .card:focus{transform:translateY(-5px) scale(1.05);box-shadow:0 12px 28px rgba(0,0,0,.15);z-index:10!important}
-
     @keyframes pulse2{0%,100%{box-shadow:0 0 0 0 rgba(0,123,255,.7)}50%{box-shadow:0 0 0 20px rgba(0,123,255,0)}}
     .final-price-card{z-index:6!important;margin-left:-60px;background:#007bff;color:#fff;display:flex;flex-direction:column;
                       align-items:center;justify-content:center;padding:2rem 1rem;min-height:180px;animation:pulse2 1.5s infinite}
@@ -106,7 +85,7 @@
          transition:background .3s,transform .2s}
     .cta:hover{background:#218838;transform:translateY(-2px)}
 
-    /* ===== AGREEMENT ===== */
+    /* ======================== AGREEMENT ====================== */
     #agreement{display:flex;justify-content:center;padding:3rem 1rem;background:#eaf8ea}
     .agreement-card{background:#fff;border-radius:16px;box-shadow:0 12px 24px rgba(0,0,0,.08);
                     padding:5.5rem 2rem 2rem;max-width:500px;text-align:center;position:relative;overflow:hidden}
@@ -120,41 +99,47 @@
              flex:1 1 140px}
     .trigger.urgency{background:#fff4e5;border-color:#ffd8a8;color:#a85c00}
 
-    /* ===== FAQ ===== */
-    #faq{padding:2rem 1rem;text-align:center}
-    #faq h3{margin-bottom:1.5rem;font-size:2rem;color:#222}
-    .faq-item{max-width:800px;margin:0.75rem auto;border:1px solid #ddd;border-radius:8px;overflow:hidden;text-align:left}
-    .faq-q{padding:1rem;font-weight:bold;background:#f5f5f5;cursor:pointer;position:relative}
+    /* =========================== FAQ ========================= */
+    #faq{padding:2.5rem 1rem 0;text-align:center}
+    #faq h3{margin-bottom:1.75rem;font-size:2rem;color:#222}
+    .faq-list{max-width:800px;margin:0 auto}
+    .faq-item{border:1px solid #e2e2e2;border-radius:8px;margin-bottom:12px;overflow:hidden;transition:box-shadow .25s}
+    .faq-item.open{box-shadow:0 6px 16px rgba(0,0,0,.08)}
+    .faq-q{background:#fafafa;padding:.9rem 1.25rem;cursor:pointer;font-weight:600;text-align:left;position:relative}
     .faq-q::after{content:'+';position:absolute;right:16px;top:50%;transform:translateY(-50%);font-size:1.25rem}
-    .faq-a{padding:1rem;color:#555;display:none;border-top:1px solid #ddd}
-    .faq-item.open .faq-a{display:block}
     .faq-item.open .faq-q::after{content:'–'}
+    .faq-a{padding:1rem 1.25rem;text-align:left;color:#555;line-height:1.55;display:none}
+    .faq-item.open .faq-a{display:block}
+    .faq-cta-wrapper{margin:3rem 0 64px;text-align:center}  /* 64 px para afastar do disclaimer */
+    #faq-cta{background:#ff5722;color:#fff;font-size:1.125rem;padding:.9rem 2.2rem;border:none;border-radius:6px;cursor:pointer;
+             animation:pulseSoft 2.8s infinite ease-in-out}
+    @keyframes pulseSoft{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
+    #disclaimer{max-width:800px;margin:0 auto 60px;font-size:.82rem;color:#777;line-height:1.5}
 
-    /* CTA final & disclaimer */
+    /* ========= CTA final & disclaimer de rodapé ========= */
     .bottom-cta-wrapper{text-align:center;padding:2rem 1rem}
     .disclaimer{font-size:.75rem;color:#888;max-width:800px;margin:1rem auto 0;line-height:1.4}
-
   </style>
 </head>
-<body>
 
+<body>
   <!-- 1. HERO -->
   <section class="hero">
     <h1>Proteja sua conta e opere sem medo</h1>
     <p class="sub">O método que mudou o jogo do Rafael em 1 minuto</p>
+
     <div class="video-container">
       <iframe src="https://www.youtube.com/embed/SEU_VIDEO_ID" allowfullscreen></iframe>
     </div>
+
     <button id="cta-btn">Quero proteger minha conta</button>
   </section>
 
   <!-- 2. LEAD -->
   <section id="lead" class="hidden">
     <h2>Você está cansado de ver seu sucesso escapar pelas mãos?</h2>
-    <p>
-      Se já sentiu aquela angústia toda vez que entra no gráfico e o medo fala mais alto,
-      continue aqui: eu vou lhe mostrar exatamente como sair desse ciclo e operar com confiança.
-    </p>
+    <p>Se já sentiu aquela angústia toda vez que entra no gráfico e o medo fala mais alto,
+       continue aqui: eu vou lhe mostrar exatamente como sair desse ciclo e operar com confiança.</p>
   </section>
 
   <!-- 3. HISTÓRIA -->
@@ -171,7 +156,7 @@
        que vem a seguir.</p>
   </section>
 
-  <!-- 4. PITCH -->
+  <!-- 4. FEATURES -->
   <section class="features-section hidden">
     <h2>O que você vai receber</h2>
     <div class="cards">
@@ -193,7 +178,7 @@
     </div>
   </section>
 
-  <!-- 5 & 6. TESTIMONIALS -->
+  <!-- 5. TESTIMONIALS -->
   <section class="testimonials-section hidden">
     <h2>O que dizem nossos alunos</h2>
     <div class="testimonial-carousel">
@@ -222,7 +207,7 @@
     </div>
   </section>
 
-  <!-- 7. OFERTA -->
+  <!-- 6. OFERTA -->
   <section id="offer" class="hidden">
     <h3>Este pacote vale na prática <strong>R$ 211</strong>, mas hoje custa</h3>
     <div class="offer-cards">
@@ -254,7 +239,7 @@
     <button class="cta">QUERO ACESSAR AGORA</button>
   </section>
 
-  <!-- 8. ACORDO -->
+  <!-- 7. ACORDO -->
   <section id="agreement" class="hidden">
     <div class="agreement-card">
       <h3>Garantia Incondicional de 7 Dias</h3>
@@ -269,63 +254,60 @@
     </div>
   </section>
 
- <!-- 9. FAQ -->
-<section id="faq" class="hidden">
-  <h3>Perguntas Frequentes</h3>
+  <!-- 8. FAQ -->
+  <section id="faq" class="hidden">
+    <h3>Perguntas Frequentes</h3>
 
-  <div class="faq-list">
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">Preciso ter experiência prévia em trading?</div>
+        <div class="faq-a">Não. O método começa pelos fundamentos para que iniciantes possam aplicar desde o primeiro dia.</div>
+      </div>
 
-    <div class="faq-item">
-      <div class="faq-q">Preciso ter experiência prévia em trading?</div>
-      <div class="faq-a">Não. O método começa pelos fundamentos para que iniciantes possam aplicar desde o primeiro dia.</div>
+      <div class="faq-item">
+        <div class="faq-q">Funciona para qualquer mercado (ações, futuros, cripto)?</div>
+        <div class="faq-a">Sim — o processo de gestão de risco e clareza emocional é independente do ativo que você negocia.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Preciso pagar mensalidade ou software extra?</div>
+        <div class="faq-a">Não. Você recebe a planilha automática (Excel/Sheets) já pronta para usar e o e‑book em PDF.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Em quanto tempo verei resultado?</div>
+        <div class="faq-a">A maioria dos alunos relata redução imediata na ansiedade e nas perdas já na primeira semana de aplicação.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">E se eu não gostar do conteúdo?</div>
+        <div class="faq-a">Você conta com Garantia Incondicional de 7 dias: basta enviar um e‑mail e devolvemos 100 % do valor.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Posso acessar em celular ou tablet?</div>
+        <div class="faq-a">Sim. Todo material é digital e responsivo. Basta login e senha para acessar de qualquer dispositivo.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">As atualizações futuras estão incluídas?</div>
+        <div class="faq-a">Sim. Sempre que ampliarmos o método, você recebe a nova versão sem custo adicional.</div>
+      </div>
     </div>
 
-    <div class="faq-item">
-      <div class="faq-q">Funciona para qualquer mercado (ações, futuros, cripto)?</div>
-      <div class="faq-a">Sim — o processo de gestão de risco e clareza emocional é independente do ativo que você negocia.</div>
+    <div class="faq-cta-wrapper">
+      <p style="margin-bottom:1rem;font-weight:bold">
+        Se você chegou até aqui, sabe que operar sem medo é só questão de processo.
+      </p>
+      <button id="faq-cta">Quero proteger minha conta agora</button>
     </div>
 
-    <div class="faq-item">
-      <div class="faq-q">Preciso pagar mensalidade ou software extra?</div>
-      <div class="faq-a">Não. Você recebe a planilha automática (Excel/Sheets) já pronta para usar e o e‑book em PDF.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">Em quanto tempo verei resultado?</div>
-      <div class="faq-a">A maioria dos alunos relata redução imediata na ansiedade e nas perdas já na primeira semana de aplicação.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">E se eu não gostar do conteúdo?</div>
-      <div class="faq-a">Você conta com Garantia Incondicional de 7 dias: basta enviar um e‑mail e devolvemos 100 % do valor.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">Posso acessar em celular ou tablet?</div>
-      <div class="faq-a">Sim. Todo material é digital e responsivo. Basta login e senha para acessar de qualquer dispositivo.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">As atualizações futuras estão incluídas?</div>
-      <div class="faq-a">Sim. Sempre que ampliarmos o método, você recebe a nova versão sem custo adicional.</div>
-    </div>
-
-  </div>
-
-  <div class="faq-cta-wrapper">
-    <p style="margin-bottom:1rem;font-weight:bold">
-      Se você chegou até aqui, sabe que operar sem medo é só questão de processo.
+    <p id="disclaimer">
+      * Este produto tem caráter exclusivamente educacional e não constitui recomendação de investimento. Resultados passados não garantem retorno futuro.
     </p>
-    <button id="faq-cta">Quero proteger minha conta agora</button>
-  </div>
+  </section>
 
-  <p id="disclaimer">
-    * Este produto tem caráter exclusivamente educacional e não constitui recomendação de investimento. Resultados passados não garantem retorno futuro.
-  </p>
-</section>
-
- 
-  <!-- CTA final + disclaimer -->
+  <!-- 9. CTA final -->
   <div class="bottom-cta-wrapper hidden">
     <button class="cta">SIM, QUERO COMEÇAR AGORA</button>
     <p class="disclaimer">
@@ -337,34 +319,32 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
 
-      /* ========= 1. Liberação de scroll e revelação das seções ========= */
+      /* ============ 1. Libera scroll & revela seções ============ */
       const releaseScroll = () => document.body.style.overflow = 'auto';
       const showHiddenSections = () =>
         document.querySelectorAll('.hidden').forEach(sec => sec.classList.remove('hidden'));
 
-      /* Exibe CTA aos 5 s, libera todo o resto aos 7 s */
+      /* Exibe CTA aos 5 s; 2 s depois libera o resto */
       setTimeout(() => {
         const btn = document.getElementById('cta-btn');
         btn.style.opacity = '1';
         btn.style.pointerEvents = 'auto';
-
-        /* 2 s depois do botão, libera conteúdo e scroll */
         setTimeout(() => { showHiddenSections(); releaseScroll(); }, 2000);
       }, 5000);
 
-      /* Bloqueia wheel/touch enquanto overflow hidden */
+      /* Bloqueia wheel/touch enquanto body overflow hidden */
       const block = e => { if (document.body.style.overflow === 'hidden') e.preventDefault(); };
       window.addEventListener('wheel', block, { passive:false });
       window.addEventListener('touchmove', block, { passive:false });
 
-      /* ========= 2. Carrossel infinito de depoimentos ========= */
+      /* ============ 2. Carrossel infinito depoimentos ============ */
       const track = document.querySelector('.carousel-track');
       if (track) {
         const cards = Array.from(track.children);
         const style = getComputedStyle(cards[0]);
         const marginLR = parseFloat(style.marginLeft) + parseFloat(style.marginRight);
         const cardW = cards[0].getBoundingClientRect().width + marginLR;
-        track.appendChild(cards[0].cloneNode(true)); // clone 1º p/ loop
+        track.appendChild(cards[0].cloneNode(true)); // clone 1º
 
         let idx = 0;
         function goNext() {
@@ -382,16 +362,10 @@
         setInterval(goNext, 4000);
       }
 
-      /* ========= 3. FAQ accordion ========= */
+      /* ============ 3. FAQ accordion ============ */
       document.querySelectorAll('.faq-q').forEach(q => {
         q.addEventListener('click', () => q.parentElement.classList.toggle('open'));
       });
-        /* Acordeão do FAQ */
-  document.querySelectorAll('.faq-q').forEach(q=>{
-    q.addEventListener('click',()=>{
-      q.parentElement.classList.toggle('open');
-    });
-  });
 
     });
   </script>
