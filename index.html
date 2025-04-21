@@ -46,33 +46,14 @@
       animation:neon 1.5s infinite alternate ease-in-out;z-index:-1;
     }
 
-  /* ========================== HERO ========================== */
-.hero {
-  background: url('fundo-sessao-1.jpeg') center center/cover no-repeat;
-  background-attachment: fixed;
+    /* ========================== HERO ========================== */
+    .hero{display:flex;flex-direction:column;justify-content:center;align-items:center;
+          background: #fbfcfd url('fundo-sessao-1.jpeg') center center/cover no-repeat;
 }
-.hero h1 {
-  font-size: 2.25rem;
-  margin-bottom: .5rem;
-}
-.hero p.sub {
-  font-size: 1.125rem;
-  margin-bottom: 1.5rem;
-  color: #555;
-}
-.hero .video-container {
-  width: 100%;
-  max-width: 640px;
-  margin-bottom: 1.5rem;
-}
-.hero iframe {
-  width: 100%;
-  height: 360px;
-  border: none;
-}
-
-
-
+    .hero h1{font-size:2.25rem;margin-bottom:.5rem}
+    .hero p.sub{font-size:1.125rem;margin-bottom:1.5rem;color:#555}
+    .hero .video-container{width:100%;max-width:640px;margin-bottom:1.5rem}
+    .hero iframe{width:100%;height:360px;border:none}
 
     /* ====================== LEAD & STORY ====================== */
     #lead,#story{text-align:center;padding:3rem 1rem}
@@ -97,52 +78,18 @@
     /* botão extra dentro da sessão "o que você vai receber" */
     .features-cta-wrapper{margin-top:48px}
 
-  /* ===================== TESTIMONIALS ====================== */
-.testimonials-section {
-  background: url('fundo-sessao-feedback.jpeg') center center/cover no-repeat;
-  background-attachment: fixed;
-  padding: 80px 20px;
-  text-align: center;
-}
-.testimonials-section h2 {
-  font-size: 2.5rem;
-  margin-bottom: 40px;
-  color: #222;
-}
-.testimonial-carousel {
-  overflow: hidden;
-  margin: 0 auto;
-  max-width: 100%;
-}
-.carousel-track {
-  display: flex;
-  transition: transform .5s ease;
-}
-.testimonial-card {
-  flex: 0 0 300px;
-  margin: 0 15px;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,.08);
-  padding: 24px;
-  text-align: left;
-}
-.testimonial-card .text {
-  font-size: 1rem;
-  line-height: 1.5;
-  color: #555;
-  margin-bottom: 16px;
-}
-.testimonial-card .testimonial-name {
-  font-weight: bold;
-  color: #0d47a1;
-}
-@media(max-width:768px){
-  .testimonial-card{flex:0 0 80%}
-}
-@media(max-width:480px){
-  .testimonial-card{flex:0 0 100%;margin:0 8px}
-}
+    /* ===================== TESTIMONIALS ====================== */
+    .testimonials-section{padding:80px 20px;background:#f9f9f9;text-align:center}
+    .testimonials-section h2{font-size:2.5rem;margin-bottom:40px;color:#222}
+    .testimonial-carousel{overflow:hidden;margin:0 auto;max-width:100%}
+    .carousel-track{display:flex;transition:transform .5s ease}
+    .testimonial-card{flex:0 0 300px;margin:0 15px;background:#fff;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.08);
+                      padding:24px;text-align:left}
+    .testimonial-card .text{font-size:1rem;line-height:1.5;color:#555;margin-bottom:16px}
+    .testimonial-card .testimonial-name{font-weight:bold;color:#0d47a1}
+    @media(max-width:768px){.testimonial-card{flex:0 0 80%}}
+    @media(max-width:480px){.testimonial-card{flex:0 0 100%;margin:0 8px}}
+
     /* ========================= OFFER ========================= */
     #offer{padding:3rem 1rem;text-align:center}
     #offer h3{font-size:2rem;margin-bottom:2.5rem;color:#222}
@@ -222,27 +169,28 @@ section:nth-of-type(even){background:var(--c-suave2)}
     </div>
 
     <!--  botão principal  -->
-    <button id="cta-btn" class="btn-cta" onclick="window.location.href= 'https://pay.hotmart.com/T98738975H?checkoutMode=10'">Quero proteger minha conta</button>
+    <button id="cta-btn" class="btn-cta" onclick="window.location.href='https://SEU_LINK_DE_CHECKOUT.com'">Quero proteger minha conta</button>
   </section>
 
   <!-- 2. LEAD -->
   <section id="lead" class="hidden">
     <h2>Você está cansado de ver seu sucesso escapar pelas mãos?</h2>
-    <p>Se você já sentiu aquela angústia toda vez que entra em uma operação e deixando o medo falar mais alto, continue aqui: eu vou lhe mostrar exatamente como sair desse ciclo e operar com confiança.</p>
+    <p>Se já sentiu aquela angústia toda vez que entra no gráfico e o medo fala mais alto,
+       continue aqui: eu vou lhe mostrar exatamente como sair desse ciclo e operar com confiança.</p>
   </section>
 
   <!-- 3. HISTÓRIA -->
   <section id="story" class="hidden">
     <h2>Como eu passei da incerteza ao controle total das minhas operações</h2>
-    <p>Há alguns anos, minha vida era uma verdadeira montanha-russa emocional: a ansiedade vinha só de pensar em abrir o gráfico, 
-      e cada operação parecia uma batalha interna. Mesmo quando achava que tinha entendido o mercado, no fim do dia era outra decepção na conta. 
-      Perdi dinheiro tentando seguir estratégias complexas que não se encaixavam no meu jeito, e o emocional sempre me derrubava.</p>
-    <p>Depois de ver colegas desistirem e quase sentir que o problema era comigo, decidi buscar um caminho novo. Foquei no que realmente importa: gestão de risco e controle emocional. 
-      Parei de perseguir setups milagrosos e criei um método simples – direto e eficaz – alinhado à minha personalidade.</p>
-    <p>Assim nasceu o método "Trader Seguro": clareza emocional, regras objetivas de risco e disciplina operacional que qualquer um consegue aplicar. 
-      Em apenas duas semanas usando esse método, senti minha ansiedade diminuir e as perdas ficarem sob controle — não por mágica, mas porque finalmente entendi onde estava errando.</p>
-    <p>Hoje compartilho esse método porque acredito que você não precisa repetir os mesmos sofrimentos. 
-      Se você se identificou com essa história, saiba que não está sozinho: é hora de tomar o controle, proteger sua conta e operar com confiança.</p>
+    <p>Há alguns anos, eu acordava com o coração acelerado só de pensar em abrir uma ordem.
+       Meus primeiros resultados eram tão ruins que eu chegava a duvidar de mim mesmo —
+       e o pior: perdia noites de sono remoendo cada centavo.</p>
+    <p>Eu sabia que não estava sozinho. Vi colegas brilhantes virarem estatísticas de falhas
+       porque faltava um plano claro. Foi aí que comecei a buscar fórmulas consagradas de
+       gestão de risco e mindset de traders de elite...</p>
+    <p>Hoje, compartilho essa mesma jornada com você. Se você se reconheceu em cada linha
+       desse relato, saiba que o próximo passo é só adotar um processo testado — e é isso
+       que vem a seguir.</p>
   </section>
 
   <!-- 4. FEATURES -->
@@ -255,20 +203,20 @@ section:nth-of-type(even){background:var(--c-suave2)}
         <p>Todo o passo‑a‑passo de gerenciamento de risco em Day Trade.</p>
       </div>
       <div class="card">
-        <img src="mockup-planilha.png" alt="Planilha Automática">
+        <img src="mouckup-gerenciamento-de-risco-tablet.png" alt="Planilha Automática">
         <h3>Planilha automática</h3>
         <p>Registre e calcule o risco de cada operação sem esforço.</p>
       </div>
       <div class="card">
-        <img src="mouckup-tablet-capa-alem-do-setup.png" alt="eBook Alem do Setup">
-        <h3>Porque só a técnica não basta</h3>
-        <p>Insights do Maior livro de psicologia para Traders - Mark Douglas e Ensinamentos dos Maiores Traders profissionais, Os Magos de Mercados - Jack Schwager  </p>
+        <img src="mouckup-tablet-capa-alem-do-setup.png" alt="Porque a técnica não basta">
+        <h3>Porque a técnica não basta</h3>
+        <p>Insights do Maior livro de psicologia para Traders - Mark Douglas e Ensinamentos dos Maiores Traders profissionais, Os Magos de Mercados - Jack Schwager</p>
       </div>
     </div>
 
     <!-- CTA logo após "o que você vai receber" -->
     <div class="features-cta-wrapper">
-      <button class="btn-cta" onclick="window.location.href='https://pay.hotmart.com/T98738975H?checkoutMode=10'">Quero garantir meu pacote</button>
+      <button class="btn-cta" onclick="window.location.href='https://SEU_LINK_DE_CHECKOUT.com'">Quero garantir meu pacote</button>
     </div>
   </section>
 
@@ -330,7 +278,7 @@ section:nth-of-type(even){background:var(--c-suave2)}
         <p class="new-price">R$ 47</p>
       </div>
     </div>
-    <button class="btn-cta" onclick="window.location.href='https://pay.hotmart.com/T98738975H?checkoutMode=10'">QUERO ACESSAR AGORA</button>
+    <button class="btn-cta" onclick="window.location.href='https://SEU_LINK_DE_CHECKOUT.com'">QUERO ACESSAR AGORA</button>
   </section>
 
   <!-- 7. ACORDO -->
@@ -347,7 +295,7 @@ section:nth-of-type(even){background:var(--c-suave2)}
       </div>
       <!-- CTA logo abaixo da garantia -->
       <div class="agreement-cta-wrapper">
-        <button class="btn-cta" onclick="window.location.href='https://pay.hotmart.com/T98738975H?checkoutMode=10'">Quero aproveitar sem risco</button>
+        <button class="btn-cta" onclick="window.location.href='https://SEU_LINK_DE_CHECKOUT.com'">Quero aproveitar sem risco</button>
       </div>
     </div>
   </section>
@@ -397,7 +345,7 @@ section:nth-of-type(even){background:var(--c-suave2)}
       <p style="margin-bottom:1rem;font-weight:bold">
         Se você chegou até aqui, sabe que operar sem medo é só questão de processo.
       </p>
-      <button id="faq-cta" class="btn-cta" onclick="window.location.href='https://pay.hotmart.com/T98738975H?checkoutMode=10'">Quero proteger minha conta agora</button>
+      <button id="faq-cta" class="btn-cta" onclick="window.location.href='https://SEU_LINK_DE_CHECKOUT.com'">Quero proteger minha conta agora</button>
     </div>
 
     <!-- Disclaimer • cole no rodapé -->
