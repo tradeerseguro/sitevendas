@@ -5,6 +5,34 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
   <title>Trader Seguro – Proteja Sua Conta</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <!-- ============ Meta Pixel ============ -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+ n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1331907761355227');    /*  ← troque aqui  */
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+ src="https://www.facebook.com/tr?id=1331907761355227&ev=PageView&noscript=1"
+/></noscript>
+<!-- /Meta Pixel -->
+
+<!-- ============ Google tag (gtag.js, GA4) ============ -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9JMQKHXKSL"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-9JMQKHXKSL');        /*  ← troque aqui  */
+</script>
+<!-- /Google tag -->
+
 
   <style>
     /* =================== RESET & TIPOGRAFIA =================== */
@@ -54,7 +82,7 @@
       padding:1.5rem 1rem;
       text-align:center;
     }
-    .hero h1 { font-size:2.25rem; margin-bottom:.2.5rem }
+    .hero h1 { font-size: 2.25rem; margin-bottom: .25rem; }
     .hero p.sub { font-size:1.125rem; margin-bottom:0.75rem; color:#555 }
     .hero .video-container { width:100%; max-width:640px; margin-bottom:1rem }
     .hero video {
@@ -473,6 +501,14 @@
           q.parentElement.classList.toggle('open')
         )
       );
+      /* ================= Inicia InitiateCheckout ================= */
+          document.querySelectorAll('.btn-cta').forEach(btn => {
+  btn.addEventListener('click', () => {
+    fbq('track', 'InitiateCheckout');
+    gtag('event', 'initiate_checkout');
+  });
+});
+      /* =============== Fim InitiateCheckout listener ============= */
     });
 
     /* animação de entrada */
@@ -488,6 +524,7 @@
       { threshold:.15 }
     );
     document.querySelectorAll('section').forEach(sec => secObserver.observe(sec));
+
   </script>
 </body>
 </html>
