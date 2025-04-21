@@ -13,14 +13,11 @@
     .hidden{opacity:0}
 
     /* ==================== BOTÃO PADRÃO CTA ==================== */
-    /*  Criei uma única classe .btn-cta para manter todos os botões com
-        a MESMA aparência.  Basta adicionar class="btn-cta" em qualquer
-        ponto da página que você precise de um call‑to‑action.            */
     .btn-cta{
-      opacity:1;                    /* visível por padrão – #cta‑btn é liberado via JS */
+      opacity:1;
       padding:.8rem 1.6rem;
       font-size:1rem;
-      background:#D58A00;           /* cor do botão */
+      background:#D58A00;
       color:#fff;
       border:none;
       border-radius:4px;
@@ -31,14 +28,11 @@
                 neon 1.5s infinite alternate ease-in-out;
       transition:opacity .3s ease, pointer-events .3s;
     }
-    /* zoom sutil */
     @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
-    /* efeito neon – dourado */
     @keyframes neon{
       from{box-shadow:0 0 6px  rgba(213,138,0,.45),0 0 12px rgba(213,138,0,.35)}
       to  {box-shadow:0 0 10px rgba(213,138,0,.90),0 0 25px rgba(213,138,0,.80)}
     }
-    /* halo abaixo do botão */
     .btn-cta::after{
       content:'';position:absolute;top:100%;left:50%;width:120%;height:8px;
       transform:translateX(-50%);
@@ -47,9 +41,17 @@
     }
 
     /* ========================== HERO ========================== */
-    .hero{display:flex;flex-direction:column;justify-content:center;align-items:center;
-          background: url('fundo-sessao-1.png') center center/cover no-repeat;
-}
+    .hero {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      /* CORREÇÃO: propriedades explícitas de background */
+      background-image: url('./fundo-sessao-1.png');
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
     .hero h1{font-size:2.25rem;margin-bottom:.5rem}
     .hero p.sub{font-size:1.125rem;margin-bottom:1.5rem;color:#555}
     .hero .video-container{width:100%;max-width:640px;margin-bottom:1.5rem}
@@ -74,8 +76,6 @@
     .card p{font-size:1rem;margin:0 16px 24px;color:#555;line-height:1.4}
     @media(max-width:768px){.card{width:calc(50% - 16px)}.cards{gap:16px}}
     @media(max-width:480px){.card{width:100%}}
-
-    /* botão extra dentro da sessão "o que você vai receber" */
     .features-cta-wrapper{margin-top:48px}
 
     /* ===================== TESTIMONIALS ====================== */
@@ -135,26 +135,24 @@
     .faq-item.open .faq-q::after{content:'–'}
     .faq-a{padding:1rem 1.25rem;text-align:left;color:#555;line-height:1.55;display:none}
     .faq-item.open .faq-a{display:block}
-    .faq-cta-wrapper{margin:3rem 0 64px;text-align:center}  /* 64 px para afastar do disclaimer */
+    .faq-cta-wrapper{margin:3rem 0 64px;text-align:center}
 
     /* ========= CTA final & disclaimer de rodapé ========= */
     .bottom-cta-wrapper{text-align:center;padding:2rem 1rem}
     .disclaimer{font-size:.75rem;color:#888;max-width:800px;margin:1rem auto 0;line-height:1.4}
-   
+
     /* === CORES DA MARCA === */
-:root{
-  --c-principal:#D58A00;   /* laranja-ouro do botão abaixo do video               */
-  --c-secundaria:#D58A00;  /* laranja da CTA do FAQ        */
-  --c-suave:#f0f7ff;       /* fundo claro                  */
-  --c-suave2:#fff8f4;      /* fundo claro alternativo      */
-}
-    /* === animação de entrada dos blocos === */
-section{opacity:0;transform:translateY(30px);transition:opacity .8s ease-out,transform .8s ease-out}
-section.appear{opacity:1;transform:translateY(0)}
-section:nth-of-type(odd){background:var(--c-suave)}
-section:nth-of-type(even){background:var(--c-suave2)}
-
-
+    :root{
+      --c-principal:#D58A00;
+      --c-secundaria:#D58A00;
+      --c-suave:#f0f7ff;
+      --c-suave2:#fff8f4;
+    }
+    /* animação de entrada */
+    section{opacity:0;transform:translateY(30px);transition:opacity .8s ease-out,transform .8s ease-out}
+    section.appear{opacity:1;transform:translateY(0)}
+    section:nth-of-type(odd){background:var(--c-suave)}
+    section:nth-of-type(even){background:var(--c-suave2)}
   </style>
 </head>
 
@@ -168,7 +166,6 @@ section:nth-of-type(even){background:var(--c-suave2)}
       <iframe src="https://www.youtube.com/embed/SEU_VIDEO_ID" allowfullscreen></iframe>
     </div>
 
-    <!--  botão principal  -->
     <button id="cta-btn" class="btn-cta" onclick="window.location.href='https://SEU_LINK_DE_CHECKOUT.com'">Quero proteger minha conta</button>
   </section>
 
@@ -214,7 +211,6 @@ section:nth-of-type(even){background:var(--c-suave2)}
       </div>
     </div>
 
-    <!-- CTA logo após "o que você vai receber" -->
     <div class="features-cta-wrapper">
       <button class="btn-cta" onclick="window.location.href='https://SEU_LINK_DE_CHECKOUT.com'">Quero garantir meu pacote</button>
     </div>
@@ -293,7 +289,6 @@ section:nth-of-type(even){background:var(--c-suave2)}
         <div class="trigger">✅ Seu investimento protegido</div>
         <div class="trigger urgency">⏳ Oferta válida por tempo limitado</div>
       </div>
-      <!-- CTA logo abaixo da garantia -->
       <div class="agreement-cta-wrapper">
         <button class="btn-cta" onclick="window.location.href='https://SEU_LINK_DE_CHECKOUT.com'">Quero aproveitar sem risco</button>
       </div>
@@ -303,44 +298,36 @@ section:nth-of-type(even){background:var(--c-suave2)}
   <!-- 8. FAQ -->
   <section id="faq" class="hidden">
     <h3>Perguntas Frequentes</h3>
-
     <div class="faq-list">
       <div class="faq-item">
         <div class="faq-q">Preciso ter experiência prévia em trading?</div>
         <div class="faq-a">Não. O método começa pelos fundamentos para que iniciantes possam aplicar desde o primeiro dia.</div>
       </div>
-
       <div class="faq-item">
         <div class="faq-q">Funciona para qualquer mercado (ações, futuros, cripto)?</div>
         <div class="faq-a">Sim — o processo de gestão de risco e clareza emocional é independente do ativo que você negocia.</div>
       </div>
-
       <div class="faq-item">
         <div class="faq-q">Preciso pagar mensalidade ou software extra?</div>
         <div class="faq-a">Não. Você recebe a planilha automática (Excel/Sheets) já pronta para usar e o e‑book em PDF.</div>
       </div>
-
       <div class="faq-item">
         <div class="faq-q">Em quanto tempo verei resultado?</div>
         <div class="faq-a">A maioria dos alunos relata redução imediata na ansiedade e nas perdas já na primeira semana de aplicação.</div>
       </div>
-
       <div class="faq-item">
         <div class="faq-q">E se eu não gostar do conteúdo?</div>
         <div class="faq-a">Você conta com Garantia Incondicional de 7 dias: basta enviar um e‑mail e devolvemos 100 % do valor.</div>
       </div>
-
       <div class="faq-item">
         <div class="faq-q">Posso acessar em celular ou tablet?</div>
         <div class="faq-a">Sim. Todo material é digital e responsivo. Basta login e senha para acessar de qualquer dispositivo.</div>
       </div>
-
       <div class="faq-item">
         <div class="faq-q">As atualizações futuras estão incluídas?</div>
         <div class="faq-a">Sim. Sempre que ampliarmos o método, você recebe a nova versão sem custo adicional.</div>
       </div>
     </div>
-
     <div class="faq-cta-wrapper">
       <p style="margin-bottom:1rem;font-weight:bold">
         Se você chegou até aqui, sabe que operar sem medo é só questão de processo.
@@ -349,38 +336,31 @@ section:nth-of-type(even){background:var(--c-suave2)}
     </div>
 
     <!-- Disclaimer • cole no rodapé -->
-<p class="disclaimer">
-  Este material tem finalidade <strong>exclusivamente educacional</strong> e foi criado para
-  auxiliar no desenvolvimento de competências técnicas e comportamentais em
-  operações nos mercados financeiros. Nada aqui deve ser interpretado como
-  recomendação ou solicitação para compra, venda ou manutenção de qualquer ativo
-  ou instrumento. <strong>Resultados passados não representam garantia de
-  retornos futuros.</strong>
-</p>
-
-<p class="disclaimer">
-  Este site e sua página de vendas <strong>não são endossados, patrocinados,
-  administrados nem afiliados ao&nbsp;Grupo&nbsp;Meta™</strong> ou a qualquer uma de suas
-  plataformas, incluindo Facebook™ e&nbsp;Instagram™. Todas as marcas citadas
-  pertencem aos respectivos titulares.
-</p>
-
-<p class="disclaimer">
-  © 2025 Trader Seguro — <strong>Todos os direitos reservados.</strong>
-</p>
-
+    <p class="disclaimer">
+      Este material tem finalidade <strong>exclusivamente educacional</strong> e foi criado para
+      auxiliar no desenvolvimento de competências técnicas e comportamentais em
+      operações nos mercados financeiros. Nada aqui deve ser interpretado como
+      recomendação ou solicitação para compra, venda ou manutenção de qualquer ativo
+      ou instrumento. <strong>Resultados passados não representam garantia de
+      retornos futuros.</strong>
+    </p>
+    <p class="disclaimer">
+      Este site e sua página de vendas <strong>não são endossados, patrocinados,
+      administrados nem afiliados ao&nbsp;Grupo&nbsp;Meta™</strong> ou a qualquer uma de suas
+      plataformas, incluindo Facebook™ e&nbsp;Instagram™. Todas as marcas citadas
+      pertencem aos respectivos titulares.
+    </p>
+    <p class="disclaimer">
+      © 2025 Trader Seguro — <strong>Todos os direitos reservados.</strong>
+    </p>
   </section>
-
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-
-      /* ============ 1. Libera scroll & revela seções ============ */
       const releaseScroll = () => document.body.style.overflow = 'auto';
       const showHiddenSections = () =>
         document.querySelectorAll('.hidden').forEach(sec => sec.classList.remove('hidden'));
 
-      /* Exibe CTA aos 5 s; 2 s depois libera o resto */
       setTimeout(() => {
         const btn = document.getElementById('cta-btn');
         btn.style.opacity = '1';
@@ -388,20 +368,17 @@ section:nth-of-type(even){background:var(--c-suave2)}
         setTimeout(() => { showHiddenSections(); releaseScroll(); }, 2000);
       }, 5000);
 
-      /* Bloqueia wheel/touch enquanto body overflow hidden */
       const block = e => { if (document.body.style.overflow === 'hidden') e.preventDefault(); };
       window.addEventListener('wheel', block, { passive:false });
       window.addEventListener('touchmove', block, { passive:false });
 
-      /* ============ 2. Carrossel infinito depoimentos ============ */
       const track = document.querySelector('.carousel-track');
       if (track) {
         const cards = Array.from(track.children);
         const style = getComputedStyle(cards[0]);
         const marginLR = parseFloat(style.marginLeft) + parseFloat(style.marginRight);
         const cardW = cards[0].getBoundingClientRect().width + marginLR;
-        track.appendChild(cards[0].cloneNode(true)); // clone 1º
-
+        track.appendChild(cards[0].cloneNode(true));
         let idx = 0;
         function goNext() {
           idx++;
@@ -418,26 +395,21 @@ section:nth-of-type(even){background:var(--c-suave2)}
         setInterval(goNext, 4000);
       }
 
-      /* ============ 3. FAQ accordion ============ */
       document.querySelectorAll('.faq-q').forEach(q => {
         q.addEventListener('click', () => q.parentElement.classList.toggle('open'));
       });
-
     });
-    /* === faz cada bloco surgir quando aparece na tela === */
-const secObserver=new IntersectionObserver(
-  entries=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){
-        e.target.classList.add('appear');
-        secObserver.unobserve(e.target); // anima só 1x
-      }
-    })
-  },
-  {threshold:.15}
-);
-document.querySelectorAll('section').forEach(sec=>secObserver.observe(sec));
 
+    const secObserver=new IntersectionObserver(
+      entries=>{ entries.forEach(e=>{
+        if(e.isIntersecting){
+          e.target.classList.add('appear');
+          secObserver.unobserve(e.target);
+        }
+      })},
+      {threshold:.15}
+    );
+    document.querySelectorAll('section').forEach(sec=>secObserver.observe(sec));
   </script>
 </body>
 </html>
