@@ -32,12 +32,17 @@ gtag('js', new Date());
 gtag('config', 'G-9JMQKHXKSL');        /*  ← troque aqui  */
 </script>
 <!-- /Google tag -->
+/* =================== links fonts =================== */
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
 
 
   <style>
     /* =================== RESET & TIPOGRAFIA =================== */
     * { margin:0; padding:0; box-sizing:border-box }
-    body { font-family:Arial,sans-serif; color:#333; overflow:hidden }
+    body { font-family: 'Inter', Arial,sans-serif; color:#333; overflow:hidden }
     section { transition:opacity .5s ease }
     .hidden { opacity:0 }
 
@@ -67,6 +72,12 @@ gtag('config', 'G-9JMQKHXKSL');        /*  ← troque aqui  */
       transform:translateX(-50%); background:rgba(13,110,253,.35); filter:blur(8px);
       border-radius:50%; animation:neon 1.5s infinite alternate ease-in-out; z-index:-1;
     }
+/* HEADLINES E ELEMENTOS DE IMPACTO */
+h1, h2, h3,
+.btn-cta{
+  font-family:'Poppins', 'Inter', Arial, sans-serif; /* usa Poppins */
+  font-weight:600;      /* peso médio-negrito – bom para chamada */
+}
 
     /* ========================== HERO ========================== */
     .hero {
