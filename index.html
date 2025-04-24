@@ -40,7 +40,7 @@ gtag('config', 'G-9JMQKHXKSL');        /*  ← troque aqui  */
   <!-- Preload da imagem-hero -->
 <link rel="preload"
       as="image"
-      href="fundo-sessao-1.webp"
+      href="fundo-sessao-1-600.webp"
       fetchpriority="high">
 
 
@@ -93,7 +93,10 @@ h1, h2, h3,
       flex-direction:column;
       justify-content:center;
       align-items:center;
-      background-image:url('fundo-sessao-1.webp');
+      background-image: image-set(
+    url('fundo-sessao-1-600.webp') 1x,   /* celulares (~480-600 px) */
+    url('fundo-sessao-1.webp')      2x   /* tablets / desktop retina */
+  );
       background-position:center center;
       background-repeat:no-repeat;
       background-size:cover;
