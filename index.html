@@ -37,16 +37,24 @@ gtag('config', 'G-9JMQKHXKSL');        /*  ← troque aqui  */
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
 
+  <!-- Preload da imagem-hero -->
+<link rel="preload"
+      as="image"
+      href="fundo-sessao-1.webp"
+      fetchpriority="high">
 
 
-  <style>
-    /* =================== RESET & TIPOGRAFIA =================== */
-    * { margin:0; padding:0; box-sizing:border-box }
-    body { font-family: 'Inter', Arial,sans-serif; color:#333; overflow:hidden }
+
+<style>
+   
+/* === CSS CRÍTICO (dobra) === */
+
+body { font-family: 'Inter', Arial,sans-serif; color:#333; overflow:hidden }
     section { transition:opacity .5s ease }
     .hidden { opacity:0 }
 
-    /* ==================== BOTÃO PADRÃO CTA ==================== */
+
+/* ==================== BOTÃO PADRÃO CTA ==================== */
     .btn-cta {
       opacity:1;
       padding:.8rem 1.6rem;
@@ -103,6 +111,13 @@ h1, h2, h3,
   height: 360px;
   border: none;
 }
+
+/* === FIM CSS CRÍTICO === */
+
+ /* =================== RESET & TIPOGRAFIA =================== */
+    * { margin:0; padding:0; box-sizing:border-box }
+    
+    
 
 
     /* ====================== LEAD & STORY ====================== */
