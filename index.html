@@ -85,7 +85,7 @@ h1, h2, h3,
       flex-direction:column;
       justify-content:center;
       align-items:center;
-      background-image:url('fundo-sessao-1.png');
+      background-image:url('fundo-sessao-1.webp');
       background-position:center center;
       background-repeat:no-repeat;
       background-size:cover;
@@ -280,10 +280,14 @@ h1, h2, h3,
     <h1>Chega de Quebrar Sua Conta: Descubra Como Operar com Segurança e Controle Emocional</h1>
     <p class="sub">Mesmo que você esteja começando do zero, aprenda as 3 regras práticas que vão proteger seu capital e transformar a forma como você opera.</p>
     <div class="video-container">
-      <video controls preload="metadata" width="100%" height="360">
-        <source src="vsl-site.mp4" type="video/mp4">
-        Seu navegador não suporta HTML5 video.
-      </video>
+      <video controls
+       preload="none"        <!-- não baixa o MP4 de imediato -->
+       poster= "capa-vsl.webp" <!-- mostra a capa -->
+       width="100%" height="360">
+  <source src="vsl-site.mp4" type="video/mp4">
+  Seu navegador não suporta HTML5 video.
+</video>
+
     </div>
     <button id="cta-btn" class="btn-cta"
       onclick="window.location.href='https://pay.hotmart.com/T98738975H?checkoutMode=10'">
@@ -311,17 +315,17 @@ h1, h2, h3,
     <h2>O que você vai receber</h2>
     <div class="cards">
       <div class="card">
-        <img src="mouckup-gerenciamento-de-risco-tablet.png" alt="eBook Gerenciamento de Risco">
+        <img src="mouckup-gerenciamento-de-risco-tablet.webp" alt="eBook Gerenciamento de Risco">
         <h3>eBook completo</h3>
         <p>Todo o passo‑a‑passo do gerenciamento de risco em Day Trade para você já começar a proteger seu capital na próxima sessão de trading</p>
       </div>
       <div class="card">
-        <img src="mouckup-tablet-planilha.png" alt="Planilha Automática">
+        <img src="mouckup-tablet-planilha.webp" alt="Planilha Automática">
         <h3>Planilha de Acompanhamento de Trades</h3>
         <p>Registre os seus dados dia após dia e descubra se está na direção certa.</p>
       </div>
       <div class="card">
-        <img src="mouckup-tablet-capa-alem-do-setup.png" alt="Porque a técnica não basta">
+        <img src="mouckup-tablet-capa-alem-do-setup.webp" alt="Porque a técnica não basta">
         <h3>Porque a técnica não basta</h3>
         <p>Insights do Maior livro de psicologia para Traders – Mark Douglas e Ensinamentos dos maiores traders do mercado - Magos de Mercado, Jack Schwager</p>
       </div>
